@@ -109,7 +109,7 @@ class NormalNN(nn.Module):
             if self.gpu:
                 with torch.no_grad():
                     input = input.cuda()
-                    target = target.cuda(async=True)
+                    target = target.cuda()
             output = self.predict(input)
 
             # Summarize the performance of all tasks, or 1 task, depends on dataloader.
@@ -180,7 +180,7 @@ class NormalNN(nn.Module):
 
                 if self.gpu:
                     input = input.cuda()
-                    target = target.cuda(async=True)  # async+pin_mem = slight speed gain
+                    target = target.cuda()
 
                 loss, output = self.update_model(input, target, task)
                 input = input.detach()
