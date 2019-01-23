@@ -1,7 +1,7 @@
 import torch
 from .default import NormalNN
 from .regularization import SI, EWC, EWC_online
-from .exp_replay import Naive_Rehearsal
+from .exp_replay import Naive_Rehearsal, GEM
 from modules.criterions import BCEauto
 
 def init_zero_weights(m):
@@ -99,6 +99,24 @@ def EWC_online_reset_optim(agent_config):
     return agent
 
 
+def Naive_Rehearsal_100(agent_config):
+    agent = Naive_Rehearsal(agent_config)
+    agent.memory_size = 100
+    return agent
+
+
+def Naive_Rehearsal_200(agent_config):
+    agent = Naive_Rehearsal(agent_config)
+    agent.memory_size = 200
+    return agent
+
+
+def Naive_Rehearsal_400(agent_config):
+    agent = Naive_Rehearsal(agent_config)
+    agent.memory_size = 400
+    return agent
+
+
 def Naive_Rehearsal_1100(agent_config):
     agent = Naive_Rehearsal(agent_config)
     agent.memory_size = 1100
@@ -131,5 +149,47 @@ def Naive_Rehearsal_5600(agent_config):
 
 def Naive_Rehearsal_16000(agent_config):
     agent = Naive_Rehearsal(agent_config)
+    agent.memory_size = 16000
+    return agent
+
+
+def GEM_100(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 100
+    return agent
+
+
+def GEM_200(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 200
+    return agent
+
+
+def GEM_400(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 400
+    return agent
+
+
+def GEM_1100(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 1100
+    return agent
+
+
+def GEM_4000(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 4000
+    return agent
+
+
+def GEM_4400(agent_config):
+    agent = GEM(agent_config)
+    agent.memory_size = 4400
+    return agent
+
+
+def GEM_16000(agent_config):
+    agent = GEM(agent_config)
     agent.memory_size = 16000
     return agent
