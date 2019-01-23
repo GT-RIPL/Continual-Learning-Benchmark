@@ -9,7 +9,7 @@ class L2(NormalNN):
         title={Overcoming catastrophic forgetting in neural networks},
         author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and others},
         journal={Proceedings of the national academy of sciences},
-        year={2017}
+        year={2017},
         url={https://arxiv.org/abs/1612.00796}
     }
     """
@@ -75,7 +75,7 @@ class EWC(L2):
         title={Overcoming catastrophic forgetting in neural networks},
         author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and others},
         journal={Proceedings of the national academy of sciences},
-        year={2017}
+        year={2017},
         url={https://arxiv.org/abs/1612.00796}
     }
     """
@@ -163,7 +163,7 @@ class SI(L2):
         title={Continual Learning Through Synaptic Intelligence},
         author={Zenke, Friedemann and Poole, Ben and Ganguli, Surya},
         booktitle={International Conference on Machine Learning},
-        year={2017}
+        year={2017},
         url={https://arxiv.org/abs/1703.04200}
     }
     """
@@ -270,7 +270,8 @@ class MAS(L2):
       title={Memory Aware Synapses: Learning what (not) to forget},
       author={Aljundi, Rahaf and Babiloni, Francesca and Elhoseiny, Mohamed and Rohrbach, Marcus and Tuytelaars, Tinne},
       booktitle={ECCV},
-      year={2018}
+      year={2018},
+      url={https://eccv2018.org/openaccess/content_ECCV_2018/papers/Rahaf_Aljundi_Memory_Aware_Synapses_ECCV_2018_paper.pdf}
     }
     """
 

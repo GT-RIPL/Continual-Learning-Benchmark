@@ -1,11 +1,27 @@
 # Continual-Learning-Benchmark
-Evaluate and compare continual learning algorithms with three learning scenarios.
+Evaluate three types of task shifting with popular continual learning algorithms.
+
+This repository implemented and modularized following algorithms with PyTorch:
+- EWC: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://arxiv.org/abs/1612.00796) (Overcoming catastrophic forgetting in neural networks)
+- Online EWC: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://arxiv.org/abs/1805.06370) 
+- SI: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://arxiv.org/abs/1703.04200) (Continual Learning Through Synaptic Intelligence)
+- MAS: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://eccv2018.org/openaccess/content_ECCV_2018/papers/Rahaf_Aljundi_Memory_Aware_Synapses_ECCV_2018_paper.pdf) (Memory Aware Synapses: Learning what (not) to forget)
+- GEM: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/exp_replay.py), [paper](https://arxiv.org/abs/1706.08840) (Gradient Episodic Memory for Continual Learning)
+- (More are coming)
+
+All above algorithms are compared to following baselines with **the same static memory overhead**:
+- Naive rehearsal: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/exp_replay.py)
+- L2: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://arxiv.org/abs/1612.00796)
+
+Snapshots:
+<img src="fig/task_shifts.png" width="640"></a>
+<img src="fig/results_split_mnist.png" width="640"></a>
 
 Reference:
 ```
 @article{Hsu18_EvalCL,
   title={Re-evaluating Continual Learning Scenarios: A Categorization and Case for Strong Baselines},
-  author={Yen-Chang Hsu and Yen-Cheng Liu and Zsolt Kira},
+  author={Yen-Chang Hsu and Yen-Cheng Liu and Anita Ramasamy and Zsolt Kira},
   booktitle={NeurIPS Continual learning Workshop },
   year={2018},
   url={https://arxiv.org/abs/1810.12488}
@@ -13,6 +29,8 @@ Reference:
 ```
 
 ## Preparation
+This repository supports PyTorch 1.0, Python 2.7, 3.6, and 3.7.
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -54,6 +72,3 @@ Lookup available options:
 ```bash
 python iBatchLearn.py -h
 ```
-
-## More
-The supports of more continual learning algorithms are comming soon.
