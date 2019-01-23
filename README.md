@@ -9,11 +9,12 @@ This repository implemented and modularized following algorithms with PyTorch:
 - GEM: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/exp_replay.py), [paper](https://arxiv.org/abs/1706.08840) (Gradient Episodic Memory for Continual Learning)
 - (More are coming)
 
-All above algorithms are compared to following baselines with **the same static memory overhead**:
+All the above algorithms are compared to following baselines with **the same static memory overhead**:
 - Naive rehearsal: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/exp_replay.py)
 - L2: [code](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/agents/regularization.py), [paper](https://arxiv.org/abs/1612.00796)
 
-Snapshots:
+Key tables:
+
 <img src="fig/task_shifts.png" width="640"></a>
 <img src="fig/results_split_mnist.png" width="640"></a>
 
