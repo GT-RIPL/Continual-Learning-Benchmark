@@ -76,15 +76,15 @@ class Naive_Rehearsal_MAS(Naive_Rehearsal, MAS):
 
 
 class GEM(Naive_Rehearsal):
-"""
-@inproceedings{GradientEpisodicMemory,
-    title={Gradient Episodic Memory for Continual Learning},
-    author={Lopez-Paz, David and Ranzato, Marc'Aurelio},
-    booktitle={NIPS},
-    year={2017},
-    url={https://arxiv.org/abs/1706.08840}
-}
-"""
+    """
+    @inproceedings{GradientEpisodicMemory,
+        title={Gradient Episodic Memory for Continual Learning},
+        author={Lopez-Paz, David and Ranzato, Marc'Aurelio},
+        booktitle={NIPS},
+        year={2017},
+        url={https://arxiv.org/abs/1706.08840}
+    }
+    """
 
     def __init__(self, agent_config):
         super(GEM, self).__init__(agent_config)
