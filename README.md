@@ -18,9 +18,9 @@ Key tables:
 <img src="fig/task_shifts.png" width="640"></a>
 <img src="fig/results_split_mnist.png" width="640"></a>
 
-Reference:
+If this repository helps your work, please cite:
 ```
-@article{Hsu18_EvalCL,
+@inproceedings{Hsu18_EvalCL,
   title={Re-evaluating Continual Learning Scenarios: A Categorization and Case for Strong Baselines},
   author={Yen-Chang Hsu and Yen-Cheng Liu and Anita Ramasamy and Zsolt Kira},
   booktitle={NeurIPS Continual learning Workshop },
