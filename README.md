@@ -73,3 +73,9 @@ Lookup available options:
 ```bash
 python iBatchLearn.py -h
 ```
+
+## Other results
+
+Below are CIFAR100 results. Please refer to the [scripts](https://github.com/GT-RIPL/Continual-Learning-Benchmark/blob/master/scripts/split_CIFAR100_incremental_class.sh) for details.
+
+<img src="fig/results_split_cifar100.png" width="640"></a>
