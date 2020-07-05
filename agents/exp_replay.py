@@ -6,11 +6,6 @@ from .regularization import SI, L2, EWC, MAS
 from dataloaders.wrapper import Storage
 
 
-class Memory(Storage):
-    def reduce(self, m):
-        self.storage = self.storage[:m]
-
-
 class Naive_Rehearsal(NormalNN):
 
     def __init__(self, agent_config):
@@ -44,10 +39,8 @@ class Naive_Rehearsal(NormalNN):
         for storage in self.task_memory.values():
             storage.reduce(num_sample_per_task)
         # (c) Randomly choose some samples from new task and save them to the memory
-        self.task_memory[self.task_count] = Memory()  # Initialize the memory slot
         randind = torch.randperm(len(train_loader.dataset))[:num_sample_per_task]  # randomly sample some data
-        for ind in randind:  # save it to the memory
-            self.task_memory[self.task_count].append(train_loader.dataset[ind])
+        self.task_memory[self.task_count] = Storage(train_loader.dataset, randind)
 
 
 class Naive_Rehearsal_SI(Naive_Rehearsal, SI):
@@ -160,10 +153,8 @@ class GEM(Naive_Rehearsal):
         for storage in self.task_memory.values():
             storage.reduce(num_sample_per_task)
         # (c) Randomly choose some samples from new task and save them to the memory
-        self.task_memory[self.task_count] = Memory()  # Initialize the memory slot
         randind = torch.randperm(len(train_loader.dataset))[:num_sample_per_task]  # randomly sample some data
-        for ind in randind:  # save it to the memory
-            self.task_memory[self.task_count].append(train_loader.dataset[ind])
+        self.task_memory[self.task_count] = Storage(train_loader.dataset, randind)
         # (d) Cache the data for faster processing
         for t, mem in self.task_memory.items():
             # Concatenate all data in each task

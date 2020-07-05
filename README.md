@@ -30,7 +30,7 @@ If this repository helps your work, please cite:
 ```
 
 ## Preparation
-This repository supports PyTorch 1.0, Python 2.7, 3.6, and 3.7.
+This repository was tested with Python 3.6 and PyTorch 1.0.1.post2. Part of the cases is tested with PyTorch 1.5.1 and gives the same results.
 
 ```bash
 pip install -r requirements.txt

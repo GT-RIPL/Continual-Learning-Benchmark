@@ -98,22 +98,7 @@ class Permutation(data.Dataset):
         return img, target
 
 
-class Storage(data.Dataset):
-    """
-    A dataset wrapper used as a memory to store the data
-    """
-    def __init__(self):
-        super(Storage, self).__init__()
-        self.storage = []
+class Storage(data.Subset):
 
-    def __len__(self):
-        return len(self.storage)
-
-    def __getitem__(self, index):
-        return self.storage[index]
-
-    def append(self,x):
-        self.storage.append(x)
-
-    def extend(self,x):
-        self.storage.extend(x)
+    def reduce(self, m):
+        self.indices = self.indices[:m]
