@@ -13,19 +13,23 @@ class Naive_Rehearsal(NormalNN):
         self.task_count = 0
         self.memory_size = 1000
         self.task_memory = {}
+        self.skip_memory_concatenation = False
 
     def learn_batch(self, train_loader, val_loader=None):
         # 1.Combine training set
-        dataset_list = []
-        for storage in self.task_memory.values():
-            dataset_list.append(storage)
-        dataset_list *= max(len(train_loader.dataset)//self.memory_size,1)  # Let old data: new data = 1:1
-        dataset_list.append(train_loader.dataset)
-        dataset = torch.utils.data.ConcatDataset(dataset_list)
-        new_train_loader = torch.utils.data.DataLoader(dataset,
-                                                       batch_size=train_loader.batch_size,
-                                                       shuffle=True,
-                                                       num_workers=train_loader.num_workers)
+        if self.skip_memory_concatenation:
+            new_train_loader = train_loader
+        else: # default
+            dataset_list = []
+            for storage in self.task_memory.values():
+                dataset_list.append(storage)
+            dataset_list *= max(len(train_loader.dataset)//self.memory_size,1)  # Let old data: new data = 1:1
+            dataset_list.append(train_loader.dataset)
+            dataset = torch.utils.data.ConcatDataset(dataset_list)
+            new_train_loader = torch.utils.data.DataLoader(dataset,
+                                                        batch_size=train_loader.batch_size,
+                                                        shuffle=True,
+                                                        num_workers=train_loader.num_workers)
 
         # 2.Update model as normal
         super(Naive_Rehearsal, self).learn_batch(new_train_loader, val_loader)
@@ -141,21 +145,10 @@ class GEM(Naive_Rehearsal):
 
     def learn_batch(self, train_loader, val_loader=None):
 
-        # 1.Update model as normal
+        # Update model as normal
         super(GEM, self).learn_batch(train_loader, val_loader)
 
-        # 2.Randomly decide the images to stay in the memory
-        self.task_count += 1
-        # (a) Decide the number of samples for being saved
-        num_sample_per_task = self.memory_size // self.task_count
-        num_sample_per_task = min(len(train_loader.dataset),num_sample_per_task)
-        # (b) Reduce current exemplar set to reserve the space for the new dataset
-        for storage in self.task_memory.values():
-            storage.reduce(num_sample_per_task)
-        # (c) Randomly choose some samples from new task and save them to the memory
-        randind = torch.randperm(len(train_loader.dataset))[:num_sample_per_task]  # randomly sample some data
-        self.task_memory[self.task_count] = Storage(train_loader.dataset, randind)
-        # (d) Cache the data for faster processing
+        # Cache the data for faster processing
         for t, mem in self.task_memory.items():
             # Concatenate all data in each task
             mem_loader = torch.utils.data.DataLoader(mem,
