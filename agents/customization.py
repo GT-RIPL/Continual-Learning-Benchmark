@@ -171,6 +171,13 @@ def GEM_400(agent_config):
     return agent
 
 
+def GEM_orig_1100(agent_config):
+    agent = GEM(agent_config)
+    agent.skip_memory_concatenation = True
+    agent.memory_size = 1100
+    return agent
+
+
 def GEM_1100(agent_config):
     agent = GEM(agent_config)
     agent.memory_size = 1100
