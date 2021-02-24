@@ -1,0 +1,3311 @@
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.171
+ * Val Acc 99.622
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.408
+ * Val Acc 99.574
+ * Total time 0.44
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.463
+ * Val Acc 99.622
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.716
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.716
+ * Total time 0.36
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.613
+ * Val Acc 99.716
+ * Total time 0.35
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.629
+ * Val Acc 99.716
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.35
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.669
+ * Total time 0.36
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 55.273
+ * Val Acc 61.704
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 67.458
+ * Val Acc 68.756
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 72.711
+ * Val Acc 75.612
+ * Total time 0.39
+Epoch:3
+LR: 0.0001
+ * Train Acc 78.600
+ * Val Acc 81.048
+ * Total time 0.43
+Epoch:4
+LR: 0.0001
+ * Train Acc 83.580
+ * Val Acc 84.819
+ * Total time 0.44
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.642
+ * Val Acc 88.051
+ * Total time 0.52
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.214
+ * Val Acc 91.038
+ * Total time 0.44
+Epoch:7
+LR: 0.0001
+ * Train Acc 91.935
+ * Val Acc 92.311
+ * Total time 0.45
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.729
+ * Val Acc 93.095
+ * Total time 0.45
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.969
+ * Val Acc 93.193
+ * Total time 0.45
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.447
+ * Total time 0.37
+validation split name: 2
+ * Val Acc 93.193
+ * Total time 0.37
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 70.576
+ * Val Acc 74.440
+ * Total time 0.34
+Epoch:1
+LR: 0.0001
+ * Train Acc 75.451
+ * Val Acc 78.495
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 79.082
+ * Val Acc 81.483
+ * Total time 0.45
+Epoch:3
+LR: 0.0001
+ * Train Acc 82.056
+ * Val Acc 83.351
+ * Total time 0.37
+Epoch:4
+LR: 0.0001
+ * Train Acc 84.462
+ * Val Acc 86.019
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 86.398
+ * Val Acc 87.353
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 87.978
+ * Val Acc 89.061
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 89.141
+ * Val Acc 89.968
+ * Total time 0.36
+Epoch:8
+LR: 0.0001
+ * Train Acc 90.198
+ * Val Acc 90.768
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 91.015
+ * Val Acc 91.569
+ * Total time 0.38
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 73.948
+ * Total time 0.36
+validation split name: 2
+ * Val Acc 89.618
+ * Total time 0.37
+validation split name: 3
+ * Val Acc 91.569
+ * Total time 0.36
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 68.448
+ * Val Acc 89.174
+ * Total time 0.38
+Epoch:1
+LR: 0.0001
+ * Train Acc 89.986
+ * Val Acc 93.404
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.361
+ * Val Acc 95.871
+ * Total time 0.34
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.216
+ * Val Acc 96.828
+ * Total time 0.33
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.300
+ * Val Acc 97.432
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 98.038
+ * Val Acc 97.835
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.531
+ * Val Acc 97.936
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.843
+ * Val Acc 98.338
+ * Total time 0.41
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.072
+ * Val Acc 98.540
+ * Total time 0.33
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.245
+ * Val Acc 98.691
+ * Total time 0.41
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 78.298
+ * Total time 0.42
+validation split name: 2
+ * Val Acc 88.834
+ * Total time 0.42
+validation split name: 3
+ * Val Acc 80.309
+ * Total time 0.34
+validation split name: 4
+ * Val Acc 98.691
+ * Total time 0.36
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 63.110
+ * Val Acc 78.316
+ * Total time 0.38
+Epoch:1
+LR: 0.0001
+ * Train Acc 80.551
+ * Val Acc 84.619
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 86.678
+ * Val Acc 88.855
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 90.517
+ * Val Acc 91.377
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 92.559
+ * Val Acc 93.444
+ * Total time 0.43
+Epoch:5
+LR: 0.0001
+ * Train Acc 94.237
+ * Val Acc 94.453
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 95.220
+ * Val Acc 95.310
+ * Total time 0.43
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.822
+ * Val Acc 95.966
+ * Total time 0.39
+Epoch:8
+LR: 0.0001
+ * Train Acc 96.051
+ * Val Acc 96.319
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 96.186
+ * Val Acc 96.470
+ * Total time 0.37
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 65.626
+ * Total time 0.44
+validation split name: 2
+ * Val Acc 56.513
+ * Total time 0.38
+validation split name: 3
+ * Val Acc 14.888
+ * Total time 0.35
+validation split name: 4
+ * Val Acc 96.475
+ * Total time 0.41
+validation split name: 5
+ * Val Acc 96.470
+ * Total time 0.35
+Task 1 average acc: 99.66903073286052
+Task 2 average acc: 95.319878300373
+Task 3 average acc: 85.04494960138373
+Task 4 average acc: 86.53317064861155
+Task 5 average acc: 65.9945924710768
+===Summary of experiment repeats: 1 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+mean: 6.59945924710768 std: 19.79837774132304
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.258
+ * Val Acc 99.622
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.345
+ * Val Acc 99.480
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.424
+ * Val Acc 99.527
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.503
+ * Val Acc 99.669
+ * Total time 0.47
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.669
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.503
+ * Val Acc 99.669
+ * Total time 0.56
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.479
+ * Val Acc 99.669
+ * Total time 0.47
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.669
+ * Total time 0.38
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 53.644
+ * Val Acc 60.480
+ * Total time 0.44
+Epoch:1
+LR: 0.0001
+ * Train Acc 67.342
+ * Val Acc 69.638
+ * Total time 0.47
+Epoch:2
+LR: 0.0001
+ * Train Acc 72.851
+ * Val Acc 75.710
+ * Total time 0.35
+Epoch:3
+LR: 0.0001
+ * Train Acc 78.460
+ * Val Acc 81.293
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 83.390
+ * Val Acc 84.721
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.377
+ * Val Acc 88.149
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.107
+ * Val Acc 90.793
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 91.620
+ * Val Acc 92.214
+ * Total time 0.36
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.439
+ * Val Acc 92.801
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.621
+ * Val Acc 93.046
+ * Total time 0.37
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.683
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 93.046
+ * Total time 0.36
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 70.221
+ * Val Acc 74.707
+ * Total time 0.36
+Epoch:1
+LR: 0.0001
+ * Train Acc 75.477
+ * Val Acc 78.922
+ * Total time 0.37
+Epoch:2
+LR: 0.0001
+ * Train Acc 79.251
+ * Val Acc 81.697
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 82.616
+ * Val Acc 84.098
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.111
+ * Val Acc 86.553
+ * Total time 0.35
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.188
+ * Val Acc 88.741
+ * Total time 0.40
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.044
+ * Val Acc 90.181
+ * Total time 0.34
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.402
+ * Val Acc 91.462
+ * Total time 0.36
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.423
+ * Val Acc 92.476
+ * Total time 0.39
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.142
+ * Val Acc 93.010
+ * Total time 0.33
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 72.719
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 87.218
+ * Total time 0.44
+validation split name: 3
+ * Val Acc 93.010
+ * Total time 0.42
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 76.328
+ * Val Acc 89.728
+ * Total time 0.36
+Epoch:1
+LR: 0.0001
+ * Train Acc 91.111
+ * Val Acc 94.008
+ * Total time 0.41
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.698
+ * Val Acc 95.720
+ * Total time 0.45
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.528
+ * Val Acc 96.777
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.439
+ * Val Acc 97.583
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 98.055
+ * Val Acc 97.784
+ * Total time 0.43
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.555
+ * Val Acc 98.036
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.867
+ * Val Acc 98.187
+ * Total time 0.38
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.015
+ * Val Acc 98.389
+ * Total time 0.40
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.130
+ * Val Acc 98.590
+ * Total time 0.41
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 76.407
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 88.394
+ * Total time 0.42
+validation split name: 3
+ * Val Acc 84.152
+ * Total time 0.48
+validation split name: 4
+ * Val Acc 98.590
+ * Total time 0.37
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 53.983
+ * Val Acc 61.422
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 64.703
+ * Val Acc 68.936
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 70.966
+ * Val Acc 74.836
+ * Total time 0.34
+Epoch:3
+LR: 0.0001
+ * Train Acc 77.534
+ * Val Acc 82.451
+ * Total time 0.67
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.610
+ * Val Acc 88.250
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 91.093
+ * Val Acc 92.284
+ * Total time 0.38
+Epoch:6
+LR: 0.0001
+ * Train Acc 93.686
+ * Val Acc 94.604
+ * Total time 0.34
+Epoch:7
+LR: 0.0001
+ * Train Acc 94.975
+ * Val Acc 95.461
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 95.585
+ * Val Acc 95.814
+ * Total time 0.39
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.847
+ * Val Acc 96.016
+ * Total time 0.35
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 68.511
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 59.011
+ * Total time 0.37
+validation split name: 3
+ * Val Acc 20.544
+ * Total time 0.36
+validation split name: 4
+ * Val Acc 94.763
+ * Total time 0.41
+validation split name: 5
+ * Val Acc 96.016
+ * Total time 0.45
+Task 1 average acc: 99.66903073286052
+Task 2 average acc: 95.36462421535462
+Task 3 average acc: 84.3155648553126
+Task 4 average acc: 86.88550735735119
+Task 5 average acc: 67.76903658139747
+===Summary of experiment repeats: 2 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+mean: 13.376362905247428 std: 26.755668014208695
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 98.887
+ * Val Acc 99.622
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.368
+ * Val Acc 99.480
+ * Total time 0.43
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.408
+ * Val Acc 99.574
+ * Total time 0.39
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.39
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.43
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.518
+ * Val Acc 99.716
+ * Total time 0.40
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.669
+ * Total time 0.36
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.716
+ * Total time 0.48
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.534
+ * Val Acc 99.574
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.622
+ * Total time 0.38
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.622
+ * Total time 0.37
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 56.125
+ * Val Acc 61.068
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 66.614
+ * Val Acc 69.344
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 74.067
+ * Val Acc 77.620
+ * Total time 0.41
+Epoch:3
+LR: 0.0001
+ * Train Acc 80.238
+ * Val Acc 82.321
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.044
+ * Val Acc 85.749
+ * Total time 0.41
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.775
+ * Val Acc 89.128
+ * Total time 0.47
+Epoch:6
+LR: 0.0001
+ * Train Acc 91.124
+ * Val Acc 91.724
+ * Total time 0.40
+Epoch:7
+LR: 0.0001
+ * Train Acc 92.506
+ * Val Acc 93.242
+ * Total time 0.43
+Epoch:8
+LR: 0.0001
+ * Train Acc 93.242
+ * Val Acc 93.781
+ * Total time 0.40
+Epoch:9
+LR: 0.0001
+ * Train Acc 93.416
+ * Val Acc 93.781
+ * Total time 0.42
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 96.690
+ * Total time 0.42
+validation split name: 2
+ * Val Acc 93.781
+ * Total time 0.39
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 72.183
+ * Val Acc 76.094
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 77.164
+ * Val Acc 79.883
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 80.671
+ * Val Acc 82.551
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.548
+ * Val Acc 85.112
+ * Total time 0.42
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.661
+ * Val Acc 87.033
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.721
+ * Val Acc 88.687
+ * Total time 0.38
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.283
+ * Val Acc 90.288
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.598
+ * Val Acc 91.622
+ * Total time 0.36
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.636
+ * Val Acc 92.583
+ * Total time 0.34
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.293
+ * Val Acc 93.170
+ * Total time 0.35
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 70.496
+ * Total time 0.41
+validation split name: 2
+ * Val Acc 88.443
+ * Total time 0.35
+validation split name: 3
+ * Val Acc 93.170
+ * Total time 0.36
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 76.984
+ * Val Acc 89.376
+ * Total time 0.44
+Epoch:1
+LR: 0.0001
+ * Train Acc 90.766
+ * Val Acc 93.807
+ * Total time 0.38
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.542
+ * Val Acc 95.368
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.290
+ * Val Acc 96.727
+ * Total time 0.34
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.431
+ * Val Acc 97.533
+ * Total time 0.34
+Epoch:5
+LR: 0.0001
+ * Train Acc 98.104
+ * Val Acc 97.734
+ * Total time 0.46
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.523
+ * Val Acc 98.036
+ * Total time 0.39
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.818
+ * Val Acc 98.187
+ * Total time 0.34
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.031
+ * Val Acc 98.439
+ * Total time 0.33
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.138
+ * Val Acc 98.540
+ * Total time 0.40
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 77.116
+ * Total time 0.44
+validation split name: 2
+ * Val Acc 89.030
+ * Total time 0.47
+validation split name: 3
+ * Val Acc 83.298
+ * Total time 0.42
+validation split name: 4
+ * Val Acc 98.540
+ * Total time 0.40
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 55.254
+ * Val Acc 62.330
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 65.508
+ * Val Acc 69.592
+ * Total time 0.38
+Epoch:2
+LR: 0.0001
+ * Train Acc 73.364
+ * Val Acc 80.383
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.314
+ * Val Acc 86.334
+ * Total time 0.37
+Epoch:4
+LR: 0.0001
+ * Train Acc 89.644
+ * Val Acc 91.679
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 93.542
+ * Val Acc 94.402
+ * Total time 0.35
+Epoch:6
+LR: 0.0001
+ * Train Acc 95.127
+ * Val Acc 95.411
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.805
+ * Val Acc 95.915
+ * Total time 0.48
+Epoch:8
+LR: 0.0001
+ * Train Acc 96.085
+ * Val Acc 96.218
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.890
+ * Val Acc 96.218
+ * Total time 0.37
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 62.080
+ * Total time 0.35
+validation split name: 2
+ * Val Acc 58.570
+ * Total time 0.35
+validation split name: 3
+ * Val Acc 17.716
+ * Total time 0.43
+validation split name: 4
+ * Val Acc 93.656
+ * Total time 0.39
+validation split name: 5
+ * Val Acc 96.218
+ * Total time 0.35
+Task 1 average acc: 99.62174940898345
+Task 2 average acc: 95.23545728820073
+Task 3 average acc: 84.03628254481181
+Task 4 average acc: 86.99593472178815
+Task 5 average acc: 65.6479927517354
+===Summary of experiment repeats: 3 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275  0.          0.          0.
+  0.          0.          0.          0.        ]
+mean: 19.941162180420967 std: 30.46487816464672
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.234
+ * Val Acc 99.716
+ * Total time 0.49
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.479
+ * Val Acc 99.574
+ * Total time 0.43
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.495
+ * Val Acc 99.622
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.542
+ * Val Acc 99.716
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.629
+ * Val Acc 99.716
+ * Total time 0.55
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.605
+ * Val Acc 99.669
+ * Total time 0.41
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.637
+ * Val Acc 99.669
+ * Total time 0.47
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.653
+ * Val Acc 99.669
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.637
+ * Val Acc 99.669
+ * Total time 0.42
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.669
+ * Total time 0.38
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.669
+ * Total time 0.45
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 55.811
+ * Val Acc 60.774
+ * Total time 0.43
+Epoch:1
+LR: 0.0001
+ * Train Acc 65.928
+ * Val Acc 67.728
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 71.834
+ * Val Acc 75.024
+ * Total time 0.42
+Epoch:3
+LR: 0.0001
+ * Train Acc 77.757
+ * Val Acc 79.971
+ * Total time 0.43
+Epoch:4
+LR: 0.0001
+ * Train Acc 82.265
+ * Val Acc 83.692
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 86.384
+ * Val Acc 86.141
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.164
+ * Val Acc 89.030
+ * Total time 0.43
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.893
+ * Val Acc 91.479
+ * Total time 0.45
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.200
+ * Val Acc 92.850
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.944
+ * Val Acc 93.732
+ * Total time 0.37
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.589
+ * Total time 0.46
+validation split name: 2
+ * Val Acc 93.732
+ * Total time 0.45
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 71.988
+ * Val Acc 75.934
+ * Total time 0.44
+Epoch:1
+LR: 0.0001
+ * Train Acc 77.058
+ * Val Acc 79.669
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 80.689
+ * Val Acc 82.551
+ * Total time 0.34
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.743
+ * Val Acc 85.112
+ * Total time 0.37
+Epoch:4
+LR: 0.0001
+ * Train Acc 86.149
+ * Val Acc 87.620
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.058
+ * Val Acc 88.954
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.399
+ * Val Acc 90.288
+ * Total time 0.45
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.580
+ * Val Acc 91.462
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.548
+ * Val Acc 91.996
+ * Total time 0.39
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.098
+ * Val Acc 92.689
+ * Total time 0.35
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 66.903
+ * Total time 0.55
+validation split name: 2
+ * Val Acc 86.092
+ * Total time 0.37
+validation split name: 3
+ * Val Acc 92.689
+ * Total time 0.36
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 77.148
+ * Val Acc 88.973
+ * Total time 0.38
+Epoch:1
+LR: 0.0001
+ * Train Acc 90.273
+ * Val Acc 93.202
+ * Total time 0.37
+Epoch:2
+LR: 0.0001
+ * Train Acc 93.959
+ * Val Acc 95.217
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 95.871
+ * Val Acc 96.123
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 96.930
+ * Val Acc 96.979
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 97.710
+ * Val Acc 97.432
+ * Total time 0.43
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.145
+ * Val Acc 97.734
+ * Total time 0.36
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.506
+ * Val Acc 98.036
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 98.761
+ * Val Acc 98.238
+ * Total time 0.35
+Epoch:9
+LR: 0.0001
+ * Train Acc 98.917
+ * Val Acc 98.338
+ * Total time 0.46
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 73.948
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 87.904
+ * Total time 0.38
+validation split name: 3
+ * Val Acc 85.592
+ * Total time 0.33
+validation split name: 4
+ * Val Acc 98.338
+ * Total time 0.35
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 50.915
+ * Val Acc 56.833
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 59.839
+ * Val Acc 64.902
+ * Total time 0.40
+Epoch:2
+LR: 0.0001
+ * Train Acc 72.347
+ * Val Acc 80.383
+ * Total time 0.41
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.542
+ * Val Acc 87.695
+ * Total time 0.44
+Epoch:4
+LR: 0.0001
+ * Train Acc 90.059
+ * Val Acc 92.335
+ * Total time 0.43
+Epoch:5
+LR: 0.0001
+ * Train Acc 93.593
+ * Val Acc 94.856
+ * Total time 0.35
+Epoch:6
+LR: 0.0001
+ * Train Acc 95.059
+ * Val Acc 95.512
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.576
+ * Val Acc 95.814
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 95.627
+ * Val Acc 95.512
+ * Total time 0.42
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.356
+ * Val Acc 95.209
+ * Total time 0.44
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 64.728
+ * Total time 0.45
+validation split name: 2
+ * Val Acc 61.900
+ * Total time 0.39
+validation split name: 3
+ * Val Acc 23.746
+ * Total time 0.37
+validation split name: 4
+ * Val Acc 91.742
+ * Total time 0.38
+validation split name: 5
+ * Val Acc 95.209
+ * Total time 0.35
+Task 1 average acc: 99.66903073286052
+Task 2 average acc: 95.66014406679588
+Task 3 average acc: 81.89485808413929
+Task 4 average acc: 86.44567267413021
+Task 5 average acc: 67.4651404868799
+===Summary of experiment repeats: 4 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049  0.          0.
+  0.          0.          0.          0.        ]
+mean: 26.687676229108956 std: 32.69068990208553
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 98.808
+ * Val Acc 99.716
+ * Total time 0.49
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.376
+ * Val Acc 99.574
+ * Total time 0.37
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.400
+ * Val Acc 99.527
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.495
+ * Val Acc 99.716
+ * Total time 0.36
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.542
+ * Val Acc 99.716
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.550
+ * Val Acc 99.716
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.716
+ * Total time 0.45
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.574
+ * Val Acc 99.669
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.621
+ * Val Acc 99.669
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.613
+ * Val Acc 99.716
+ * Total time 0.38
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.716
+ * Total time 0.38
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 55.488
+ * Val Acc 60.823
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 66.614
+ * Val Acc 68.071
+ * Total time 0.50
+Epoch:2
+LR: 0.0001
+ * Train Acc 72.041
+ * Val Acc 75.024
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 77.583
+ * Val Acc 80.264
+ * Total time 0.47
+Epoch:4
+LR: 0.0001
+ * Train Acc 82.257
+ * Val Acc 83.399
+ * Total time 0.40
+Epoch:5
+LR: 0.0001
+ * Train Acc 86.269
+ * Val Acc 87.023
+ * Total time 0.44
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.155
+ * Val Acc 89.814
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.975
+ * Val Acc 91.430
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.018
+ * Val Acc 92.409
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.555
+ * Val Acc 93.046
+ * Total time 0.45
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.589
+ * Total time 0.44
+validation split name: 2
+ * Val Acc 93.046
+ * Total time 0.55
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 70.763
+ * Val Acc 75.240
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 76.401
+ * Val Acc 79.402
+ * Total time 0.46
+Epoch:2
+LR: 0.0001
+ * Train Acc 80.485
+ * Val Acc 82.604
+ * Total time 0.39
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.486
+ * Val Acc 85.112
+ * Total time 0.32
+Epoch:4
+LR: 0.0001
+ * Train Acc 86.025
+ * Val Acc 87.193
+ * Total time 0.40
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.996
+ * Val Acc 89.328
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.550
+ * Val Acc 90.608
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.855
+ * Val Acc 91.622
+ * Total time 0.45
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.654
+ * Val Acc 92.743
+ * Total time 0.33
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.498
+ * Val Acc 93.330
+ * Total time 0.35
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 68.274
+ * Total time 0.37
+validation split name: 2
+ * Val Acc 86.484
+ * Total time 0.42
+validation split name: 3
+ * Val Acc 93.330
+ * Total time 0.40
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 74.169
+ * Val Acc 88.973
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 90.429
+ * Val Acc 93.454
+ * Total time 0.38
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.287
+ * Val Acc 95.569
+ * Total time 0.34
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.208
+ * Val Acc 96.425
+ * Total time 0.33
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.275
+ * Val Acc 97.331
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 97.940
+ * Val Acc 97.784
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.432
+ * Val Acc 97.986
+ * Total time 0.36
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.646
+ * Val Acc 98.288
+ * Total time 0.35
+Epoch:8
+LR: 0.0001
+ * Train Acc 98.908
+ * Val Acc 98.439
+ * Total time 0.34
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.056
+ * Val Acc 98.540
+ * Total time 0.39
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 74.657
+ * Total time 0.39
+validation split name: 2
+ * Val Acc 87.757
+ * Total time 0.47
+validation split name: 3
+ * Val Acc 84.418
+ * Total time 0.38
+validation split name: 4
+ * Val Acc 98.540
+ * Total time 0.40
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 53.636
+ * Val Acc 60.716
+ * Total time 0.36
+Epoch:1
+LR: 0.0001
+ * Train Acc 63.602
+ * Val Acc 67.524
+ * Total time 0.38
+Epoch:2
+LR: 0.0001
+ * Train Acc 69.898
+ * Val Acc 73.323
+ * Total time 0.36
+Epoch:3
+LR: 0.0001
+ * Train Acc 76.814
+ * Val Acc 80.333
+ * Total time 0.39
+Epoch:4
+LR: 0.0001
+ * Train Acc 82.483
+ * Val Acc 85.275
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 86.873
+ * Val Acc 89.057
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.831
+ * Val Acc 91.831
+ * Total time 0.40
+Epoch:7
+LR: 0.0001
+ * Train Acc 93.220
+ * Val Acc 94.453
+ * Total time 0.39
+Epoch:8
+LR: 0.0001
+ * Train Acc 94.669
+ * Val Acc 95.159
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.373
+ * Val Acc 95.663
+ * Total time 0.38
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 68.227
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 61.117
+ * Total time 0.40
+validation split name: 3
+ * Val Acc 23.052
+ * Total time 0.36
+validation split name: 4
+ * Val Acc 95.871
+ * Total time 0.45
+validation split name: 5
+ * Val Acc 95.663
+ * Total time 0.38
+Task 1 average acc: 99.71631205673759
+Task 2 average acc: 95.31734289147755
+Task 3 average acc: 82.69594897737339
+Task 4 average acc: 86.34311154732524
+Task 5 average acc: 68.78600633134512
+===Summary of experiment repeats: 5 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633  0.
+  0.          0.          0.          0.        ]
+mean: 33.56627686224347 std: 33.57632786790223
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.131
+ * Val Acc 99.527
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.376
+ * Val Acc 99.574
+ * Total time 0.38
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.503
+ * Val Acc 99.622
+ * Total time 0.40
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.669
+ * Total time 0.39
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.526
+ * Val Acc 99.669
+ * Total time 0.43
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.550
+ * Val Acc 99.716
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.716
+ * Total time 0.42
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.542
+ * Val Acc 99.716
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.597
+ * Val Acc 99.716
+ * Total time 0.40
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.669
+ * Total time 0.45
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.669
+ * Total time 0.42
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 55.497
+ * Val Acc 60.235
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 65.564
+ * Val Acc 66.944
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 70.759
+ * Val Acc 72.723
+ * Total time 0.36
+Epoch:3
+LR: 0.0001
+ * Train Acc 75.821
+ * Val Acc 79.138
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 80.842
+ * Val Acc 82.762
+ * Total time 0.45
+Epoch:5
+LR: 0.0001
+ * Train Acc 85.177
+ * Val Acc 85.553
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 88.097
+ * Val Acc 88.002
+ * Total time 0.39
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.206
+ * Val Acc 90.206
+ * Total time 0.38
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.505
+ * Val Acc 91.724
+ * Total time 0.44
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.166
+ * Val Acc 92.556
+ * Total time 0.38
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.778
+ * Total time 0.37
+validation split name: 2
+ * Val Acc 92.556
+ * Total time 0.40
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 70.887
+ * Val Acc 74.973
+ * Total time 0.34
+Epoch:1
+LR: 0.0001
+ * Train Acc 76.303
+ * Val Acc 79.296
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 79.979
+ * Val Acc 82.551
+ * Total time 0.35
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.353
+ * Val Acc 84.578
+ * Total time 0.37
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.643
+ * Val Acc 87.460
+ * Total time 0.34
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.854
+ * Val Acc 89.381
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.550
+ * Val Acc 90.395
+ * Total time 0.43
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.731
+ * Val Acc 91.782
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.805
+ * Val Acc 92.636
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.506
+ * Val Acc 93.223
+ * Total time 0.39
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 70.118
+ * Total time 0.41
+validation split name: 2
+ * Val Acc 85.602
+ * Total time 0.38
+validation split name: 3
+ * Val Acc 93.223
+ * Total time 0.34
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 76.525
+ * Val Acc 89.124
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 90.495
+ * Val Acc 93.605
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.410
+ * Val Acc 95.267
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.175
+ * Val Acc 96.425
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.324
+ * Val Acc 97.482
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 98.178
+ * Val Acc 98.036
+ * Total time 0.33
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.744
+ * Val Acc 98.389
+ * Total time 0.35
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.072
+ * Val Acc 98.540
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.187
+ * Val Acc 98.792
+ * Total time 0.41
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.302
+ * Val Acc 98.943
+ * Total time 0.42
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 72.861
+ * Total time 0.42
+validation split name: 2
+ * Val Acc 87.708
+ * Total time 0.39
+validation split name: 3
+ * Val Acc 82.391
+ * Total time 0.35
+validation split name: 4
+ * Val Acc 98.943
+ * Total time 0.36
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 61.127
+ * Val Acc 74.534
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 79.873
+ * Val Acc 86.334
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 89.407
+ * Val Acc 92.335
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 93.212
+ * Val Acc 94.352
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 94.754
+ * Val Acc 95.310
+ * Total time 0.41
+Epoch:5
+LR: 0.0001
+ * Train Acc 95.542
+ * Val Acc 95.814
+ * Total time 0.38
+Epoch:6
+LR: 0.0001
+ * Train Acc 96.186
+ * Val Acc 96.268
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 96.390
+ * Val Acc 96.268
+ * Total time 0.35
+Epoch:8
+LR: 0.0001
+ * Train Acc 96.381
+ * Val Acc 96.369
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 96.331
+ * Val Acc 96.369
+ * Total time 0.44
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 62.222
+ * Total time 0.47
+validation split name: 2
+ * Val Acc 52.644
+ * Total time 0.41
+validation split name: 3
+ * Val Acc 11.473
+ * Total time 0.43
+validation split name: 4
+ * Val Acc 93.454
+ * Total time 0.42
+validation split name: 5
+ * Val Acc 96.369
+ * Total time 0.38
+Task 1 average acc: 99.66903073286052
+Task 2 average acc: 95.16704755686146
+Task 3 average acc: 82.9812020802935
+Task 4 average acc: 85.47546397283205
+Task 5 average acc: 63.232558168478626
+===Summary of experiment repeats: 6 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633 63.23255817
+  0.          0.          0.          0.        ]
+mean: 39.88953267909133 std: 32.59947176538843
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.147
+ * Val Acc 99.527
+ * Total time 0.38
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.321
+ * Val Acc 99.480
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.408
+ * Val Acc 99.622
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.503
+ * Val Acc 99.669
+ * Total time 0.48
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.542
+ * Val Acc 99.716
+ * Total time 0.46
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.518
+ * Val Acc 99.622
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.574
+ * Total time 0.39
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.471
+ * Val Acc 99.574
+ * Total time 0.38
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.455
+ * Val Acc 99.527
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.439
+ * Val Acc 99.433
+ * Total time 0.39
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.433
+ * Total time 0.38
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 56.043
+ * Val Acc 65.083
+ * Total time 0.40
+Epoch:1
+LR: 0.0001
+ * Train Acc 69.038
+ * Val Acc 70.078
+ * Total time 0.48
+Epoch:2
+LR: 0.0001
+ * Train Acc 73.629
+ * Val Acc 76.934
+ * Total time 0.43
+Epoch:3
+LR: 0.0001
+ * Train Acc 79.618
+ * Val Acc 82.223
+ * Total time 0.41
+Epoch:4
+LR: 0.0001
+ * Train Acc 84.564
+ * Val Acc 85.406
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.229
+ * Val Acc 88.981
+ * Total time 0.40
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.628
+ * Val Acc 91.479
+ * Total time 0.45
+Epoch:7
+LR: 0.0001
+ * Train Acc 92.075
+ * Val Acc 92.899
+ * Total time 0.48
+Epoch:8
+LR: 0.0001
+ * Train Acc 93.018
+ * Val Acc 93.536
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 93.515
+ * Val Acc 94.123
+ * Total time 0.38
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 96.170
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 94.123
+ * Total time 0.41
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 71.926
+ * Val Acc 76.734
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 77.484
+ * Val Acc 80.843
+ * Total time 0.40
+Epoch:2
+LR: 0.0001
+ * Train Acc 81.142
+ * Val Acc 83.244
+ * Total time 0.34
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.859
+ * Val Acc 85.379
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 86.052
+ * Val Acc 87.460
+ * Total time 0.34
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.023
+ * Val Acc 88.847
+ * Total time 0.45
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.505
+ * Val Acc 90.395
+ * Total time 0.44
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.598
+ * Val Acc 91.462
+ * Total time 0.41
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.539
+ * Val Acc 92.263
+ * Total time 0.41
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.125
+ * Val Acc 92.903
+ * Total time 0.40
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 68.511
+ * Total time 0.42
+validation split name: 2
+ * Val Acc 87.463
+ * Total time 0.40
+validation split name: 3
+ * Val Acc 92.903
+ * Total time 0.39
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 75.819
+ * Val Acc 88.620
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 89.822
+ * Val Acc 92.649
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 93.516
+ * Val Acc 94.814
+ * Total time 0.38
+Epoch:3
+LR: 0.0001
+ * Train Acc 95.453
+ * Val Acc 95.921
+ * Total time 0.50
+Epoch:4
+LR: 0.0001
+ * Train Acc 96.536
+ * Val Acc 96.626
+ * Total time 0.40
+Epoch:5
+LR: 0.0001
+ * Train Acc 97.324
+ * Val Acc 97.130
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 97.915
+ * Val Acc 97.633
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.317
+ * Val Acc 97.936
+ * Total time 0.36
+Epoch:8
+LR: 0.0001
+ * Train Acc 98.613
+ * Val Acc 98.137
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 98.802
+ * Val Acc 98.137
+ * Total time 0.38
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 72.671
+ * Total time 0.39
+validation split name: 2
+ * Val Acc 89.079
+ * Total time 0.41
+validation split name: 3
+ * Val Acc 85.326
+ * Total time 0.42
+validation split name: 4
+ * Val Acc 98.137
+ * Total time 0.38
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 51.924
+ * Val Acc 62.229
+ * Total time 0.40
+Epoch:1
+LR: 0.0001
+ * Train Acc 72.958
+ * Val Acc 81.241
+ * Total time 0.50
+Epoch:2
+LR: 0.0001
+ * Train Acc 84.347
+ * Val Acc 87.746
+ * Total time 0.46
+Epoch:3
+LR: 0.0001
+ * Train Acc 90.034
+ * Val Acc 91.730
+ * Total time 0.40
+Epoch:4
+LR: 0.0001
+ * Train Acc 93.169
+ * Val Acc 93.999
+ * Total time 0.42
+Epoch:5
+LR: 0.0001
+ * Train Acc 94.636
+ * Val Acc 95.361
+ * Total time 0.45
+Epoch:6
+LR: 0.0001
+ * Train Acc 95.441
+ * Val Acc 96.218
+ * Total time 0.45
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.864
+ * Val Acc 95.966
+ * Total time 0.41
+Epoch:8
+LR: 0.0001
+ * Train Acc 96.008
+ * Val Acc 96.117
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.822
+ * Val Acc 96.167
+ * Total time 0.36
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 63.026
+ * Total time 0.41
+validation split name: 2
+ * Val Acc 60.333
+ * Total time 0.39
+validation split name: 3
+ * Val Acc 18.410
+ * Total time 0.40
+validation split name: 4
+ * Val Acc 94.058
+ * Total time 0.44
+validation split name: 5
+ * Val Acc 96.167
+ * Total time 0.35
+Task 1 average acc: 99.43262411347517
+Task 2 average acc: 95.14681059453602
+Task 3 average acc: 82.95893037911215
+Task 4 average acc: 86.30329860833805
+Task 5 average acc: 66.39893242248256
+===Summary of experiment repeats: 7 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633 63.23255817
+ 66.39893242  0.          0.          0.        ]
+mean: 46.52942592133959 std: 30.492535526809913
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.060
+ * Val Acc 99.622
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.463
+ * Val Acc 99.574
+ * Total time 0.50
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.550
+ * Val Acc 99.716
+ * Total time 0.40
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.653
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.653
+ * Val Acc 99.669
+ * Total time 0.45
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.660
+ * Val Acc 99.669
+ * Total time 0.49
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.668
+ * Val Acc 99.669
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.645
+ * Val Acc 99.669
+ * Total time 0.41
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.653
+ * Val Acc 99.669
+ * Total time 0.43
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.629
+ * Val Acc 99.669
+ * Total time 0.37
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.669
+ * Total time 0.48
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 56.125
+ * Val Acc 60.725
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 66.383
+ * Val Acc 68.609
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 71.577
+ * Val Acc 73.947
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 76.822
+ * Val Acc 79.187
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 81.595
+ * Val Acc 83.252
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 85.805
+ * Val Acc 86.337
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.015
+ * Val Acc 88.981
+ * Total time 0.34
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.868
+ * Val Acc 91.577
+ * Total time 0.50
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.208
+ * Val Acc 93.144
+ * Total time 0.40
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.853
+ * Val Acc 93.781
+ * Total time 0.41
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 97.825
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 93.781
+ * Total time 0.36
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 72.636
+ * Val Acc 76.414
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 77.466
+ * Val Acc 79.936
+ * Total time 0.40
+Epoch:2
+LR: 0.0001
+ * Train Acc 81.231
+ * Val Acc 83.565
+ * Total time 0.40
+Epoch:3
+LR: 0.0001
+ * Train Acc 84.462
+ * Val Acc 86.179
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 86.833
+ * Val Acc 88.367
+ * Total time 0.36
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.804
+ * Val Acc 89.915
+ * Total time 0.38
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.429
+ * Val Acc 91.089
+ * Total time 0.36
+Epoch:7
+LR: 0.0001
+ * Train Acc 91.521
+ * Val Acc 92.102
+ * Total time 0.35
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.356
+ * Val Acc 92.903
+ * Total time 0.35
+Epoch:9
+LR: 0.0001
+ * Train Acc 93.004
+ * Val Acc 93.543
+ * Total time 0.40
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 64.728
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 83.888
+ * Total time 0.43
+validation split name: 3
+ * Val Acc 93.543
+ * Total time 0.36
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 77.009
+ * Val Acc 88.469
+ * Total time 0.36
+Epoch:1
+LR: 0.0001
+ * Train Acc 89.797
+ * Val Acc 93.051
+ * Total time 0.42
+Epoch:2
+LR: 0.0001
+ * Train Acc 93.885
+ * Val Acc 94.965
+ * Total time 0.49
+Epoch:3
+LR: 0.0001
+ * Train Acc 95.855
+ * Val Acc 96.324
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.012
+ * Val Acc 97.080
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 97.817
+ * Val Acc 97.533
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.293
+ * Val Acc 97.835
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.605
+ * Val Acc 98.187
+ * Total time 0.41
+Epoch:8
+LR: 0.0001
+ * Train Acc 98.802
+ * Val Acc 98.389
+ * Total time 0.51
+Epoch:9
+LR: 0.0001
+ * Train Acc 98.999
+ * Val Acc 98.540
+ * Total time 0.34
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 72.624
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 87.463
+ * Total time 0.36
+validation split name: 3
+ * Val Acc 85.859
+ * Total time 0.36
+validation split name: 4
+ * Val Acc 98.540
+ * Total time 0.48
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 50.102
+ * Val Acc 55.976
+ * Total time 0.44
+Epoch:1
+LR: 0.0001
+ * Train Acc 58.805
+ * Val Acc 61.725
+ * Total time 0.37
+Epoch:2
+LR: 0.0001
+ * Train Acc 64.220
+ * Val Acc 70.751
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 76.542
+ * Val Acc 83.006
+ * Total time 0.36
+Epoch:4
+LR: 0.0001
+ * Train Acc 87.093
+ * Val Acc 90.519
+ * Total time 0.40
+Epoch:5
+LR: 0.0001
+ * Train Acc 91.983
+ * Val Acc 93.444
+ * Total time 0.42
+Epoch:6
+LR: 0.0001
+ * Train Acc 94.390
+ * Val Acc 94.957
+ * Total time 0.35
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.203
+ * Val Acc 95.461
+ * Total time 0.38
+Epoch:8
+LR: 0.0001
+ * Train Acc 95.627
+ * Val Acc 95.814
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.644
+ * Val Acc 95.814
+ * Total time 0.43
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 67.565
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 62.243
+ * Total time 0.35
+validation split name: 3
+ * Val Acc 23.479
+ * Total time 0.32
+validation split name: 4
+ * Val Acc 93.202
+ * Total time 0.36
+validation split name: 5
+ * Val Acc 95.814
+ * Total time 0.35
+Task 1 average acc: 99.66903073286052
+Task 2 average acc: 95.80283317472556
+Task 3 average acc: 80.71990006668018
+Task 4 average acc: 86.12157202339033
+Task 5 average acc: 68.46078787001011
+===Summary of experiment repeats: 8 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633 63.23255817
+ 66.39893242 68.46078787  0.          0.        ]
+mean: 53.3755047083406 std: 26.730612490763395
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 99.187
+ * Val Acc 99.527
+ * Total time 0.39
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.313
+ * Val Acc 99.574
+ * Total time 0.45
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.455
+ * Val Acc 99.574
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.510
+ * Val Acc 99.716
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.716
+ * Total time 0.38
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.550
+ * Val Acc 99.716
+ * Total time 0.40
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.550
+ * Val Acc 99.716
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.622
+ * Total time 0.46
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.622
+ * Total time 0.47
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.622
+ * Total time 0.46
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 56.556
+ * Val Acc 63.614
+ * Total time 0.38
+Epoch:1
+LR: 0.0001
+ * Train Acc 68.831
+ * Val Acc 71.303
+ * Total time 0.41
+Epoch:2
+LR: 0.0001
+ * Train Acc 74.588
+ * Val Acc 77.032
+ * Total time 0.42
+Epoch:3
+LR: 0.0001
+ * Train Acc 79.932
+ * Val Acc 81.978
+ * Total time 0.42
+Epoch:4
+LR: 0.0001
+ * Train Acc 84.589
+ * Val Acc 85.357
+ * Total time 0.42
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.064
+ * Val Acc 88.443
+ * Total time 0.41
+Epoch:6
+LR: 0.0001
+ * Train Acc 90.454
+ * Val Acc 91.087
+ * Total time 0.41
+Epoch:7
+LR: 0.0001
+ * Train Acc 91.951
+ * Val Acc 92.556
+ * Total time 0.37
+Epoch:8
+LR: 0.0001
+ * Train Acc 92.870
+ * Val Acc 93.291
+ * Total time 0.38
+Epoch:9
+LR: 0.0001
+ * Train Acc 93.159
+ * Val Acc 93.242
+ * Total time 0.39
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 96.785
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 93.242
+ * Total time 0.41
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 71.082
+ * Val Acc 74.973
+ * Total time 0.37
+Epoch:1
+LR: 0.0001
+ * Train Acc 76.294
+ * Val Acc 79.029
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 80.050
+ * Val Acc 82.284
+ * Total time 0.36
+Epoch:3
+LR: 0.0001
+ * Train Acc 83.015
+ * Val Acc 84.578
+ * Total time 0.34
+Epoch:4
+LR: 0.0001
+ * Train Acc 85.412
+ * Val Acc 86.820
+ * Total time 0.36
+Epoch:5
+LR: 0.0001
+ * Train Acc 87.277
+ * Val Acc 88.474
+ * Total time 0.37
+Epoch:6
+LR: 0.0001
+ * Train Acc 88.866
+ * Val Acc 89.808
+ * Total time 0.48
+Epoch:7
+LR: 0.0001
+ * Train Acc 90.154
+ * Val Acc 90.982
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.166
+ * Val Acc 91.782
+ * Total time 0.43
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.009
+ * Val Acc 92.316
+ * Total time 0.36
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 70.449
+ * Total time 0.40
+validation split name: 2
+ * Val Acc 87.659
+ * Total time 0.37
+validation split name: 3
+ * Val Acc 92.316
+ * Total time 0.46
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 76.090
+ * Val Acc 89.426
+ * Total time 0.44
+Epoch:1
+LR: 0.0001
+ * Train Acc 90.183
+ * Val Acc 93.555
+ * Total time 0.46
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.418
+ * Val Acc 95.821
+ * Total time 0.45
+Epoch:3
+LR: 0.0001
+ * Train Acc 96.750
+ * Val Acc 97.281
+ * Total time 0.42
+Epoch:4
+LR: 0.0001
+ * Train Acc 98.096
+ * Val Acc 97.986
+ * Total time 0.34
+Epoch:5
+LR: 0.0001
+ * Train Acc 98.728
+ * Val Acc 98.288
+ * Total time 0.36
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.999
+ * Val Acc 98.439
+ * Total time 0.40
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.212
+ * Val Acc 98.540
+ * Total time 0.38
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.352
+ * Val Acc 98.741
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.417
+ * Val Acc 98.892
+ * Total time 0.35
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 77.589
+ * Total time 0.38
+validation split name: 2
+ * Val Acc 89.520
+ * Total time 0.41
+validation split name: 3
+ * Val Acc 78.015
+ * Total time 0.50
+validation split name: 4
+ * Val Acc 98.892
+ * Total time 0.38
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 71.636
+ * Val Acc 82.602
+ * Total time 0.36
+Epoch:1
+LR: 0.0001
+ * Train Acc 85.958
+ * Val Acc 88.099
+ * Total time 0.36
+Epoch:2
+LR: 0.0001
+ * Train Acc 90.653
+ * Val Acc 91.276
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 92.847
+ * Val Acc 92.940
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 94.076
+ * Val Acc 94.049
+ * Total time 0.39
+Epoch:5
+LR: 0.0001
+ * Train Acc 94.881
+ * Val Acc 95.108
+ * Total time 0.39
+Epoch:6
+LR: 0.0001
+ * Train Acc 95.407
+ * Val Acc 95.361
+ * Total time 0.44
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.746
+ * Val Acc 95.411
+ * Total time 0.50
+Epoch:8
+LR: 0.0001
+ * Train Acc 95.992
+ * Val Acc 95.512
+ * Total time 0.46
+Epoch:9
+LR: 0.0001
+ * Train Acc 96.186
+ * Val Acc 95.865
+ * Total time 0.49
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 62.600
+ * Total time 0.45
+validation split name: 2
+ * Val Acc 58.080
+ * Total time 0.38
+validation split name: 3
+ * Val Acc 15.475
+ * Total time 0.35
+validation split name: 4
+ * Val Acc 97.281
+ * Total time 0.40
+validation split name: 5
+ * Val Acc 95.865
+ * Total time 0.39
+Task 1 average acc: 99.62174940898345
+Task 2 average acc: 95.01339483147055
+Task 3 average acc: 83.47474402655791
+Task 4 average acc: 86.00397946472297
+Task 5 average acc: 65.86030483832802
+===Summary of experiment repeats: 9 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633 63.23255817
+ 66.39893242 68.46078787 65.86030484  0.        ]
+mean: 59.9615351921734 std: 20.046007576047295
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalMLP(
+  (fc1): LinearInterval(in_features=1024, out_features=400, bias=True)
+  (fc2): LinearInterval(in_features=400, out_features=400, bias=True)
+  (last): ModuleDict(
+    (All): LinearInterval(in_features=400, out_features=2, bias=True)
+  )
+)
+#parameter of model: 571202
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 98.981
+ * Val Acc 99.574
+ * Total time 0.49
+Epoch:1
+LR: 0.0001
+ * Train Acc 99.408
+ * Val Acc 99.433
+ * Total time 0.39
+Epoch:2
+LR: 0.0001
+ * Train Acc 99.400
+ * Val Acc 99.622
+ * Total time 0.42
+Epoch:3
+LR: 0.0001
+ * Train Acc 99.534
+ * Val Acc 99.716
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 99.605
+ * Val Acc 99.716
+ * Total time 0.56
+Epoch:5
+LR: 0.0001
+ * Train Acc 99.574
+ * Val Acc 99.716
+ * Total time 0.38
+Epoch:6
+LR: 0.0001
+ * Train Acc 99.566
+ * Val Acc 99.716
+ * Total time 0.36
+Epoch:7
+LR: 0.0001
+ * Train Acc 99.558
+ * Val Acc 99.716
+ * Total time 0.45
+Epoch:8
+LR: 0.0001
+ * Train Acc 99.503
+ * Val Acc 99.669
+ * Total time 0.43
+Epoch:9
+LR: 0.0001
+ * Train Acc 99.471
+ * Val Acc 99.574
+ * Total time 0.42
+after batch eps: 0.10000000000000057, kappa: 0.5000000000000517
+validation split name: 1
+ * Val Acc 99.574
+ * Total time 0.36
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 54.727
+ * Val Acc 61.998
+ * Total time 0.41
+Epoch:1
+LR: 0.0001
+ * Train Acc 68.145
+ * Val Acc 69.491
+ * Total time 0.55
+Epoch:2
+LR: 0.0001
+ * Train Acc 73.182
+ * Val Acc 76.347
+ * Total time 0.46
+Epoch:3
+LR: 0.0001
+ * Train Acc 79.328
+ * Val Acc 81.978
+ * Total time 0.49
+Epoch:4
+LR: 0.0001
+ * Train Acc 84.813
+ * Val Acc 85.994
+ * Total time 0.44
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.750
+ * Val Acc 89.569
+ * Total time 0.47
+Epoch:6
+LR: 0.0001
+ * Train Acc 91.075
+ * Val Acc 92.262
+ * Total time 0.37
+Epoch:7
+LR: 0.0001
+ * Train Acc 92.555
+ * Val Acc 93.291
+ * Total time 0.40
+Epoch:8
+LR: 0.0001
+ * Train Acc 93.250
+ * Val Acc 93.928
+ * Total time 0.37
+Epoch:9
+LR: 0.0001
+ * Train Acc 93.581
+ * Val Acc 94.172
+ * Total time 0.37
+after batch eps: 0.09999999999999971, kappa: 0.49999999999997735
+validation split name: 1
+ * Val Acc 96.454
+ * Total time 0.44
+validation split name: 2
+ * Val Acc 94.172
+ * Total time 0.45
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 71.730
+ * Val Acc 75.934
+ * Total time 0.32
+Epoch:1
+LR: 0.0001
+ * Train Acc 77.226
+ * Val Acc 80.309
+ * Total time 0.35
+Epoch:2
+LR: 0.0001
+ * Train Acc 81.097
+ * Val Acc 82.871
+ * Total time 0.35
+Epoch:3
+LR: 0.0001
+ * Train Acc 84.152
+ * Val Acc 85.966
+ * Total time 0.35
+Epoch:4
+LR: 0.0001
+ * Train Acc 86.398
+ * Val Acc 87.994
+ * Total time 0.36
+Epoch:5
+LR: 0.0001
+ * Train Acc 88.369
+ * Val Acc 89.594
+ * Total time 0.35
+Epoch:6
+LR: 0.0001
+ * Train Acc 89.949
+ * Val Acc 90.875
+ * Total time 0.34
+Epoch:7
+LR: 0.0001
+ * Train Acc 91.041
+ * Val Acc 91.676
+ * Total time 0.32
+Epoch:8
+LR: 0.0001
+ * Train Acc 91.903
+ * Val Acc 92.689
+ * Total time 0.35
+Epoch:9
+LR: 0.0001
+ * Train Acc 92.515
+ * Val Acc 93.170
+ * Total time 0.35
+after batch eps: 0.0999999999999983, kappa: 0.4999999999999663
+validation split name: 1
+ * Val Acc 67.092
+ * Total time 0.35
+validation split name: 2
+ * Val Acc 87.414
+ * Total time 0.36
+validation split name: 3
+ * Val Acc 93.170
+ * Total time 0.35
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 74.350
+ * Val Acc 89.124
+ * Total time 0.35
+Epoch:1
+LR: 0.0001
+ * Train Acc 89.970
+ * Val Acc 93.253
+ * Total time 0.43
+Epoch:2
+LR: 0.0001
+ * Train Acc 94.098
+ * Val Acc 95.217
+ * Total time 0.37
+Epoch:3
+LR: 0.0001
+ * Train Acc 95.912
+ * Val Acc 96.425
+ * Total time 0.40
+Epoch:4
+LR: 0.0001
+ * Train Acc 97.053
+ * Val Acc 97.080
+ * Total time 0.41
+Epoch:5
+LR: 0.0001
+ * Train Acc 97.792
+ * Val Acc 97.583
+ * Total time 0.41
+Epoch:6
+LR: 0.0001
+ * Train Acc 98.358
+ * Val Acc 97.936
+ * Total time 0.39
+Epoch:7
+LR: 0.0001
+ * Train Acc 98.637
+ * Val Acc 98.238
+ * Total time 0.42
+Epoch:8
+LR: 0.0001
+ * Train Acc 98.818
+ * Val Acc 98.288
+ * Total time 0.40
+Epoch:9
+LR: 0.0001
+ * Train Acc 98.990
+ * Val Acc 98.389
+ * Total time 0.47
+after batch eps: 0.10000000000000146, kappa: 0.5000000000000284
+validation split name: 1
+ * Val Acc 72.340
+ * Total time 0.37
+validation split name: 2
+ * Val Acc 88.786
+ * Total time 0.38
+validation split name: 3
+ * Val Acc 84.739
+ * Total time 0.34
+validation split name: 4
+ * Val Acc 98.389
+ * Total time 0.35
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.0001
+ * Train Acc 54.136
+ * Val Acc 61.473
+ * Total time 0.34
+Epoch:1
+LR: 0.0001
+ * Train Acc 64.398
+ * Val Acc 67.574
+ * Total time 0.37
+Epoch:2
+LR: 0.0001
+ * Train Acc 71.720
+ * Val Acc 78.164
+ * Total time 0.43
+Epoch:3
+LR: 0.0001
+ * Train Acc 81.042
+ * Val Acc 85.174
+ * Total time 0.38
+Epoch:4
+LR: 0.0001
+ * Train Acc 88.017
+ * Val Acc 90.015
+ * Total time 0.37
+Epoch:5
+LR: 0.0001
+ * Train Acc 92.093
+ * Val Acc 93.596
+ * Total time 0.43
+Epoch:6
+LR: 0.0001
+ * Train Acc 94.305
+ * Val Acc 95.159
+ * Total time 0.38
+Epoch:7
+LR: 0.0001
+ * Train Acc 95.322
+ * Val Acc 95.613
+ * Total time 0.39
+Epoch:8
+LR: 0.0001
+ * Train Acc 95.780
+ * Val Acc 95.865
+ * Total time 0.36
+Epoch:9
+LR: 0.0001
+ * Train Acc 95.636
+ * Val Acc 96.117
+ * Total time 0.38
+after batch eps: 0.09999999999999946, kappa: 0.5000000000000417
+validation split name: 1
+ * Val Acc 68.227
+ * Total time 0.37
+validation split name: 2
+ * Val Acc 59.598
+ * Total time 0.41
+validation split name: 3
+ * Val Acc 20.064
+ * Total time 0.36
+validation split name: 4
+ * Val Acc 93.857
+ * Total time 0.43
+validation split name: 5
+ * Val Acc 96.117
+ * Total time 0.40
+Task 1 average acc: 99.57446808510639
+Task 2 average acc: 95.31314036440425
+Task 3 average acc: 82.55872959644385
+Task 4 average acc: 86.06329455030108
+Task 5 average acc: 67.57268217217401
+===Summary of experiment repeats: 10 / 10 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [65.99459247 67.76903658 65.64799275 67.46514049 68.78600633 63.23255817
+ 66.39893242 68.46078787 65.86030484 67.57268217]
+mean: 66.7188034093908 std: 1.5608111847437949
+reg_coef: 0.0 mean: 66.7188034093908 std: 1.5608111847437949
