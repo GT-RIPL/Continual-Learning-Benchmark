@@ -22,6 +22,8 @@ class IntervalMLP(nn.Module):
     def set_eps(self, eps):
         for layer in self.children():
             layer.eps = eps
+        for _, layer in self.last.items():
+            layer.eps = eps
 
     def features(self, x):
         x = x.view(-1, self.in_dim)

@@ -28,8 +28,10 @@ class IntervalNet(nn.Module):
         self.model = self.create_model()
         self.criterion_fn = nn.CrossEntropyLoss()
         self.kappa_scheduler = LinearScheduler(start=1, end=0.5)
-        self.eps_scheduler = LinearScheduler(start=0)
+        self.eps_scheduler = LinearScheduler(start=0, end=0.3)
         self.interval_training = False
+        self.previous_params, self.previous_last = {}, {}
+        self.clipping = 0
 
         if agent_config['gpuid'][0] >= 0:
             self.cuda()
@@ -42,8 +44,9 @@ class IntervalNet(nn.Module):
         # Default: 'ALL' means all output nodes are active
         # Set a interger here for the incremental class scenario
 
-        self.C = [-torch.eye(agent_config['force_out_dim']).cuda() for _ in range(agent_config['force_out_dim'])]
-        for y0 in range(agent_config['force_out_dim']):
+        t = agent_config['force_out_dim'] if agent_config['force_out_dim'] else 2
+        self.C = [-torch.eye(t).cuda() for _ in range(t)]
+        for y0 in range(t):
             self.C[y0][y0, :] += 1
 
     def init_optimizer(self):
@@ -127,44 +130,41 @@ class IntervalNet(nn.Module):
 
         self.train(orig_mode)
 
-        self.log(' * Val Acc {acc.avg:.3f}'.format(acc=acc))
-        self.log(' * Total time {time:.2f}'.format(time=batch_timer.toc()))
+        self.log(' * Val Acc {acc.avg:.3f}, time {time:.2f}'.format(acc=acc, time=batch_timer.toc()))
         return acc.avg
 
-    def _interval_based_bound(self, model, y0, idx):
+    def _interval_based_bound(self, y0, idx, key):
         # requires last layer to be linear
-        # C = -torch.eye(agent_config['force_out_dim']).cuda()
-        cW = self.C[y0].t() @ (model.last['All'].weight - self.eps_scheduler.current)
-        cb = self.C[y0].t() @ model.last['All'].bias
-        l, u = model.bounds
+        C = self.C[y0].t()
+        cW = C @ (self.model.last[key].weight - self.eps_scheduler.current)
+        cb = C @ self.model.last[key].bias
+        l, u = self.model.bounds
         return (cW.clamp(min=0) @ l[idx].t() + cW.clamp(max=0) @ u[idx].t() + cb[:, None]).t()
 
-    def criterion(self, preds, targets, tasks, x_shape0, **kwargs):
+    def criterion(self, preds, targets, tasks, **kwargs):
         # The inputs and targets could come from single task or a mix of tasks
         # The network always makes the predictions with all its heads
         # The criterion will match the head and task to calculate the loss.
 
         if self.multihead:
-            loss = 0
+            fit_loss, robust_loss = 0, 0
             for t, t_preds in preds.items():
                 inds = [i for i in range(len(tasks)) if tasks[i] == t]  # The index of inputs that matched specific task
                 if len(inds) > 0:
                     t_preds = t_preds[inds]
                     t_target = targets[inds]
                     # restore the loss from average
-                    loss += self.criterion_fn(t_preds, t_target) * len(inds) # * self.kappa_scheduler.current
+                    fit_loss += self.criterion_fn(t_preds, t_target) * len(inds)
 
-                    # robust_loss, robust_err = 0, 0
-                    # for y0 in range(len(self.C)):
-                    #     if (t_target == y0).sum().item() > 0:
-                    #         lower_bound = self._interval_based_bound(self.model, y0, t_target == y0)
-                    #         robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound, t_target[t_target == y0]) / x_shape0
-                    #
-                    #         # increment when true label is not winning
-                    #         robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
-                    #
-                    # loss += (1 - self.kappa_scheduler.current) * robust_loss
+                    for y0 in range(len(self.C)):
+                        if (t_target == y0).sum().item() > 0:
+                            lower_bound = self._interval_based_bound(y0, t_target == y0, key=t)
+                            robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
+                                                                                t_target[t_target == y0]) / len(inds)
+                            # increment when true label is not winning
+                            # robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
 
+            loss = self.kappa_scheduler.current * fit_loss + (1 - self.kappa_scheduler.current) * robust_loss
             loss /= len(targets)  # Average the total loss by the mini-batch size
         else:
             pred = preds['All']
@@ -173,35 +173,61 @@ class IntervalNet(nn.Module):
                 pred = preds['All'][:, :self.valid_out_dim]
             loss = self.criterion_fn(pred, targets) * self.kappa_scheduler.current
 
-            if self.interval_training:
-                robust_loss, robust_err = 0, 0
-                for y0 in range(len(self.C)):
-                    if (targets == y0).sum().item() > 0:
-                        lower_bound = self._interval_based_bound(self.model, y0, targets == y0)
-                        robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
-                                                                            targets[targets == y0]) / x_shape0
+            robust_loss, robust_err = 0, 0
+            for y0 in range(len(self.C)):
+                if (targets == y0).sum().item() > 0:
+                    lower_bound = self._interval_based_bound(y0, targets == y0, key="All")
+                    # (Not 'ALL') Mask out the outputs of unseen classes for incremental class scenario
+                    if isinstance(self.valid_out_dim, int):
+                        lower_bound = lower_bound[:, :self.valid_out_dim]
 
-                        # increment when true label is not winning
-                        robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
+                    robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
+                                                                        targets[targets == y0]) / targets.size(0)
+                    # increment when true label is not winning
+                    # robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
 
-                loss += (1 - self.kappa_scheduler.current) * robust_loss
+            loss += (1 - self.kappa_scheduler.current) * robust_loss
 
         return loss
 
     def update_model(self, inputs, targets, tasks):
         out = self.forward(inputs)
-        loss = self.criterion(out, targets, tasks, inputs.size(0))
+        loss = self.criterion(out, targets, tasks)
         self.optimizer.zero_grad()
         loss.backward()
+        if self.clipping:
+            for n, p in self.model.named_parameters():
+                if "weight" in n:
+                    low, upp = self.previous_params[n]-self.clipping, self.previous_params[n]+self.clipping
+                    torch.where(p.data < low, low, p.data)
+                    torch.where(p.data > upp, upp, p.data)
+
+            for key, layer in self.model.last.items():
+                for n, p in layer.named_parameters():
+                    if "weight" in n:
+                        low, upp = self.previous_last[key]-self.clipping, self.previous_last[key]+self.clipping
+                        torch.where(p.data < low, low, p.data)
+                        torch.where(p.data > upp, upp, p.data)
+
         self.optimizer.step()
         self.scheduler.step()
 
-        if self.interval_training:
-            self.kappa_scheduler.step()
-            self.eps_scheduler.step()
-            self.model.set_eps(self.eps_scheduler.current)
+        self.kappa_scheduler.step()
+        self.eps_scheduler.step()
+        self.model.set_eps(self.eps_scheduler.current)
 
         return loss.detach(), out
+
+    def save_previous_task_param(self):
+        # Save previous params
+        self.previous_params = {n: p.clone().detach()
+                                for n, p in self.model.named_parameters()
+                                if p.requires_grad and "weight" in n}
+        self.previous_last = {}
+        for key, layer in self.model.last.items():
+            for n, p in layer.named_parameters():
+                if "weight" in n:
+                    self.previous_last[key] = p.clone().detach()
 
     def learn_batch(self, train_loader, val_loader=None):
         if self.reset_optimizer:  # Reset optimizer before learning each task
@@ -242,7 +268,8 @@ class IntervalNet(nn.Module):
 
                 batch_time.update(batch_timer.toc())  # measure elapsed time
                 data_timer.toc()
-            self.log(' * Train Acc {acc.avg:.3f}'.format(acc=acc))
+
+            self.log(' * Train Acc {acc.avg:.3f}, Loss {loss.avg:.3f}'.format(loss=losses, acc=acc))
 
             # Evaluate the performance of current task
             if val_loader is not None:

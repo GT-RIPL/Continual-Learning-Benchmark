@@ -68,3 +68,10 @@ class Conv2dInterval(nn.Conv2d):
                  self.bias[None, :, None, None])
 
         return torch.cat((middle, lower, upper), dim=1)
+
+
+if __name__ == '__main__':
+    li = LinearInterval(5, 3)
+    for n, p in li.named_parameters():
+        print(f"name: {n}")
+        print(n, p)
