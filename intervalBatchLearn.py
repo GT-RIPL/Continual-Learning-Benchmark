@@ -9,9 +9,7 @@ from collections import OrderedDict
 import dataloaders.base
 from dataloaders.datasetGen import SplitGen, PermutedGen
 import agents
-from interval.hyperparam_scheduler import LinearScheduler
 
-flag = True
 
 def run(args):
     # Prepare dataloaders
@@ -58,9 +56,6 @@ def run(args):
         val_loader = DataLoader(val_dataset_all, batch_size=args.batch_size,
                                 shuffle=False, num_workers=args.workers)
 
-        iter_on_batch = len(train_loader)
-        agent.kappa_scheduler.calc_coefficient(-0.5, 15, iter_on_batch)
-        agent.eps_scheduler.calc_coefficient(0.1, 30, iter_on_batch)
         agent.learn_batch(train_loader, val_loader)
 
         acc_table['All'] = {}
@@ -68,7 +63,6 @@ def run(args):
 
     else:  # Incremental learning
         # Feed data to agent and evaluate agent's performance
-        interval_training = list(range(args.interval_epoch))
         for i in range(len(task_names)):
             train_name = task_names[i]
             print('======================', train_name, '=======================')
@@ -80,21 +74,21 @@ def run(args):
             if args.incremental_class:
                 agent.add_valid_output_dim(task_output_space[train_name])
 
-            if i in interval_training:
-                agent.interval_training = True
-                iter_on_batch = len(train_loader)
-                agent.kappa_scheduler.calc_coefficient(args.kappa_min-1, args.kappa_epoch, iter_on_batch)
-                agent.eps_scheduler.calc_coefficient(args.eps_max, args.eps_epoch, iter_on_batch)
-            else:
-                agent.interval_training = False
+            if args.eps_max:
+                agent.eps_scheduler.end = args.eps_max
+            agent.kappa_scheduler.end = args.kappa_min
+            iter_on_batch = len(train_loader)
+            agent.kappa_scheduler.calc_coefficient(args.kappa_min-1, args.kappa_epoch, iter_on_batch)
+            agent.eps_scheduler.calc_coefficient(args.eps_val, args.eps_epoch, iter_on_batch)
+            agent.kappa_scheduler.current, agent.eps_scheduler.current = 1, 0
 
-            agent.kappa_scheduler.current = 1
-            agent.eps_scheduler.current = 0
-
+            print(f"agent: {agent.clipping}")
             print(f"before batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
-            # Learn
-            agent.learn_batch(train_loader, val_loader)
+            agent.learn_batch(train_loader, val_loader)  # Learn
             print(f"after batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
+            if args.clipping:
+                agent.clipping = agent.eps_scheduler.current
+                agent.save_previous_task_param()
 
             # Evaluate
             acc_table[train_name] = OrderedDict()
@@ -140,8 +134,9 @@ def get_args(argv):
     parser.add_argument('--kappa_epoch', type=float, default=10)
     parser.add_argument('--kappa_min', type=float, default=0.5)
     parser.add_argument('--eps_epoch', type=float, default=10)
-    parser.add_argument('--eps_max', type=float, default=0.1)
-    parser.add_argument('--interval_epoch', type=int, default=1)
+    parser.add_argument('--eps_max', type=float, default=0)
+    parser.add_argument('--eps_val', type=float, default=0.1)
+    parser.add_argument('--clipping', dest='clipping', default=False, action='store_true')
     parser.add_argument('--schedule', nargs="+", type=int, default=[2],
                         help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--print_freq', type=float, default=100, help="Print the log at every x iteration")
@@ -201,3 +196,8 @@ if __name__ == '__main__':
 
     for reg_coef, v in avg_final_acc.items():
         print('reg_coef:', reg_coef, 'mean:', avg_final_acc[reg_coef].mean(), 'std:', avg_final_acc[reg_coef].std())
+
+    print(f"* kappa decrease from 1 to {args.kappa_min} in {args.kappa_epoch} epoch")
+    print(f"* eps increase by {args.eps_val} every {args.eps_epoch} epoch")
+    print(f"* maximal eps: {args.eps_max if args.eps_max else 'inf'}")
+    print(f"* tasks were trained {args.schedule} epoch {'with' if args.clipping else 'without'} clipping")
