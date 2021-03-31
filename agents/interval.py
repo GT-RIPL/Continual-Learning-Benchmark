@@ -31,7 +31,8 @@ class IntervalNet(nn.Module):
         self.eps_scheduler = LinearScheduler(start=0, end=0.3)
         self.interval_training = False
         self.previous_params, self.previous_last = {}, {}
-        self.clipping = 0
+        self.previous_eps = {}
+        self.clipping = self.config['clipping']
 
         if agent_config['gpuid'][0] >= 0:
             self.cuda()
@@ -44,13 +45,13 @@ class IntervalNet(nn.Module):
         # Default: 'ALL' means all output nodes are active
         # Set a interger here for the incremental class scenario
 
-        t = agent_config['force_out_dim'] if agent_config['force_out_dim'] else 2
+        t = agent_config['force_out_dim'] if agent_config['force_out_dim'] else self.model.last["1"].out_features
         self.C = [-torch.eye(t).cuda() for _ in range(t)]
         for y0 in range(t):
             self.C[y0][y0, :] += 1
 
     def init_optimizer(self):
-        optimizer_arg = {'params': self.model.parameters(),
+        optimizer_arg = {'params': (p for p in self.model.parameters() if p.requires_grad),
                          'lr': self.config['lr'],
                          'weight_decay': self.config['weight_decay']}
         if self.config['optimizer'] in ['SGD', 'RMSprop']:
@@ -136,7 +137,7 @@ class IntervalNet(nn.Module):
     def _interval_based_bound(self, y0, idx, key):
         # requires last layer to be linear
         C = self.C[y0].t()
-        cW = C @ (self.model.last[key].weight - self.eps_scheduler.current)
+        cW = C @ (self.model.last[key].weight - self.model.last[key].eps)
         cb = C @ self.model.last[key].bias
         l, u = self.model.bounds
         return (cW.clamp(min=0) @ l[idx].t() + cW.clamp(max=0) @ u[idx].t() + cb[:, None]).t()
@@ -145,48 +146,46 @@ class IntervalNet(nn.Module):
         # The inputs and targets could come from single task or a mix of tasks
         # The network always makes the predictions with all its heads
         # The criterion will match the head and task to calculate the loss.
-
+        loss, robust_loss = 0, 0
         if self.multihead:
-            fit_loss, robust_loss = 0, 0
             for t, t_preds in preds.items():
                 inds = [i for i in range(len(tasks)) if tasks[i] == t]  # The index of inputs that matched specific task
                 if len(inds) > 0:
                     t_preds = t_preds[inds]
                     t_target = targets[inds]
-                    # restore the loss from average
-                    fit_loss += self.criterion_fn(t_preds, t_target) * len(inds)
+                    loss += self.criterion_fn(t_preds, t_target) * len(inds)
 
                     for y0 in range(len(self.C)):
                         if (t_target == y0).sum().item() > 0:
                             lower_bound = self._interval_based_bound(y0, t_target == y0, key=t)
                             robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
-                                                                                t_target[t_target == y0]) / len(inds)
-                            # increment when true label is not winning
-                            # robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
+                                                                                t_target[t_target == y0]) / t_target.size(0)
 
-            loss = self.kappa_scheduler.current * fit_loss + (1 - self.kappa_scheduler.current) * robust_loss
             loss /= len(targets)  # Average the total loss by the mini-batch size
+            loss *= self.kappa_scheduler.current
+            loss += (1 - self.kappa_scheduler.current) * robust_loss
+
         else:
             pred = preds['All']
             # (Not 'ALL') Mask out the outputs of unseen classes for incremental class scenario
             if isinstance(self.valid_out_dim, int):
                 pred = preds['All'][:, :self.valid_out_dim]
             loss = self.criterion_fn(pred, targets) * self.kappa_scheduler.current
+            if self.eps_scheduler.current:
+                robust_loss, robust_err = 0, 0
+                for y0 in range(len(self.C)):
+                    if (targets == y0).sum().item() > 0:
+                        lower_bound = self._interval_based_bound(y0, targets == y0, key="All")
+                        # (Not 'ALL') Mask out the outputs of unseen classes for incremental class scenario
+                        if isinstance(self.valid_out_dim, int):
+                            lower_bound = lower_bound[:, :self.valid_out_dim]
 
-            robust_loss, robust_err = 0, 0
-            for y0 in range(len(self.C)):
-                if (targets == y0).sum().item() > 0:
-                    lower_bound = self._interval_based_bound(y0, targets == y0, key="All")
-                    # (Not 'ALL') Mask out the outputs of unseen classes for incremental class scenario
-                    if isinstance(self.valid_out_dim, int):
-                        lower_bound = lower_bound[:, :self.valid_out_dim]
+                        robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
+                                                                            targets[targets == y0]) / targets.size(0)
+                        # increment when true label is not winning
+                        # robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
 
-                    robust_loss += nn.CrossEntropyLoss(reduction='sum')(-lower_bound,
-                                                                        targets[targets == y0]) / targets.size(0)
-                    # increment when true label is not winning
-                    # robust_err += (lower_bound.min(dim=1)[0] < 0).sum().item()
-
-            loss += (1 - self.kappa_scheduler.current) * robust_loss
+                loss += (1 - self.kappa_scheduler.current) * robust_loss
 
         return loss
 
@@ -195,26 +194,41 @@ class IntervalNet(nn.Module):
         loss = self.criterion(out, targets, tasks)
         self.optimizer.zero_grad()
         loss.backward()
-        if self.clipping:
-            for n, p in self.model.named_parameters():
-                if "weight" in n:
-                    low, upp = self.previous_params[n]-self.clipping, self.previous_params[n]+self.clipping
-                    torch.where(p.data < low, low, p.data)
-                    torch.where(p.data > upp, upp, p.data)
-
-            for key, layer in self.model.last.items():
-                for n, p in layer.named_parameters():
-                    if "weight" in n:
-                        low, upp = self.previous_last[key]-self.clipping, self.previous_last[key]+self.clipping
-                        torch.where(p.data < low, low, p.data)
-                        torch.where(p.data > upp, upp, p.data)
-
+        # nn.utils.clip_grad_norm_(self.model.parameters(), 1)
+        nn.utils.clip_grad_norm_(self.model.parameters(), 1, norm_type=float('inf'))
         self.optimizer.step()
+        if self.clipping:
+            i, l = 0, 1
+            # print(self.previous_eps.keys())
+            for n, p in self.model.named_parameters():
+                if "weight" in n and n in self.previous_params.keys():
+
+                    if "last" in n:
+                        tmp = str(l) if self.multihead else "All"
+                        low = self.previous_params[n] - self.previous_eps["last"+tmp]
+                        upp = self.previous_params[n] + self.previous_eps["last"+tmp]
+                        # print(self.previous_eps["last"+tmp].size())
+                        l += 1
+                    else:
+                        low = self.previous_params[n] - self.previous_eps[str(i)]
+                        upp = self.previous_params[n] + self.previous_eps[str(i)]
+                        # print(self.previous_eps[str(i)].size())
+                    # print(self.previous_params[n].size())
+                    # sb = (p.data < low).sum()
+                    # ub = (p.data > upp).sum()
+                    if not self.multihead or (self.multihead and not "last" in n):
+                        p.data = torch.where(p.data < low, low, p.data)
+                        p.data = torch.where(p.data > upp, upp, p.data)
+
+                    # print(f"before: {sb}, teraz {(p.data < low).sum(), sb}")
+                    # print(f"before: {ub}, teraz {(p.data > upp).sum(), ub}")
+                    i += 1
+
         self.scheduler.step()
 
         self.kappa_scheduler.step()
         self.eps_scheduler.step()
-        self.model.set_eps(self.eps_scheduler.current)
+        self.model.set_eps(self.eps_scheduler.current, trainable=False)
 
         return loss.detach(), out
 
@@ -223,11 +237,13 @@ class IntervalNet(nn.Module):
         self.previous_params = {n: p.clone().detach()
                                 for n, p in self.model.named_parameters()
                                 if p.requires_grad and "weight" in n}
-        self.previous_last = {}
-        for key, layer in self.model.last.items():
-            for n, p in layer.named_parameters():
-                if "weight" in n:
-                    self.previous_last[key] = p.clone().detach()
+        self.previous_eps = {}
+        for i, n in enumerate(self.model.children()):
+            if isinstance(n, nn.ModuleDict):
+                for name, layer in n.items():
+                    self.previous_eps["last"+name] = layer.eps
+            else:
+                self.previous_eps[str(i)] = n.eps
 
     def learn_batch(self, train_loader, val_loader=None):
         if self.reset_optimizer:  # Reset optimizer before learning each task
@@ -274,6 +290,12 @@ class IntervalNet(nn.Module):
             # Evaluate the performance of current task
             if val_loader is not None:
                 self.validation(val_loader)
+
+            # print(f"a: {self.model.fc1.a}")
+            # e = self.model.e.detach()
+            # a = self.model.a.cpu().detach()
+            # print(f"sum: {e.sum()}, eps: {e}")
+            # print(f"sum: {a.sum()}, a: {a}")
 
     def add_valid_output_dim(self, dim=0):
         # This function is kind of ad-hoc, but it is the simplest way to support incremental class learning

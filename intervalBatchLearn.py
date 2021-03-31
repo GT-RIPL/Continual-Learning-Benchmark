@@ -34,7 +34,8 @@ def run(args):
                     'optimizer': args.optimizer,
                     'print_freq': args.print_freq, 'gpuid': args.gpuid,
                     'reg_coef': args.reg_coef,
-                    'force_out_dim': args.force_out_dim}
+                    'force_out_dim': args.force_out_dim,
+                    'clipping': args.clipping}
     agent = agents.__dict__[args.agent_type].__dict__[args.agent_name](agent_config)
     print(agent.model)
     print('#parameter of model:', agent.count_parameter())
@@ -63,6 +64,10 @@ def run(args):
 
     else:  # Incremental learning
         # Feed data to agent and evaluate agent's performance
+        # task_eps_max = [7, 3, 1.5, 0.75, 0.1]
+        # task_eps_max = [10, 3.3, 1.1, 0.3, 0.1] best
+        # task_eps_max = [10, 2, 0.5, 0.1, 0.1] 30% IC
+        task_eps_max = [10, 1, 0.7, 0.1, 0.1]
         for i in range(len(task_names)):
             train_name = task_names[i]
             print('======================', train_name, '=======================')
@@ -79,15 +84,29 @@ def run(args):
             agent.kappa_scheduler.end = args.kappa_min
             iter_on_batch = len(train_loader)
             agent.kappa_scheduler.calc_coefficient(args.kappa_min-1, args.kappa_epoch, iter_on_batch)
-            agent.eps_scheduler.calc_coefficient(args.eps_val, args.eps_epoch, iter_on_batch)
+            agent.eps_scheduler.calc_coefficient(args.eps_val[i], args.eps_epoch, iter_on_batch)
+            # agent.eps_scheduler.calc_coefficient(args.eps_val / td, args.eps_epoch, iter_on_batch)
             agent.kappa_scheduler.current, agent.eps_scheduler.current = 1, 0
 
-            print(f"agent: {agent.clipping}")
+            # agent.kappa_scheduler.warm_epoch(1, iter_on_batch)
+            # agent.eps_scheduler.warm_epoch(1, iter_on_batch)
+
+            # if agent.multihead:
+            #     for _, layer in agent.model.last.items():
+            #         for n, param in layer.named_parameters():
+            #             param.requires_grad = False
+            #             print(f"name: {n}, {param.requires_grad}")
+            #     for param in agent.model.last[train_name].parameters():
+            #         param.requires_grad = True
+            #         print(f"task: {train_name}, {param.requires_grad}")
+
             print(f"before batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
             agent.learn_batch(train_loader, val_loader)  # Learn
             print(f"after batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
+            # if agent.model.eps:
+            agent.model.print_eps()
+            agent.model.reset_importance()
             if args.clipping:
-                agent.clipping = agent.eps_scheduler.current
                 agent.save_previous_task_param()
 
             # Evaluate
@@ -135,7 +154,7 @@ def get_args(argv):
     parser.add_argument('--kappa_min', type=float, default=0.5)
     parser.add_argument('--eps_epoch', type=float, default=10)
     parser.add_argument('--eps_max', type=float, default=0)
-    parser.add_argument('--eps_val', type=float, default=0.1)
+    parser.add_argument('--eps_val', nargs="+", type=float)
     parser.add_argument('--clipping', dest='clipping', default=False, action='store_true')
     parser.add_argument('--schedule', nargs="+", type=int, default=[2],
                         help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")

@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as f
 from interval.layers import LinearInterval
@@ -5,13 +6,15 @@ from interval.layers import LinearInterval
 
 class IntervalMLP(nn.Module):
 
-    def __init__(self, out_dim=10, in_channel=1, img_sz=32, hidden_dim=256, eps=0):
+    def __init__(self, out_dim=10, in_channel=1, img_sz=32, hidden_dim=256):
         super(IntervalMLP, self).__init__()
         self.in_dim = in_channel*img_sz*img_sz
-        self.fc1 = LinearInterval(self.in_dim, hidden_dim, eps=eps, input_layer=True)
-        self.fc2 = LinearInterval(hidden_dim, hidden_dim, eps=eps)
+        self.fc1 = LinearInterval(self.in_dim, hidden_dim, input_layer=True)
+        self.fc2 = LinearInterval(hidden_dim, hidden_dim)
         # Subject to be replaced dependent on task
-        self.last = LinearInterval(hidden_dim, out_dim, eps=eps)
+        self.last = LinearInterval(hidden_dim, out_dim)
+        self.a = nn.Parameter(torch.zeros(3), requires_grad=True)
+        self.e = None
 
         self.bounds = None
 
@@ -19,11 +22,41 @@ class IntervalMLP(nn.Module):
         s = x.size(1) // 3
         self.bounds = x[:, s:2*s], x[:, 2*s:]
 
-    def set_eps(self, eps):
-        for layer in self.children():
-            layer.eps = eps
+    def calc_eps(self, r):
+        exp = self.a.exp()
+        self.e = r * exp / exp.sum()
+
+    def print_eps(self):
+        e1 = self.fc1.eps.detach()
+        e2 = self.fc2.eps.detach()
+        print(f"sum: {e1.sum()} - mean: {e1.mean()} - std: {e1.std()}")
+        print(f"sum: {e2.sum()} - mean: {e2.mean()} - std: {e2.std()}")
+
+        for name, layer in self.last.items():
+            l = layer.eps.detach()
+            print(f"last-{name} sum: {l.sum()} - mean: {l.mean()} - std: {l.std()}")
+            layer.rest_importance()
+        self.fc1.rest_importance()
+        self.fc2.rest_importance()
+
+    def reset_importance(self):
         for _, layer in self.last.items():
-            layer.eps = eps
+            layer.rest_importance()
+        self.fc1.rest_importance()
+        self.fc2.rest_importance()
+
+    def set_eps(self, eps, trainable=False):
+        if trainable:
+            self.calc_eps(eps)
+            self.fc1.calc_eps(self.e[0])
+            self.fc2.calc_eps(self.e[1])
+            for _, layer in self.last.items():
+                layer.calc_eps(self.e[2])
+        else:
+            self.fc1.calc_eps(eps)
+            self.fc2.calc_eps(eps)
+            for _, layer in self.last.items():
+                layer.calc_eps(eps)
 
     def features(self, x):
         x = x.view(-1, self.in_dim)
