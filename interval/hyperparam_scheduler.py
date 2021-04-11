@@ -35,6 +35,9 @@ class LinearScheduler:
     def warm_epoch(self, epoch, iter_on_epoch):
         self.warm = epoch * iter_on_epoch
 
+    def set_end(self, end):
+        self.end = None if end == 0 else end
+
 
 if __name__ == '__main__':
     ls = LinearScheduler(start=1, end=0.5)

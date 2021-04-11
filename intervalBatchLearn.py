@@ -25,6 +25,18 @@ def run(args):
                                                                           rand_split=args.rand_split,
                                                                           remap_class=not args.no_class_remap)
 
+    task_names = sorted(list(task_output_space.keys()), key=int)
+    if len(args.eps_val) == 1:
+        args.eps_val = [args.eps_val[0]] * len(task_names)
+    if len(args.eps_max) == 1:
+        args.eps_max = [args.eps_max[0]] * len(task_names)
+    if len(args.eps_epoch) == 1:
+        args.eps_epoch = [args.eps_epoch[0]] * len(task_names)
+    if len(args.kappa_epoch) == 1:
+        args.kappa_epoch = [args.kappa_epoch[0]] * len(task_names)
+    if len(args.schedule) == 1:
+        args.schedule = [args.schedule[0]] * len(task_names)
+
     # Prepare the Agent (model)
     agent_config = {'lr': args.lr, 'momentum': args.momentum, 'weight_decay': args.weight_decay,
                     'schedule': args.schedule,
@@ -35,13 +47,13 @@ def run(args):
                     'print_freq': args.print_freq, 'gpuid': args.gpuid,
                     'reg_coef': args.reg_coef,
                     'force_out_dim': args.force_out_dim,
-                    'clipping': args.clipping}
+                    'clipping': args.clipping,
+                    'eps_per_model': args.eps_per_model}
     agent = agents.__dict__[args.agent_type].__dict__[args.agent_name](agent_config)
     print(agent.model)
     print('#parameter of model:', agent.count_parameter())
 
     # Decide split ordering
-    task_names = sorted(list(task_output_space.keys()), key=int)
     print('Task order:', task_names)
     if args.rand_split_order:
         shuffle(task_names)
@@ -64,10 +76,6 @@ def run(args):
 
     else:  # Incremental learning
         # Feed data to agent and evaluate agent's performance
-        # task_eps_max = [7, 3, 1.5, 0.75, 0.1]
-        # task_eps_max = [10, 3.3, 1.1, 0.3, 0.1] best
-        # task_eps_max = [10, 2, 0.5, 0.1, 0.1] 30% IC
-        task_eps_max = [10, 1, 0.7, 0.1, 0.1]
         for i in range(len(task_names)):
             train_name = task_names[i]
             print('======================', train_name, '=======================')
@@ -80,34 +88,25 @@ def run(args):
                 agent.add_valid_output_dim(task_output_space[train_name])
 
             if args.eps_max:
-                agent.eps_scheduler.end = args.eps_max
+                agent.eps_scheduler.set_end(args.eps_max[i])
+
             agent.kappa_scheduler.end = args.kappa_min
             iter_on_batch = len(train_loader)
-            agent.kappa_scheduler.calc_coefficient(args.kappa_min-1, args.kappa_epoch, iter_on_batch)
-            agent.eps_scheduler.calc_coefficient(args.eps_val[i], args.eps_epoch, iter_on_batch)
-            # agent.eps_scheduler.calc_coefficient(args.eps_val / td, args.eps_epoch, iter_on_batch)
+            agent.kappa_scheduler.calc_coefficient(args.kappa_min-1, args.kappa_epoch[i], iter_on_batch)
+            agent.eps_scheduler.calc_coefficient(args.eps_val[i], args.eps_epoch[i], iter_on_batch)
             agent.kappa_scheduler.current, agent.eps_scheduler.current = 1, 0
 
-            # agent.kappa_scheduler.warm_epoch(1, iter_on_batch)
-            # agent.eps_scheduler.warm_epoch(1, iter_on_batch)
-
-            # if agent.multihead:
-            #     for _, layer in agent.model.last.items():
-            #         for n, param in layer.named_parameters():
-            #             param.requires_grad = False
-            #             print(f"name: {n}, {param.requires_grad}")
-            #     for param in agent.model.last[train_name].parameters():
-            #         param.requires_grad = True
-            #         print(f"task: {train_name}, {param.requires_grad}")
+            if agent.multihead:
+                agent.current_head = str(train_name)
 
             print(f"before batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
             agent.learn_batch(train_loader, val_loader)  # Learn
             print(f"after batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
-            # if agent.model.eps:
-            agent.model.print_eps()
+
+            agent.model.print_eps(agent.current_head)
             agent.model.reset_importance()
             if args.clipping:
-                agent.save_previous_task_param()
+                agent.save_params()
 
             # Evaluate
             acc_table[train_name] = OrderedDict()
@@ -117,6 +116,7 @@ def run(args):
                 val_data = val_dataset_splits[val_name] if not args.eval_on_train_set else train_dataset_splits[val_name]
                 val_loader = DataLoader(val_data, batch_size=args.batch_size, shuffle=False, num_workers=args.workers)
                 acc_table[val_name][train_name] = agent.validation(val_loader)
+                agent.validation_with_move_weights(val_loader)
 
     return acc_table, task_names
 
@@ -150,11 +150,12 @@ def get_args(argv):
     parser.add_argument('--lr', type=float, default=0.01, help="Learning rate")
     parser.add_argument('--momentum', type=float, default=0)
     parser.add_argument('--weight_decay', type=float, default=0)
-    parser.add_argument('--kappa_epoch', type=float, default=10)
+    parser.add_argument('--kappa_epoch', nargs="+", type=float, default=[1])
     parser.add_argument('--kappa_min', type=float, default=0.5)
-    parser.add_argument('--eps_epoch', type=float, default=10)
-    parser.add_argument('--eps_max', type=float, default=0)
+    parser.add_argument('--eps_epoch', nargs="+", type=float, default=[1])
+    parser.add_argument('--eps_max', nargs="+", type=float, default=[0])
     parser.add_argument('--eps_val', nargs="+", type=float)
+    parser.add_argument('--eps_per_model', dest='eps_per_model', default=False, action='store_true')
     parser.add_argument('--clipping', dest='clipping', default=False, action='store_true')
     parser.add_argument('--schedule', nargs="+", type=int, default=[2],
                         help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")

@@ -14,7 +14,7 @@ class IntervalMLP(nn.Module):
         # Subject to be replaced dependent on task
         self.last = LinearInterval(hidden_dim, out_dim)
         self.a = nn.Parameter(torch.zeros(3), requires_grad=True)
-        self.e = None
+        self.e = torch.zeros(3)
 
         self.bounds = None
 
@@ -26,37 +26,37 @@ class IntervalMLP(nn.Module):
         exp = self.a.exp()
         self.e = r * exp / exp.sum()
 
-    def print_eps(self):
-        e1 = self.fc1.eps.detach()
-        e2 = self.fc2.eps.detach()
-        print(f"sum: {e1.sum()} - mean: {e1.mean()} - std: {e1.std()}")
-        print(f"sum: {e2.sum()} - mean: {e2.mean()} - std: {e2.std()}")
-
-        for name, layer in self.last.items():
-            l = layer.eps.detach()
-            print(f"last-{name} sum: {l.sum()} - mean: {l.mean()} - std: {l.std()}")
-            layer.rest_importance()
-        self.fc1.rest_importance()
-        self.fc2.rest_importance()
+    def print_eps(self, head="All"):
+        for c in self.children():
+            if isinstance(c, LinearInterval):
+                e = c.eps.detach()
+                print(f"sum: {e.sum()} -mean: {e.mean()} - std: {e.std()}")
+                print(f" * min {e.min()}, max: {e.max()}")
+            elif isinstance(c, nn.ModuleDict):
+                e = c[head].eps.detach()
+                print(f"sum: {e.sum()} - mean: {e.mean()} - std: {e.std()}")
+                print(f" * min {e.min()}, max: {e.max()}")
 
     def reset_importance(self):
-        for _, layer in self.last.items():
-            layer.rest_importance()
-        self.fc1.rest_importance()
-        self.fc2.rest_importance()
+        for c in self.children():
+            if isinstance(c, LinearInterval):
+                c.rest_importance()
+            elif isinstance(c, nn.ModuleDict) and "All" in c.keys():
+                    c["All"].rest_importance()
 
-    def set_eps(self, eps, trainable=False):
+    def set_eps(self, eps, trainable=False, head="All"):
         if trainable:
             self.calc_eps(eps)
-            self.fc1.calc_eps(self.e[0])
-            self.fc2.calc_eps(self.e[1])
-            for _, layer in self.last.items():
-                layer.calc_eps(self.e[2])
         else:
-            self.fc1.calc_eps(eps)
-            self.fc2.calc_eps(eps)
-            for _, layer in self.last.items():
-                layer.calc_eps(eps)
+            self.e[:] = eps
+        i = 0
+        for c in self.children():
+            if isinstance(c, LinearInterval):
+                c.calc_eps(self.e[i])
+                i += 1
+            elif isinstance(c, nn.ModuleDict):
+                self.last[head].calc_eps(self.e[i])
+                i += 1
 
     def features(self, x):
         x = x.view(-1, self.in_dim)

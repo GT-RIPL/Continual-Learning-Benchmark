@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as f
-from math import sqrt
 
 
 def split_activation(x):
@@ -67,7 +66,7 @@ class IntervalDropout(nn.Module):
 class LinearInterval(nn.Linear):
     def __init__(self, in_features, out_features, bias=True, input_layer=False):
         super().__init__(in_features, out_features, bias)
-        self.importance = nn.Parameter(torch.zeros(in_features), requires_grad=True)
+        self.importance = nn.Parameter(torch.zeros(self.weight.size()), requires_grad=True)
         self.eps = 0
         self.input_layer = input_layer
 
@@ -76,7 +75,10 @@ class LinearInterval(nn.Linear):
         self.eps = r * exp / exp.sum()
 
     def rest_importance(self):
-        self.importance.data = torch.zeros(self.in_features).cuda()
+        pass
+        # w1 = torch.abs(1 / self.weight)
+        # self.importance.data = w1 / w1.sum()
+        # self.importance.data = torch.zeros(self.in_features).cuda()
         # self.importance.data = torch.randn(self.in_features).cuda()
 
     def forward(self, x):
@@ -100,11 +102,21 @@ class LinearInterval(nn.Linear):
 
 class Conv2dInterval(nn.Conv2d):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1,
-                 padding=0, dilation=1, groups=1, bias=True, eps=0, input_layer=False):
+                 padding=0, dilation=1, groups=1, bias=True, input_layer=False):
         super().__init__(in_channels, out_channels, kernel_size, stride,
                          padding, dilation, groups, bias)
-        self.eps = eps
+        self.importance = nn.Parameter(torch.zeros(self.weight.data.size()), requires_grad=True)
+        self.eps = 0
         self.input_layer = input_layer
+
+    def calc_eps(self, r):
+        exp = self.importance.exp()
+        self.eps = r * exp / exp.sum()
+
+    def rest_importance(self):
+        pass
+        # w1 = torch.abs(1 / self.weight)
+        # self.importance.data = w1 / w1.sum()
 
     def forward(self, x):
         if self.input_layer:
