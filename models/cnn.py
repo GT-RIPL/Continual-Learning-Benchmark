@@ -68,7 +68,7 @@ def cnn_avg():
 
 class IntervalCNN(nn.Module):
 
-    def __init__(self, in_channel=3, out_dim=10, pooling=MaxPool2dInterval, eps=0):
+    def __init__(self, in_channel=3, out_dim=10, pooling=MaxPool2dInterval):
         super(IntervalCNN, self).__init__()
 
         self.input = Conv2dInterval(in_channel, 32, kernel_size=3, stride=1, padding=1, input_layer=True)
@@ -101,6 +101,7 @@ class IntervalCNN(nn.Module):
             nn.ReLU()
         )
         self.last = LinearInterval(256, out_dim)
+        # self.a = nn.Parameter(torch.Tensor([0, 5, 5, 5, 5, 5, 5, 5, 5]), requires_grad=True)
         self.a = nn.Parameter(torch.zeros(9), requires_grad=True)
         self.e = torch.zeros(9)
 

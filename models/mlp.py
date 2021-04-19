@@ -13,9 +13,8 @@ class IntervalMLP(nn.Module):
         self.fc2 = LinearInterval(hidden_dim, hidden_dim)
         # Subject to be replaced dependent on task
         self.last = LinearInterval(hidden_dim, out_dim)
-        self.a = nn.Parameter(torch.zeros(3), requires_grad=True)
+        self.a = nn.Parameter(torch.Tensor([0, 0, 0]), requires_grad=True)
         self.e = torch.zeros(3)
-
         self.bounds = None
 
     def save_bounds(self, x):
@@ -36,6 +35,7 @@ class IntervalMLP(nn.Module):
                 e = c[head].eps.detach()
                 print(f"sum: {e.sum()} - mean: {e.mean()} - std: {e.std()}")
                 print(f" * min {e.min()}, max: {e.max()}")
+        print(f"sum eps on layers: {self.e}")
 
     def reset_importance(self):
         for c in self.children():
@@ -52,10 +52,12 @@ class IntervalMLP(nn.Module):
         i = 0
         for c in self.children():
             if isinstance(c, LinearInterval):
+                neurons = c.weight.size(0) * c.weight.size(1)
                 c.calc_eps(self.e[i])
                 i += 1
             elif isinstance(c, nn.ModuleDict):
-                self.last[head].calc_eps(self.e[i])
+                neurons = c[head].weight.size(0) * c[head].weight.size(1)
+                c[head].calc_eps(self.e[i])
                 i += 1
 
     def features(self, x):

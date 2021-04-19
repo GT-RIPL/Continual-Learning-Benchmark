@@ -48,7 +48,8 @@ def run(args):
                     'reg_coef': args.reg_coef,
                     'force_out_dim': args.force_out_dim,
                     'clipping': args.clipping,
-                    'eps_per_model': args.eps_per_model}
+                    'eps_per_model': args.eps_per_model,
+                    'milestones': args.milestones}
     agent = agents.__dict__[args.agent_type].__dict__[args.agent_name](agent_config)
     print(agent.model)
     print('#parameter of model:', agent.count_parameter())
@@ -78,6 +79,7 @@ def run(args):
         # Feed data to agent and evaluate agent's performance
         for i in range(len(task_names)):
             train_name = task_names[i]
+            agent.current_task = int(task_names[i])
             print('======================', train_name, '=======================')
             train_loader = DataLoader(train_dataset_splits[train_name], batch_size=args.batch_size,
                                       shuffle=True, num_workers=args.workers)
@@ -103,10 +105,11 @@ def run(args):
             agent.learn_batch(train_loader, val_loader)  # Learn
             print(f"after batch eps: {agent.eps_scheduler.current}, kappa: {agent.kappa_scheduler.current}")
 
-            agent.model.print_eps(agent.current_head)
-            agent.model.reset_importance()
             if args.clipping:
                 agent.save_params()
+
+            agent.model.print_eps(agent.current_head)
+            agent.model.reset_importance()
 
             # Evaluate
             acc_table[train_name] = OrderedDict()
@@ -117,6 +120,8 @@ def run(args):
                 val_loader = DataLoader(val_data, batch_size=args.batch_size, shuffle=False, num_workers=args.workers)
                 acc_table[val_name][train_name] = agent.validation(val_loader)
                 agent.validation_with_move_weights(val_loader)
+
+            agent.tb.close()
 
     return acc_table, task_names
 
@@ -154,6 +159,7 @@ def get_args(argv):
     parser.add_argument('--kappa_min', type=float, default=0.5)
     parser.add_argument('--eps_epoch', nargs="+", type=float, default=[1])
     parser.add_argument('--eps_max', nargs="+", type=float, default=[0])
+    parser.add_argument('--milestones', nargs="+", type=float, default=[])
     parser.add_argument('--eps_val', nargs="+", type=float)
     parser.add_argument('--eps_per_model', dest='eps_per_model', default=False, action='store_true')
     parser.add_argument('--clipping', dest='clipping', default=False, action='store_true')
