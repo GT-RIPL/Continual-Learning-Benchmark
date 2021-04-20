@@ -1,0 +1,891 @@
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.85
+====================== 2 =======================
+validation split name: 1
+ * val acc: 87.3
+validation split name: 2
+ * val acc: 90.75
+====================== 3 =======================
+validation split name: 1
+ * val acc: 74.45
+validation split name: 2
+ * val acc: 84.0
+validation split name: 3
+ * val acc: 93.35
+====================== 4 =======================
+validation split name: 1
+ * val acc: 79.25
+validation split name: 2
+ * val acc: 77.45
+validation split name: 3
+ * val acc: 89.4
+validation split name: 4
+ * val acc: 95.5
+====================== 5 =======================
+validation split name: 1
+ * val acc: 85.05
+validation split name: 2
+ * val acc: 74.15
+validation split name: 3
+ * val acc: 79.75
+validation split name: 4
+ * val acc: 91.5
+validation split name: 5
+ * val acc: 96.75
+OrderedDict([('1', OrderedDict([('1', 98.85), ('2', 87.3), ('3', 74.45), ('4', 79.25), ('5', 85.05)])), ('2', OrderedDict([('2', 90.75), ('3', 84.0), ('4', 77.45), ('5', 74.15)])), ('3', OrderedDict([('3', 93.35), ('4', 89.4), ('5', 79.75)])), ('4', OrderedDict([('4', 95.5), ('5', 91.5)])), ('5', OrderedDict([('5', 96.75)]))])
+Task 1 average acc: 98.85
+Task 2 average acc: 89.025
+Task 3 average acc: 83.93333333333332
+Task 4 average acc: 85.4
+Task 5 average acc: 85.44
+===Summary of experiment repeats: 1 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44  0.    0.    0.    0.    0.    0.    0.    0.    0.  ]
+mean: 8.544 std: 25.632
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.6
+====================== 2 =======================
+validation split name: 1
+ * val acc: 84.45
+validation split name: 2
+ * val acc: 91.1
+====================== 3 =======================
+validation split name: 1
+ * val acc: 78.95
+validation split name: 2
+ * val acc: 83.45
+validation split name: 3
+ * val acc: 92.85
+====================== 4 =======================
+validation split name: 1
+ * val acc: 82.7
+validation split name: 2
+ * val acc: 79.3
+validation split name: 3
+ * val acc: 90.85
+validation split name: 4
+ * val acc: 96.65
+====================== 5 =======================
+validation split name: 1
+ * val acc: 89.7
+validation split name: 2
+ * val acc: 74.2
+validation split name: 3
+ * val acc: 88.6
+validation split name: 4
+ * val acc: 90.95
+validation split name: 5
+ * val acc: 95.3
+OrderedDict([('1', OrderedDict([('1', 98.6), ('2', 84.45), ('3', 78.95), ('4', 82.7), ('5', 89.7)])), ('2', OrderedDict([('2', 91.1), ('3', 83.45), ('4', 79.3), ('5', 74.2)])), ('3', OrderedDict([('3', 92.85), ('4', 90.85), ('5', 88.6)])), ('4', OrderedDict([('4', 96.65), ('5', 90.95)])), ('5', OrderedDict([('5', 95.3)]))])
+Task 1 average acc: 98.6
+Task 2 average acc: 87.775
+Task 3 average acc: 85.08333333333333
+Task 4 average acc: 87.375
+Task 5 average acc: 87.75
+===Summary of experiment repeats: 2 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75  0.    0.    0.    0.    0.    0.    0.    0.  ]
+mean: 17.319 std: 34.64185111970779
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.3
+====================== 2 =======================
+validation split name: 1
+ * val acc: 88.2
+validation split name: 2
+ * val acc: 90.8
+====================== 3 =======================
+validation split name: 1
+ * val acc: 84.15
+validation split name: 2
+ * val acc: 83.35
+validation split name: 3
+ * val acc: 90.55
+====================== 4 =======================
+validation split name: 1
+ * val acc: 82.15
+validation split name: 2
+ * val acc: 81.45
+validation split name: 3
+ * val acc: 91.5
+validation split name: 4
+ * val acc: 97.0
+====================== 5 =======================
+validation split name: 1
+ * val acc: 84.65
+validation split name: 2
+ * val acc: 77.55
+validation split name: 3
+ * val acc: 89.95
+validation split name: 4
+ * val acc: 94.5
+validation split name: 5
+ * val acc: 95.7
+OrderedDict([('1', OrderedDict([('1', 98.3), ('2', 88.2), ('3', 84.15), ('4', 82.15), ('5', 84.65)])), ('2', OrderedDict([('2', 90.8), ('3', 83.35), ('4', 81.45), ('5', 77.55)])), ('3', OrderedDict([('3', 90.55), ('4', 91.5), ('5', 89.95)])), ('4', OrderedDict([('4', 97.0), ('5', 94.5)])), ('5', OrderedDict([('5', 95.7)]))])
+Task 1 average acc: 98.3
+Task 2 average acc: 89.5
+Task 3 average acc: 86.01666666666667
+Task 4 average acc: 88.025
+Task 5 average acc: 88.47
+===Summary of experiment repeats: 3 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47  0.    0.    0.    0.    0.    0.    0.  ]
+mean: 26.165999999999997 std: 39.97549429337929
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.4
+====================== 2 =======================
+validation split name: 1
+ * val acc: 90.65
+validation split name: 2
+ * val acc: 89.35
+====================== 3 =======================
+validation split name: 1
+ * val acc: 89.25
+validation split name: 2
+ * val acc: 85.2
+validation split name: 3
+ * val acc: 93.65
+====================== 4 =======================
+validation split name: 1
+ * val acc: 91.45
+validation split name: 2
+ * val acc: 84.75
+validation split name: 3
+ * val acc: 91.8
+validation split name: 4
+ * val acc: 97.1
+====================== 5 =======================
+validation split name: 1
+ * val acc: 92.95
+validation split name: 2
+ * val acc: 80.7
+validation split name: 3
+ * val acc: 89.25
+validation split name: 4
+ * val acc: 94.2
+validation split name: 5
+ * val acc: 95.65
+OrderedDict([('1', OrderedDict([('1', 98.4), ('2', 90.65), ('3', 89.25), ('4', 91.45), ('5', 92.95)])), ('2', OrderedDict([('2', 89.35), ('3', 85.2), ('4', 84.75), ('5', 80.7)])), ('3', OrderedDict([('3', 93.65), ('4', 91.8), ('5', 89.25)])), ('4', OrderedDict([('4', 97.1), ('5', 94.2)])), ('5', OrderedDict([('5', 95.65)]))])
+Task 1 average acc: 98.4
+Task 2 average acc: 90.0
+Task 3 average acc: 89.36666666666667
+Task 4 average acc: 91.275
+Task 5 average acc: 90.55
+===Summary of experiment repeats: 4 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55  0.    0.    0.    0.    0.    0.  ]
+mean: 35.221 std: 43.152185448711634
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.8
+====================== 2 =======================
+validation split name: 1
+ * val acc: 86.2
+validation split name: 2
+ * val acc: 90.25
+====================== 3 =======================
+validation split name: 1
+ * val acc: 83.4
+validation split name: 2
+ * val acc: 85.0
+validation split name: 3
+ * val acc: 94.0
+====================== 4 =======================
+validation split name: 1
+ * val acc: 64.55
+validation split name: 2
+ * val acc: 78.6
+validation split name: 3
+ * val acc: 84.5
+validation split name: 4
+ * val acc: 97.15
+====================== 5 =======================
+validation split name: 1
+ * val acc: 78.8
+validation split name: 2
+ * val acc: 68.4
+validation split name: 3
+ * val acc: 75.2
+validation split name: 4
+ * val acc: 91.15
+validation split name: 5
+ * val acc: 96.1
+OrderedDict([('1', OrderedDict([('1', 98.8), ('2', 86.2), ('3', 83.4), ('4', 64.55), ('5', 78.8)])), ('2', OrderedDict([('2', 90.25), ('3', 85.0), ('4', 78.6), ('5', 68.4)])), ('3', OrderedDict([('3', 94.0), ('4', 84.5), ('5', 75.2)])), ('4', OrderedDict([('4', 97.15), ('5', 91.15)])), ('5', OrderedDict([('5', 96.1)]))])
+Task 1 average acc: 98.8
+Task 2 average acc: 88.225
+Task 3 average acc: 87.46666666666665
+Task 4 average acc: 81.19999999999999
+Task 5 average acc: 81.92999999999999
+===Summary of experiment repeats: 5 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93  0.    0.    0.    0.    0.  ]
+mean: 43.414 std: 43.46385905554177
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 97.65
+====================== 2 =======================
+validation split name: 1
+ * val acc: 91.8
+validation split name: 2
+ * val acc: 89.8
+====================== 3 =======================
+validation split name: 1
+ * val acc: 90.7
+validation split name: 2
+ * val acc: 87.6
+validation split name: 3
+ * val acc: 93.25
+====================== 4 =======================
+validation split name: 1
+ * val acc: 86.95
+validation split name: 2
+ * val acc: 85.3
+validation split name: 3
+ * val acc: 90.2
+validation split name: 4
+ * val acc: 95.7
+====================== 5 =======================
+validation split name: 1
+ * val acc: 93.15
+validation split name: 2
+ * val acc: 82.15
+validation split name: 3
+ * val acc: 89.3
+validation split name: 4
+ * val acc: 96.4
+validation split name: 5
+ * val acc: 96.0
+OrderedDict([('1', OrderedDict([('1', 97.65), ('2', 91.8), ('3', 90.7), ('4', 86.95), ('5', 93.15)])), ('2', OrderedDict([('2', 89.8), ('3', 87.6), ('4', 85.3), ('5', 82.15)])), ('3', OrderedDict([('3', 93.25), ('4', 90.2), ('5', 89.3)])), ('4', OrderedDict([('4', 95.7), ('5', 96.4)])), ('5', OrderedDict([('5', 96.0)]))])
+Task 1 average acc: 97.65
+Task 2 average acc: 90.8
+Task 3 average acc: 90.51666666666667
+Task 4 average acc: 89.5375
+Task 5 average acc: 91.4
+===Summary of experiment repeats: 6 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93 91.4   0.    0.    0.    0.  ]
+mean: 52.553999999999995 std: 42.98087393248304
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.45
+====================== 2 =======================
+validation split name: 1
+ * val acc: 90.25
+validation split name: 2
+ * val acc: 90.8
+====================== 3 =======================
+validation split name: 1
+ * val acc: 87.2
+validation split name: 2
+ * val acc: 81.9
+validation split name: 3
+ * val acc: 93.25
+====================== 4 =======================
+validation split name: 1
+ * val acc: 79.0
+validation split name: 2
+ * val acc: 78.75
+validation split name: 3
+ * val acc: 91.2
+validation split name: 4
+ * val acc: 96.75
+====================== 5 =======================
+validation split name: 1
+ * val acc: 83.45
+validation split name: 2
+ * val acc: 74.6
+validation split name: 3
+ * val acc: 85.5
+validation split name: 4
+ * val acc: 88.75
+validation split name: 5
+ * val acc: 95.55
+OrderedDict([('1', OrderedDict([('1', 98.45), ('2', 90.25), ('3', 87.2), ('4', 79.0), ('5', 83.45)])), ('2', OrderedDict([('2', 90.8), ('3', 81.9), ('4', 78.75), ('5', 74.6)])), ('3', OrderedDict([('3', 93.25), ('4', 91.2), ('5', 85.5)])), ('4', OrderedDict([('4', 96.75), ('5', 88.75)])), ('5', OrderedDict([('5', 95.55)]))])
+Task 1 average acc: 98.45
+Task 2 average acc: 90.525
+Task 3 average acc: 87.45
+Task 4 average acc: 86.425
+Task 5 average acc: 85.57000000000001
+===Summary of experiment repeats: 7 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93 91.4  85.57  0.    0.    0.  ]
+mean: 61.11099999999999 std: 40.08673856776078
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.95
+====================== 2 =======================
+validation split name: 1
+ * val acc: 86.9
+validation split name: 2
+ * val acc: 91.8
+====================== 3 =======================
+validation split name: 1
+ * val acc: 78.9
+validation split name: 2
+ * val acc: 85.8
+validation split name: 3
+ * val acc: 92.4
+====================== 4 =======================
+validation split name: 1
+ * val acc: 79.6
+validation split name: 2
+ * val acc: 75.1
+validation split name: 3
+ * val acc: 81.9
+validation split name: 4
+ * val acc: 96.9
+====================== 5 =======================
+validation split name: 1
+ * val acc: 88.85
+validation split name: 2
+ * val acc: 75.55
+validation split name: 3
+ * val acc: 82.7
+validation split name: 4
+ * val acc: 91.4
+validation split name: 5
+ * val acc: 95.85
+OrderedDict([('1', OrderedDict([('1', 98.95), ('2', 86.9), ('3', 78.9), ('4', 79.6), ('5', 88.85)])), ('2', OrderedDict([('2', 91.8), ('3', 85.8), ('4', 75.1), ('5', 75.55)])), ('3', OrderedDict([('3', 92.4), ('4', 81.9), ('5', 82.7)])), ('4', OrderedDict([('4', 96.9), ('5', 91.4)])), ('5', OrderedDict([('5', 95.85)]))])
+Task 1 average acc: 98.95
+Task 2 average acc: 89.35
+Task 3 average acc: 85.7
+Task 4 average acc: 83.375
+Task 5 average acc: 86.87
+===Summary of experiment repeats: 8 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93 91.4  85.57 86.87  0.    0.  ]
+mean: 69.798 std: 34.99113910692249
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.8
+====================== 2 =======================
+validation split name: 1
+ * val acc: 91.35
+validation split name: 2
+ * val acc: 90.6
+====================== 3 =======================
+validation split name: 1
+ * val acc: 86.65
+validation split name: 2
+ * val acc: 85.45
+validation split name: 3
+ * val acc: 93.05
+====================== 4 =======================
+validation split name: 1
+ * val acc: 84.05
+validation split name: 2
+ * val acc: 85.6
+validation split name: 3
+ * val acc: 91.5
+validation split name: 4
+ * val acc: 96.7
+====================== 5 =======================
+validation split name: 1
+ * val acc: 90.65
+validation split name: 2
+ * val acc: 76.2
+validation split name: 3
+ * val acc: 89.4
+validation split name: 4
+ * val acc: 96.55
+validation split name: 5
+ * val acc: 96.1
+OrderedDict([('1', OrderedDict([('1', 98.8), ('2', 91.35), ('3', 86.65), ('4', 84.05), ('5', 90.65)])), ('2', OrderedDict([('2', 90.6), ('3', 85.45), ('4', 85.6), ('5', 76.2)])), ('3', OrderedDict([('3', 93.05), ('4', 91.5), ('5', 89.4)])), ('4', OrderedDict([('4', 96.7), ('5', 96.55)])), ('5', OrderedDict([('5', 96.1)]))])
+Task 1 average acc: 98.8
+Task 2 average acc: 90.975
+Task 3 average acc: 88.38333333333334
+Task 4 average acc: 89.46249999999999
+Task 5 average acc: 89.78
+===Summary of experiment repeats: 9 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93 91.4  85.57 86.87 89.78  0.  ]
+mean: 78.776 std: 26.39180334876721
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+CNN(
+  (input): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (c1): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c2): Sequential(
+    (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (c3): Sequential(
+    (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): Dropout(p=0.25, inplace=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=3200, out_features=256, bias=True)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): Linear(in_features=256, out_features=2, bias=True)
+    (2): Linear(in_features=256, out_features=2, bias=True)
+    (3): Linear(in_features=256, out_features=2, bias=True)
+    (4): Linear(in_features=256, out_features=2, bias=True)
+    (5): Linear(in_features=256, out_features=2, bias=True)
+  )
+)
+#parameter of model: 1256618
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+validation split name: 1
+ * val acc: 98.15
+====================== 2 =======================
+validation split name: 1
+ * val acc: 87.65
+validation split name: 2
+ * val acc: 89.9
+====================== 3 =======================
+validation split name: 1
+ * val acc: 84.0
+validation split name: 2
+ * val acc: 84.45
+validation split name: 3
+ * val acc: 93.5
+====================== 4 =======================
+validation split name: 1
+ * val acc: 85.7
+validation split name: 2
+ * val acc: 84.0
+validation split name: 3
+ * val acc: 87.85
+validation split name: 4
+ * val acc: 96.15
+====================== 5 =======================
+validation split name: 1
+ * val acc: 85.25
+validation split name: 2
+ * val acc: 81.45
+validation split name: 3
+ * val acc: 83.75
+validation split name: 4
+ * val acc: 95.45
+validation split name: 5
+ * val acc: 95.9
+OrderedDict([('1', OrderedDict([('1', 98.15), ('2', 87.65), ('3', 84.0), ('4', 85.7), ('5', 85.25)])), ('2', OrderedDict([('2', 89.9), ('3', 84.45), ('4', 84.0), ('5', 81.45)])), ('3', OrderedDict([('3', 93.5), ('4', 87.85), ('5', 83.75)])), ('4', OrderedDict([('4', 96.15), ('5', 95.45)])), ('5', OrderedDict([('5', 95.9)]))])
+Task 1 average acc: 98.15
+Task 2 average acc: 88.775
+Task 3 average acc: 87.31666666666666
+Task 4 average acc: 88.42499999999998
+Task 5 average acc: 88.35999999999999
+===Summary of experiment repeats: 10 / 10 ===
+The regularization coefficient: 100.0
+The last avg acc of all repeats: [85.44 87.75 88.47 90.55 81.93 91.4  85.57 86.87 89.78 88.36]
+mean: 87.612 std: 2.659299907870492
+reg_coef: 100.0 mean: 87.612 std: 2.659299907870492

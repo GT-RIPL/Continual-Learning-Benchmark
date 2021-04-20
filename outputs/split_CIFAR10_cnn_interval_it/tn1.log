@@ -1,0 +1,1023 @@
+Files already downloaded and verified
+Files already downloaded and verified
+split_boundaries: [0, 2, 4, 6, 8, 10]
+{'1': [0, 1], '2': [2, 3], '3': [4, 5], '4': [6, 7], '5': [8, 9]}
+IntervalCNN(
+  (input): Conv2dInterval(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (c1): Sequential(
+    (0): Conv2dInterval(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): ReLU()
+    (2): Conv2dInterval(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (3): ReLU()
+    (4): MaxPool2dInterval(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): IntervalDropout()
+  )
+  (c2): Sequential(
+    (0): Conv2dInterval(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): ReLU()
+    (2): Conv2dInterval(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (3): ReLU()
+    (4): MaxPool2dInterval(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): IntervalDropout()
+  )
+  (c3): Sequential(
+    (0): Conv2dInterval(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): ReLU()
+    (2): Conv2dInterval(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (3): ReLU()
+    (4): MaxPool2dInterval(kernel_size=2, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (5): IntervalDropout()
+  )
+  (fc1): Sequential(
+    (0): LinearInterval(in_features=3200, out_features=256, bias=False)
+    (1): ReLU()
+  )
+  (last): ModuleDict(
+    (1): LinearInterval(in_features=256, out_features=2, bias=False)
+    (2): LinearInterval(in_features=256, out_features=2, bias=False)
+    (3): LinearInterval(in_features=256, out_features=2, bias=False)
+    (4): LinearInterval(in_features=256, out_features=2, bias=False)
+    (5): LinearInterval(in_features=256, out_features=2, bias=False)
+  )
+)
+#parameter of model: 2511561
+Task order: ['1', '2', '3', '4', '5']
+====================== 1 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 50.080, Loss 0.636
+ * , robust loss: 0.112 robust error: 0.02000000
+ *  Val Acc 50.000, time 0.60
+Epoch:1
+LR: 0.001
+ * Train Acc 59.410, Loss 0.506
+ * , robust loss: 0.001 robust error: 0.00000000
+ *  Val Acc 82.700, time 0.60
+Epoch:2
+LR: 0.001
+ * Train Acc 82.750, Loss 0.348
+ * , robust loss: 0.001 robust error: 0.00000000
+ *  Val Acc 85.200, time 0.63
+Epoch:3
+LR: 0.001
+ * Train Acc 85.940, Loss 0.280
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 86.400, time 0.62
+Epoch:4
+LR: 0.001
+ * Train Acc 88.380, Loss 0.224
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 89.300, time 0.60
+Epoch:5
+LR: 0.001
+ * Train Acc 89.160, Loss 0.191
+ * , robust loss: 0.004 robust error: 0.00000000
+ *  Val Acc 89.250, time 0.63
+Epoch:6
+LR: 0.001
+ * Train Acc 90.360, Loss 0.163
+ * , robust loss: 0.015 robust error: 0.01000000
+ *  Val Acc 90.950, time 0.60
+Epoch:7
+LR: 0.001
+ * Train Acc 91.830, Loss 0.130
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 93.500, time 0.61
+Epoch:8
+LR: 0.001
+ * Train Acc 93.000, Loss 0.103
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 93.750, time 0.60
+Epoch:9
+LR: 0.001
+ * Train Acc 93.840, Loss 0.086
+ * , robust loss: 0.011 robust error: 0.01000000
+ *  Val Acc 94.300, time 0.60
+Epoch:10
+LR: 0.001
+ * Train Acc 94.730, Loss 0.070
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 95.200, time 0.60
+Epoch:11
+LR: 0.001
+ * Train Acc 94.660, Loss 0.075
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 94.700, time 0.63
+Epoch:12
+LR: 0.001
+ * Train Acc 94.930, Loss 0.066
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 93.500, time 0.63
+Epoch:13
+LR: 0.001
+ * Train Acc 95.560, Loss 0.058
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 95.900, time 0.62
+Epoch:14
+LR: 0.001
+ * Train Acc 96.060, Loss 0.052
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.850, time 0.60
+Epoch:15
+LR: 0.001
+ * Train Acc 96.280, Loss 0.051
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.650, time 0.59
+Epoch:16
+LR: 0.001
+ * Train Acc 96.170, Loss 0.049
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.450, time 0.62
+Epoch:17
+LR: 0.001
+ * Train Acc 96.590, Loss 0.044
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.500, time 0.61
+Epoch:18
+LR: 0.001
+ * Train Acc 96.890, Loss 0.041
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.900, time 0.66
+Epoch:19
+LR: 0.001
+ * Train Acc 96.970, Loss 0.041
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 96.750, time 0.61
+after batch eps: 0.09999999999999715, kappa: 0.5
+sum: 0.5179373025894165 - mean: 0.000599464459810406 - std: 0.0002412959438515827
+ * min 0.00034129281993955374, max: 0.0011847190326079726
+sum: 16.70928192138672 - mean: 0.0018130731768906116 - std: 0.0009305548155680299
+ * min 0.0007028531981632113, max: 0.0042075179517269135
+sum: 8.299049377441406 - mean: 0.00045025223516859114 - std: 0.00011984399316133931
+ * min 0.00017317973833996803, max: 0.000941648380830884
+sum: 24.582332611083984 - mean: 0.0006668384303338826 - std: 8.932983473641798e-05
+ * min 0.000255474413279444, max: 0.0012720132945105433
+sum: 93.82266235351562 - mean: 0.0012725513661280274 - std: 0.00012911106750834733
+ * min 0.0005604560719802976, max: 0.0025955243036150932
+sum: 208.79505920410156 - mean: 0.0014159821439534426 - std: 0.00010419335012556985
+ * min 0.0006052033859305084, max: 0.002772295381873846
+sum: 230.06881713867188 - mean: 0.0015602540224790573 - std: 9.85114966169931e-05
+ * min 0.0007328842184506357, max: 0.003212692914530635
+sum: 3.839094638824463 - mean: 4.686394731834298e-06 - std: 1.5449359569430499e-09
+ * min 4.552022801362909e-06, max: 4.703358627011767e-06
+sum: 0.20000000298023224 - mean: 0.0003906250058207661 - std: 4.015669765067287e-05
+ * min 0.00018572836415842175, max: 0.0010219389805570245
+validation split name: 1
+ *  Val Acc 96.750, time 0.63
+ * Lower 0.001 Val Acc 96.750, time 0.63
+ * Lower 0.1 Val Acc 96.650, time 0.61
+ * Lower 0.2 Val Acc 96.550, time 0.62
+ * Lower 0.3 Val Acc 96.550, time 0.63
+ * Lower 0.4 Val Acc 96.550, time 0.64
+ * Lower 0.5 Val Acc 96.500, time 0.64
+ * Lower 0.6 Val Acc 96.400, time 0.62
+ * Lower 0.7 Val Acc 96.300, time 0.62
+ * Lower 0.8 Val Acc 96.150, time 0.62
+ * Lower 0.9 Val Acc 96.150, time 0.63
+ * Lower 1 Val Acc 96.100, time 0.61
+ * Upper 0.001 Val Acc 96.750, time 0.64
+ * Upper 0.1 Val Acc 96.650, time 0.68
+ * Upper 0.2 Val Acc 96.550, time 0.67
+ * Upper 0.3 Val Acc 96.550, time 0.61
+ * Upper 0.4 Val Acc 96.550, time 0.63
+ * Upper 0.5 Val Acc 96.500, time 0.63
+ * Upper 0.6 Val Acc 96.400, time 0.65
+ * Upper 0.7 Val Acc 96.300, time 0.64
+ * Upper 0.8 Val Acc 96.150, time 0.64
+ * Upper 0.9 Val Acc 96.150, time 0.63
+ * Upper 1 Val Acc 96.100, time 0.63
+====================== 2 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 65.310, Loss 0.629
+ * , robust loss: 0.192 robust error: 0.07000000
+ *  Val Acc 65.100, time 0.64
+Epoch:1
+LR: 0.001
+ * Train Acc 67.730, Loss 0.566
+ * , robust loss: 0.046 robust error: 0.01000000
+ *  Val Acc 65.550, time 0.64
+Epoch:2
+LR: 0.001
+ * Train Acc 67.470, Loss 0.534
+ * , robust loss: 0.047 robust error: 0.02000000
+ *  Val Acc 64.250, time 0.64
+Epoch:3
+LR: 0.001
+ * Train Acc 67.790, Loss 0.499
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.400, time 0.61
+Epoch:4
+LR: 0.001
+ * Train Acc 67.400, Loss 0.470
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.050, time 0.61
+Epoch:5
+LR: 0.001
+ * Train Acc 68.130, Loss 0.436
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.800, time 0.64
+Epoch:6
+LR: 0.001
+ * Train Acc 67.880, Loss 0.408
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.150, time 0.59
+Epoch:7
+LR: 0.001
+ * Train Acc 67.690, Loss 0.377
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.000, time 0.67
+Epoch:8
+LR: 0.001
+ * Train Acc 67.640, Loss 0.348
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.500, time 0.61
+Epoch:9
+LR: 0.001
+ * Train Acc 67.530, Loss 0.317
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.000, time 0.59
+Epoch:10
+LR: 0.001
+ * Train Acc 67.170, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.650, time 0.61
+Epoch:11
+LR: 0.001
+ * Train Acc 68.160, Loss 0.299
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.700, time 0.63
+Epoch:12
+LR: 0.001
+ * Train Acc 67.580, Loss 0.301
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.100, time 0.63
+Epoch:13
+LR: 0.001
+ * Train Acc 67.480, Loss 0.301
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.650, time 0.60
+Epoch:14
+LR: 0.001
+ * Train Acc 67.570, Loss 0.299
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.200, time 0.62
+Epoch:15
+LR: 0.001
+ * Train Acc 67.790, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.800, time 0.64
+Epoch:16
+LR: 0.001
+ * Train Acc 68.370, Loss 0.300
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.200, time 0.60
+Epoch:17
+LR: 0.001
+ * Train Acc 67.420, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 67.200, time 0.64
+Epoch:18
+LR: 0.001
+ * Train Acc 67.940, Loss 0.301
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.400, time 0.63
+Epoch:19
+LR: 0.001
+ * Train Acc 67.710, Loss 0.300
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 67.500, time 0.62
+after batch eps: 0.09999999999999715, kappa: 0.5
+sum: 0.5217151641845703 - mean: 0.0006038370192982256 - std: 0.00017079125973396003
+ * min 0.0003514876589179039, max: 0.0009665064280852675
+sum: 17.922958374023438 - mean: 0.0019447654485702515 - std: 0.0008161289733834565
+ * min 0.0008031043689697981, max: 0.0042999922297894955
+sum: 5.027551651000977 - mean: 0.0002727621467784047 - std: 6.012657831888646e-05
+ * min 0.00010886255040531978, max: 0.0005395052721723914
+sum: 14.885722160339355 - mean: 0.0004038010665681213 - std: 4.5650769607163966e-05
+ * min 0.000131096167024225, max: 0.0007807788788340986
+sum: 67.65196990966797 - mean: 0.0009175885934382677 - std: 9.551974653732032e-05
+ * min 0.00043954362627118826, max: 0.0017438468057662249
+sum: 194.24868774414062 - mean: 0.00131733319722116 - std: 6.075955752748996e-05
+ * min 0.0006993632996454835, max: 0.002250861609354615
+sum: 252.63133239746094 - mean: 0.001713265897706151 - std: 6.560732435900718e-05
+ * min 0.0006484019104391336, max: 0.00285636680200696
+sum: 4.535837173461914 - mean: 5.536910521186655e-06 - std: 6.480239678197108e-10
+ * min 5.50809818378184e-06, max: 5.53971904082573e-06
+sum: 0.20000000298023224 - mean: 0.0003906250058207661 - std: 3.8949743611738086e-05
+ * min 0.0002849591546691954, max: 0.000558822532184422
+validation split name: 1
+ *  Val Acc 95.700, time 0.61
+ * Lower 0.001 Val Acc 95.700, time 0.63
+ * Lower 0.1 Val Acc 95.500, time 0.60
+ * Lower 0.2 Val Acc 95.500, time 0.60
+ * Lower 0.3 Val Acc 95.550, time 0.62
+ * Lower 0.4 Val Acc 95.450, time 0.63
+ * Lower 0.5 Val Acc 95.200, time 0.63
+ * Lower 0.6 Val Acc 95.150, time 0.63
+ * Lower 0.7 Val Acc 94.950, time 0.61
+ * Lower 0.8 Val Acc 94.700, time 0.61
+ * Lower 0.9 Val Acc 94.650, time 0.60
+ * Lower 1 Val Acc 94.700, time 0.61
+ * Upper 0.001 Val Acc 95.700, time 0.60
+ * Upper 0.1 Val Acc 95.500, time 0.61
+ * Upper 0.2 Val Acc 95.500, time 0.59
+ * Upper 0.3 Val Acc 95.550, time 0.60
+ * Upper 0.4 Val Acc 95.450, time 0.60
+ * Upper 0.5 Val Acc 95.200, time 0.64
+ * Upper 0.6 Val Acc 95.150, time 0.64
+ * Upper 0.7 Val Acc 94.950, time 0.60
+ * Upper 0.8 Val Acc 94.700, time 0.64
+ * Upper 0.9 Val Acc 94.650, time 0.61
+ * Upper 1 Val Acc 94.700, time 0.61
+validation split name: 2
+ *  Val Acc 67.500, time 0.60
+ * Lower 0.001 Val Acc 67.500, time 0.60
+ * Lower 0.1 Val Acc 67.700, time 0.60
+ * Lower 0.2 Val Acc 67.600, time 0.61
+ * Lower 0.3 Val Acc 67.700, time 0.66
+ * Lower 0.4 Val Acc 67.800, time 0.61
+ * Lower 0.5 Val Acc 67.700, time 0.62
+ * Lower 0.6 Val Acc 67.550, time 0.62
+ * Lower 0.7 Val Acc 67.650, time 0.62
+ * Lower 0.8 Val Acc 67.950, time 0.64
+ * Lower 0.9 Val Acc 67.950, time 0.64
+ * Lower 1 Val Acc 68.050, time 0.60
+ * Upper 0.001 Val Acc 67.500, time 0.61
+ * Upper 0.1 Val Acc 67.700, time 0.60
+ * Upper 0.2 Val Acc 67.600, time 0.61
+ * Upper 0.3 Val Acc 67.700, time 0.63
+ * Upper 0.4 Val Acc 67.800, time 0.60
+ * Upper 0.5 Val Acc 67.700, time 0.60
+ * Upper 0.6 Val Acc 67.550, time 0.61
+ * Upper 0.7 Val Acc 67.650, time 0.60
+ * Upper 0.8 Val Acc 67.950, time 0.60
+ * Upper 0.9 Val Acc 67.950, time 0.61
+ * Upper 1 Val Acc 68.050, time 0.62
+====================== 3 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 59.590, Loss 0.648
+ * , robust loss: 0.105 robust error: 0.03000000
+ *  Val Acc 59.650, time 0.60
+Epoch:1
+LR: 0.001
+ * Train Acc 65.720, Loss 0.577
+ * , robust loss: 0.003 robust error: 0.00000000
+ *  Val Acc 63.300, time 0.61
+Epoch:2
+LR: 0.001
+ * Train Acc 66.830, Loss 0.543
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.150, time 0.63
+Epoch:3
+LR: 0.001
+ * Train Acc 66.550, Loss 0.509
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.500, time 0.63
+Epoch:4
+LR: 0.001
+ * Train Acc 66.940, Loss 0.476
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 63.850, time 0.64
+Epoch:5
+LR: 0.001
+ * Train Acc 67.080, Loss 0.443
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.450, time 0.60
+Epoch:6
+LR: 0.001
+ * Train Acc 66.050, Loss 0.414
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.300, time 0.62
+Epoch:7
+LR: 0.001
+ * Train Acc 67.360, Loss 0.381
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 63.900, time 0.61
+Epoch:8
+LR: 0.001
+ * Train Acc 67.730, Loss 0.352
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.150, time 0.63
+Epoch:9
+LR: 0.001
+ * Train Acc 67.380, Loss 0.320
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.000, time 0.61
+Epoch:10
+LR: 0.001
+ * Train Acc 67.110, Loss 0.305
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.400, time 0.59
+Epoch:11
+LR: 0.001
+ * Train Acc 67.030, Loss 0.308
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 63.900, time 0.61
+Epoch:12
+LR: 0.001
+ * Train Acc 68.140, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.100, time 0.59
+Epoch:13
+LR: 0.001
+ * Train Acc 67.710, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.750, time 0.59
+Epoch:14
+LR: 0.001
+ * Train Acc 67.680, Loss 0.301
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.050, time 0.60
+Epoch:15
+LR: 0.001
+ * Train Acc 67.170, Loss 0.306
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.600, time 0.61
+Epoch:16
+LR: 0.001
+ * Train Acc 67.450, Loss 0.302
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 65.550, time 0.62
+Epoch:17
+LR: 0.001
+ * Train Acc 66.810, Loss 0.305
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 62.950, time 0.64
+Epoch:18
+LR: 0.001
+ * Train Acc 67.810, Loss 0.303
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 64.850, time 0.63
+Epoch:19
+LR: 0.001
+ * Train Acc 67.560, Loss 0.303
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 66.250, time 0.62
+after batch eps: 0.07999999999999742, kappa: 0.5
+sum: 0.40310952067375183 - mean: 0.00046656193444505334 - std: 0.00012485001934692264
+ * min 0.0002917197998613119, max: 0.0007508733542636037
+sum: 13.891557693481445 - mean: 0.0015073304530233145 - std: 0.0005358511698432267
+ * min 0.0006846482865512371, max: 0.0028496638406068087
+sum: 2.640679359436035 - mean: 0.00014326602104119956 - std: 2.498474896128755e-05
+ * min 7.521489897044376e-05, max: 0.0002275357546750456
+sum: 7.7873125076293945 - mean: 0.00021124437625985593 - std: 1.7883126929518767e-05
+ * min 0.00011904974235221744, max: 0.00031277447124011815
+sum: 35.636199951171875 - mean: 0.000483346899272874 - std: 3.711197859956883e-05
+ * min 0.0002887585142161697, max: 0.0007594990893267095
+sum: 125.12275695800781 - mean: 0.0008485430153086782 - std: 3.168410694343038e-05
+ * min 0.0005344515084289014, max: 0.001304775127209723
+sum: 216.2882537841797 - mean: 0.0014667985960841179 - std: 4.981691745342687e-05
+ * min 0.0008272440754808486, max: 0.00210374454036355
+sum: 4.332980632781982 - mean: 5.289282853482291e-06 - std: 6.167730215445033e-10
+ * min 5.261103069642559e-06, max: 5.291354227665579e-06
+sum: 0.1599999964237213 - mean: 0.0003124999930150807 - std: 2.9810453270329162e-05
+ * min 0.00022638410155195743, max: 0.00045033148489892483
+validation split name: 1
+ *  Val Acc 96.050, time 0.61
+ * Lower 0.001 Val Acc 96.050, time 0.61
+ * Lower 0.1 Val Acc 96.000, time 0.63
+ * Lower 0.2 Val Acc 95.900, time 0.63
+ * Lower 0.3 Val Acc 95.900, time 0.64
+ * Lower 0.4 Val Acc 95.850, time 0.64
+ * Lower 0.5 Val Acc 95.800, time 0.60
+ * Lower 0.6 Val Acc 95.850, time 0.59
+ * Lower 0.7 Val Acc 95.800, time 0.61
+ * Lower 0.8 Val Acc 95.750, time 0.61
+ * Lower 0.9 Val Acc 95.700, time 0.63
+ * Lower 1 Val Acc 95.700, time 0.63
+ * Upper 0.001 Val Acc 96.050, time 0.64
+ * Upper 0.1 Val Acc 96.000, time 0.63
+ * Upper 0.2 Val Acc 95.900, time 0.62
+ * Upper 0.3 Val Acc 95.900, time 0.61
+ * Upper 0.4 Val Acc 95.850, time 0.62
+ * Upper 0.5 Val Acc 95.800, time 0.64
+ * Upper 0.6 Val Acc 95.850, time 0.62
+ * Upper 0.7 Val Acc 95.800, time 0.62
+ * Upper 0.8 Val Acc 95.750, time 0.63
+ * Upper 0.9 Val Acc 95.700, time 0.66
+ * Upper 1 Val Acc 95.700, time 0.63
+validation split name: 2
+ *  Val Acc 67.700, time 0.63
+ * Lower 0.001 Val Acc 67.700, time 0.64
+ * Lower 0.1 Val Acc 67.600, time 0.62
+ * Lower 0.2 Val Acc 67.550, time 0.62
+ * Lower 0.3 Val Acc 67.200, time 0.64
+ * Lower 0.4 Val Acc 67.400, time 0.62
+ * Lower 0.5 Val Acc 67.450, time 0.64
+ * Lower 0.6 Val Acc 67.350, time 0.66
+ * Lower 0.7 Val Acc 67.300, time 0.65
+ * Lower 0.8 Val Acc 67.300, time 0.62
+ * Lower 0.9 Val Acc 67.450, time 0.62
+ * Lower 1 Val Acc 67.250, time 0.62
+ * Upper 0.001 Val Acc 67.700, time 0.64
+ * Upper 0.1 Val Acc 67.600, time 0.64
+ * Upper 0.2 Val Acc 67.550, time 0.61
+ * Upper 0.3 Val Acc 67.200, time 0.62
+ * Upper 0.4 Val Acc 67.400, time 0.64
+ * Upper 0.5 Val Acc 67.450, time 0.63
+ * Upper 0.6 Val Acc 67.350, time 0.63
+ * Upper 0.7 Val Acc 67.300, time 0.62
+ * Upper 0.8 Val Acc 67.300, time 0.64
+ * Upper 0.9 Val Acc 67.450, time 0.60
+ * Upper 1 Val Acc 67.250, time 0.61
+validation split name: 3
+ *  Val Acc 66.250, time 0.63
+ * Lower 0.001 Val Acc 66.250, time 0.65
+ * Lower 0.1 Val Acc 66.150, time 0.63
+ * Lower 0.2 Val Acc 66.000, time 0.63
+ * Lower 0.3 Val Acc 66.000, time 0.61
+ * Lower 0.4 Val Acc 65.850, time 0.59
+ * Lower 0.5 Val Acc 65.950, time 0.59
+ * Lower 0.6 Val Acc 65.750, time 0.60
+ * Lower 0.7 Val Acc 65.700, time 0.62
+ * Lower 0.8 Val Acc 65.750, time 0.65
+ * Lower 0.9 Val Acc 65.600, time 0.63
+ * Lower 1 Val Acc 65.600, time 0.62
+ * Upper 0.001 Val Acc 66.250, time 0.70
+ * Upper 0.1 Val Acc 66.150, time 0.63
+ * Upper 0.2 Val Acc 66.000, time 0.62
+ * Upper 0.3 Val Acc 66.000, time 0.63
+ * Upper 0.4 Val Acc 65.850, time 0.64
+ * Upper 0.5 Val Acc 65.950, time 0.64
+ * Upper 0.6 Val Acc 65.750, time 0.63
+ * Upper 0.7 Val Acc 65.700, time 0.64
+ * Upper 0.8 Val Acc 65.750, time 0.63
+ * Upper 0.9 Val Acc 65.600, time 0.62
+ * Upper 1 Val Acc 65.600, time 0.61
+====================== 4 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 63.530, Loss 0.613
+ * , robust loss: 0.010 robust error: 0.00000000
+ *  Val Acc 72.300, time 0.61
+Epoch:1
+LR: 0.001
+ * Train Acc 69.230, Loss 0.539
+ * , robust loss: 0.009 robust error: 0.01000000
+ *  Val Acc 72.700, time 0.63
+Epoch:2
+LR: 0.001
+ * Train Acc 70.440, Loss 0.499
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.800, time 0.60
+Epoch:3
+LR: 0.001
+ * Train Acc 70.610, Loss 0.474
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 73.100, time 0.61
+Epoch:4
+LR: 0.001
+ * Train Acc 70.350, Loss 0.443
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.100, time 0.61
+Epoch:5
+LR: 0.001
+ * Train Acc 70.010, Loss 0.417
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.850, time 0.61
+Epoch:6
+LR: 0.001
+ * Train Acc 69.820, Loss 0.388
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.150, time 0.62
+Epoch:7
+LR: 0.001
+ * Train Acc 71.070, Loss 0.352
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.300, time 0.61
+Epoch:8
+LR: 0.001
+ * Train Acc 70.950, Loss 0.326
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 74.200, time 0.63
+Epoch:9
+LR: 0.001
+ * Train Acc 70.330, Loss 0.299
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 73.750, time 0.61
+Epoch:10
+LR: 0.001
+ * Train Acc 70.310, Loss 0.285
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.700, time 0.62
+Epoch:11
+LR: 0.001
+ * Train Acc 70.710, Loss 0.283
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.250, time 0.64
+Epoch:12
+LR: 0.001
+ * Train Acc 70.640, Loss 0.283
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.250, time 0.64
+Epoch:13
+LR: 0.001
+ * Train Acc 70.860, Loss 0.281
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.700, time 0.63
+Epoch:14
+LR: 0.001
+ * Train Acc 70.810, Loss 0.281
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 73.150, time 0.60
+Epoch:15
+LR: 0.001
+ * Train Acc 71.220, Loss 0.282
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.200, time 0.62
+Epoch:16
+LR: 0.001
+ * Train Acc 70.500, Loss 0.282
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 74.500, time 0.62
+Epoch:17
+LR: 0.001
+ * Train Acc 70.000, Loss 0.284
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 70.750, time 0.60
+Epoch:18
+LR: 0.001
+ * Train Acc 70.640, Loss 0.281
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.950, time 0.63
+Epoch:19
+LR: 0.001
+ * Train Acc 70.680, Loss 0.282
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.450, time 0.62
+after batch eps: 0.04999999999999857, kappa: 0.5
+sum: 0.25539740920066833 - mean: 0.00029559884569607675 - std: 6.091035538702272e-05
+ * min 0.00020692389807663858, max: 0.0004170841129962355
+sum: 8.953768730163574 - mean: 0.0009715461055748165 - std: 0.0002886859292630106
+ * min 0.0005144167225807905, max: 0.001711760414764285
+sum: 1.2365431785583496 - mean: 6.708675937261432e-05 - std: 9.686288649390917e-06
+ * min 3.909286897396669e-05, max: 9.711664461065084e-05
+sum: 3.600233554840088 - mean: 9.766258881427348e-05 - std: 6.552072591148317e-06
+ * min 6.568671960849315e-05, max: 0.00012946299102623016
+sum: 16.214519500732422 - mean: 0.00021992350229993463 - std: 1.204895306727849e-05
+ * min 0.00015343475388363004, max: 0.00029821699718013406
+sum: 60.601200103759766 - mean: 0.00041097818757407367 - std: 1.000296924758004e-05
+ * min 0.0002931184135377407, max: 0.0005406186683103442
+sum: 129.12783813476562 - mean: 0.0008757042232900858 - std: 2.408080945315305e-05
+ * min 0.000624228676315397, max: 0.0011490904726088047
+sum: 3.0141546726226807 - mean: 3.679387873489759e-06 - std: 3.8119798984048714e-10
+ * min 3.657463821582496e-06, max: 3.681640009745024e-06
+sum: 0.09999999403953552 - mean: 0.00019531248835846782 - std: 1.4098201972956304e-05
+ * min 0.00014637813728768378, max: 0.0002649570524226874
+validation split name: 1
+ *  Val Acc 96.150, time 0.63
+ * Lower 0.001 Val Acc 96.150, time 0.63
+ * Lower 0.1 Val Acc 96.100, time 0.60
+ * Lower 0.2 Val Acc 96.050, time 0.63
+ * Lower 0.3 Val Acc 96.050, time 0.62
+ * Lower 0.4 Val Acc 96.100, time 0.61
+ * Lower 0.5 Val Acc 96.000, time 0.63
+ * Lower 0.6 Val Acc 96.000, time 0.66
+ * Lower 0.7 Val Acc 96.050, time 0.62
+ * Lower 0.8 Val Acc 96.050, time 0.62
+ * Lower 0.9 Val Acc 96.150, time 0.62
+ * Lower 1 Val Acc 96.050, time 0.61
+ * Upper 0.001 Val Acc 96.150, time 0.65
+ * Upper 0.1 Val Acc 96.100, time 0.64
+ * Upper 0.2 Val Acc 96.050, time 0.60
+ * Upper 0.3 Val Acc 96.050, time 0.62
+ * Upper 0.4 Val Acc 96.100, time 0.63
+ * Upper 0.5 Val Acc 96.000, time 0.62
+ * Upper 0.6 Val Acc 96.000, time 0.60
+ * Upper 0.7 Val Acc 96.050, time 0.61
+ * Upper 0.8 Val Acc 96.050, time 0.62
+ * Upper 0.9 Val Acc 96.150, time 0.63
+ * Upper 1 Val Acc 96.050, time 0.61
+validation split name: 2
+ *  Val Acc 68.000, time 0.62
+ * Lower 0.001 Val Acc 68.000, time 0.63
+ * Lower 0.1 Val Acc 67.700, time 0.69
+ * Lower 0.2 Val Acc 67.650, time 0.64
+ * Lower 0.3 Val Acc 67.700, time 0.65
+ * Lower 0.4 Val Acc 67.700, time 0.62
+ * Lower 0.5 Val Acc 67.650, time 0.62
+ * Lower 0.6 Val Acc 67.750, time 0.61
+ * Lower 0.7 Val Acc 67.550, time 0.61
+ * Lower 0.8 Val Acc 67.500, time 0.64
+ * Lower 0.9 Val Acc 67.500, time 0.65
+ * Lower 1 Val Acc 67.600, time 0.63
+ * Upper 0.001 Val Acc 68.000, time 0.70
+ * Upper 0.1 Val Acc 67.700, time 0.62
+ * Upper 0.2 Val Acc 67.650, time 0.61
+ * Upper 0.3 Val Acc 67.700, time 0.62
+ * Upper 0.4 Val Acc 67.700, time 0.64
+ * Upper 0.5 Val Acc 67.650, time 0.62
+ * Upper 0.6 Val Acc 67.750, time 0.64
+ * Upper 0.7 Val Acc 67.550, time 0.64
+ * Upper 0.8 Val Acc 67.500, time 0.64
+ * Upper 0.9 Val Acc 67.500, time 0.60
+ * Upper 1 Val Acc 67.600, time 0.61
+validation split name: 3
+ *  Val Acc 63.900, time 0.62
+ * Lower 0.001 Val Acc 63.900, time 0.60
+ * Lower 0.1 Val Acc 63.800, time 0.64
+ * Lower 0.2 Val Acc 63.800, time 0.63
+ * Lower 0.3 Val Acc 63.900, time 0.64
+ * Lower 0.4 Val Acc 63.800, time 0.59
+ * Lower 0.5 Val Acc 63.900, time 0.63
+ * Lower 0.6 Val Acc 63.850, time 0.61
+ * Lower 0.7 Val Acc 63.850, time 0.61
+ * Lower 0.8 Val Acc 63.800, time 0.62
+ * Lower 0.9 Val Acc 63.700, time 0.62
+ * Lower 1 Val Acc 63.600, time 0.64
+ * Upper 0.001 Val Acc 63.900, time 0.62
+ * Upper 0.1 Val Acc 63.800, time 0.62
+ * Upper 0.2 Val Acc 63.800, time 0.60
+ * Upper 0.3 Val Acc 63.900, time 0.64
+ * Upper 0.4 Val Acc 63.800, time 0.67
+ * Upper 0.5 Val Acc 63.900, time 0.64
+ * Upper 0.6 Val Acc 63.850, time 0.61
+ * Upper 0.7 Val Acc 63.850, time 0.62
+ * Upper 0.8 Val Acc 63.800, time 0.63
+ * Upper 0.9 Val Acc 63.700, time 0.66
+ * Upper 1 Val Acc 63.600, time 0.65
+validation split name: 4
+ *  Val Acc 72.450, time 0.63
+ * Lower 0.001 Val Acc 72.450, time 0.63
+ * Lower 0.1 Val Acc 72.400, time 0.62
+ * Lower 0.2 Val Acc 72.350, time 0.63
+ * Lower 0.3 Val Acc 72.300, time 0.62
+ * Lower 0.4 Val Acc 72.300, time 0.63
+ * Lower 0.5 Val Acc 72.350, time 0.61
+ * Lower 0.6 Val Acc 72.250, time 0.62
+ * Lower 0.7 Val Acc 72.300, time 0.62
+ * Lower 0.8 Val Acc 72.200, time 0.62
+ * Lower 0.9 Val Acc 72.200, time 0.63
+ * Lower 1 Val Acc 72.250, time 0.63
+ * Upper 0.001 Val Acc 72.450, time 0.63
+ * Upper 0.1 Val Acc 72.400, time 0.64
+ * Upper 0.2 Val Acc 72.350, time 0.64
+ * Upper 0.3 Val Acc 72.300, time 0.60
+ * Upper 0.4 Val Acc 72.300, time 0.65
+ * Upper 0.5 Val Acc 72.350, time 0.63
+ * Upper 0.6 Val Acc 72.250, time 0.59
+ * Upper 0.7 Val Acc 72.300, time 0.63
+ * Upper 0.8 Val Acc 72.200, time 0.63
+ * Upper 0.9 Val Acc 72.200, time 0.66
+ * Upper 1 Val Acc 72.250, time 0.61
+====================== 5 =======================
+before batch eps: 0, kappa: 1
+Epoch:0
+LR: 0.001
+ * Train Acc 70.770, Loss 0.565
+ * , robust loss: 0.326 robust error: 0.12000000
+ *  Val Acc 68.500, time 0.63
+Epoch:1
+LR: 0.001
+ * Train Acc 78.900, Loss 0.417
+ * , robust loss: 0.051 robust error: 0.02000000
+ *  Val Acc 72.900, time 0.62
+Epoch:2
+LR: 0.001
+ * Train Acc 79.110, Loss 0.385
+ * , robust loss: 0.004 robust error: 0.00000000
+ *  Val Acc 70.300, time 0.61
+Epoch:3
+LR: 0.001
+ * Train Acc 79.390, Loss 0.358
+ * , robust loss: 0.001 robust error: 0.00000000
+ *  Val Acc 72.450, time 0.62
+Epoch:4
+LR: 0.001
+ * Train Acc 79.440, Loss 0.338
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.850, time 0.59
+Epoch:5
+LR: 0.001
+ * Train Acc 79.500, Loss 0.315
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.950, time 0.65
+Epoch:6
+LR: 0.001
+ * Train Acc 79.450, Loss 0.294
+ * , robust loss: 0.015 robust error: 0.01000000
+ *  Val Acc 73.550, time 0.64
+Epoch:7
+LR: 0.001
+ * Train Acc 79.570, Loss 0.270
+ * , robust loss: 0.001 robust error: 0.00000000
+ *  Val Acc 72.450, time 0.62
+Epoch:8
+LR: 0.001
+ * Train Acc 79.880, Loss 0.247
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.900, time 0.63
+Epoch:9
+LR: 0.001
+ * Train Acc 79.960, Loss 0.227
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 70.450, time 0.61
+Epoch:10
+LR: 0.001
+ * Train Acc 80.060, Loss 0.216
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.950, time 0.62
+Epoch:11
+LR: 0.001
+ * Train Acc 79.260, Loss 0.218
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.750, time 0.60
+Epoch:12
+LR: 0.001
+ * Train Acc 79.440, Loss 0.215
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.100, time 0.64
+Epoch:13
+LR: 0.001
+ * Train Acc 79.940, Loss 0.214
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.650, time 0.66
+Epoch:14
+LR: 0.001
+ * Train Acc 80.220, Loss 0.214
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.950, time 0.64
+Epoch:15
+LR: 0.001
+ * Train Acc 79.850, Loss 0.216
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.700, time 0.62
+Epoch:16
+LR: 0.001
+ * Train Acc 79.940, Loss 0.214
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.650, time 0.61
+Epoch:17
+LR: 0.001
+ * Train Acc 79.710, Loss 0.217
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 71.600, time 0.60
+Epoch:18
+LR: 0.001
+ * Train Acc 80.300, Loss 0.213
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 69.800, time 0.62
+Epoch:19
+LR: 0.001
+ * Train Acc 79.970, Loss 0.215
+ * , robust loss: 0.000 robust error: 0.00000000
+ *  Val Acc 72.300, time 0.62
+after batch eps: 0.009999999999999678, kappa: 0.5
+sum: 0.06555360555648804 - mean: 7.587223080918193e-05 - std: 1.753942524373997e-05
+ * min 4.534241816145368e-05, max: 0.00010453112190589309
+sum: 2.1047606468200684 - mean: 0.00022838114819023758 - std: 6.626165850320831e-05
+ * min 0.00011347817780915648, max: 0.0004885862581431866
+sum: 0.2307521551847458 - mean: 1.2519105439423583e-05 - std: 2.0020095234940527e-06
+ * min 5.561555553867947e-06, max: 2.665058127604425e-05
+sum: 0.6575473546981812 - mean: 1.783711377356667e-05 - std: 1.35882623908401e-06
+ * min 8.38469532027375e-06, max: 3.3265256206505e-05
+sum: 2.967654228210449 - mean: 4.025138696306385e-05 - std: 1.8803688135449192e-06
+ * min 2.5948520487872884e-05, max: 5.847165084560402e-05
+sum: 10.632277488708496 - mean: 7.210474723251536e-05 - std: 1.6341464288416319e-06
+ * min 5.268502718536183e-05, max: 9.501347813056782e-05
+sum: 23.276872634887695 - mean: 0.000157856396981515 - std: 2.9966372494527604e-06
+ * min 0.00011525880836416036, max: 0.00020259819575585425
+sum: 0.5830531120300293 - mean: 7.117347422536113e-07 - std: 4.408738998873396e-11
+ * min 7.085280913088354e-07, max: 7.119605243133265e-07
+sum: 0.020000001415610313 - mean: 3.9062502764863893e-05 - std: 6.525404387502931e-06
+ * min 2.06539571081521e-05, max: 8.483556302962825e-05
+validation split name: 1
+ *  Val Acc 97.000, time 0.61
+ * Lower 0.001 Val Acc 97.000, time 0.61
+ * Lower 0.1 Val Acc 97.000, time 0.66
+ * Lower 0.2 Val Acc 97.000, time 0.62
+ * Lower 0.3 Val Acc 97.000, time 0.61
+ * Lower 0.4 Val Acc 97.000, time 0.62
+ * Lower 0.5 Val Acc 96.950, time 0.61
+ * Lower 0.6 Val Acc 96.950, time 0.65
+ * Lower 0.7 Val Acc 96.950, time 0.64
+ * Lower 0.8 Val Acc 96.900, time 0.61
+ * Lower 0.9 Val Acc 96.850, time 0.62
+ * Lower 1 Val Acc 96.800, time 0.62
+ * Upper 0.001 Val Acc 97.000, time 0.61
+ * Upper 0.1 Val Acc 97.000, time 0.63
+ * Upper 0.2 Val Acc 97.000, time 0.64
+ * Upper 0.3 Val Acc 97.000, time 0.63
+ * Upper 0.4 Val Acc 97.000, time 0.62
+ * Upper 0.5 Val Acc 96.950, time 0.65
+ * Upper 0.6 Val Acc 96.950, time 0.66
+ * Upper 0.7 Val Acc 96.950, time 0.60
+ * Upper 0.8 Val Acc 96.900, time 0.61
+ * Upper 0.9 Val Acc 96.850, time 0.68
+ * Upper 1 Val Acc 96.800, time 0.72
+validation split name: 2
+ *  Val Acc 67.850, time 0.68
+ * Lower 0.001 Val Acc 67.850, time 0.59
+ * Lower 0.1 Val Acc 67.800, time 0.61
+ * Lower 0.2 Val Acc 67.800, time 0.61
+ * Lower 0.3 Val Acc 67.900, time 0.60
+ * Lower 0.4 Val Acc 67.850, time 0.60
+ * Lower 0.5 Val Acc 67.850, time 0.60
+ * Lower 0.6 Val Acc 67.800, time 0.62
+ * Lower 0.7 Val Acc 67.900, time 0.60
+ * Lower 0.8 Val Acc 67.900, time 0.60
+ * Lower 0.9 Val Acc 67.900, time 0.60
+ * Lower 1 Val Acc 67.900, time 0.63
+ * Upper 0.001 Val Acc 67.850, time 0.61
+ * Upper 0.1 Val Acc 67.800, time 0.61
+ * Upper 0.2 Val Acc 67.800, time 0.61
+ * Upper 0.3 Val Acc 67.900, time 0.70
+ * Upper 0.4 Val Acc 67.850, time 0.60
+ * Upper 0.5 Val Acc 67.850, time 0.61
+ * Upper 0.6 Val Acc 67.800, time 0.65
+ * Upper 0.7 Val Acc 67.900, time 0.63
+ * Upper 0.8 Val Acc 67.900, time 0.61
+ * Upper 0.9 Val Acc 67.900, time 0.62
+ * Upper 1 Val Acc 67.900, time 0.62
+validation split name: 3
+ *  Val Acc 62.550, time 0.63
+ * Lower 0.001 Val Acc 62.550, time 0.63
+ * Lower 0.1 Val Acc 62.500, time 0.62
+ * Lower 0.2 Val Acc 62.550, time 0.65
+ * Lower 0.3 Val Acc 62.500, time 0.64
+ * Lower 0.4 Val Acc 62.500, time 0.61
+ * Lower 0.5 Val Acc 62.500, time 0.63
+ * Lower 0.6 Val Acc 62.500, time 0.63
+ * Lower 0.7 Val Acc 62.550, time 0.64
+ * Lower 0.8 Val Acc 62.400, time 0.62
+ * Lower 0.9 Val Acc 62.400, time 0.59
+ * Lower 1 Val Acc 62.350, time 0.59
+ * Upper 0.001 Val Acc 62.550, time 0.63
+ * Upper 0.1 Val Acc 62.500, time 0.61
+ * Upper 0.2 Val Acc 62.550, time 0.63
+ * Upper 0.3 Val Acc 62.500, time 0.62
+ * Upper 0.4 Val Acc 62.500, time 0.64
+ * Upper 0.5 Val Acc 62.500, time 0.65
+ * Upper 0.6 Val Acc 62.500, time 0.66
+ * Upper 0.7 Val Acc 62.550, time 0.67
+ * Upper 0.8 Val Acc 62.400, time 0.62
+ * Upper 0.9 Val Acc 62.400, time 0.62
+ * Upper 1 Val Acc 62.350, time 0.66
+validation split name: 4
+ *  Val Acc 71.950, time 0.61
+ * Lower 0.001 Val Acc 71.950, time 0.60
+ * Lower 0.1 Val Acc 72.000, time 0.60
+ * Lower 0.2 Val Acc 72.000, time 0.65
+ * Lower 0.3 Val Acc 72.000, time 0.64
+ * Lower 0.4 Val Acc 72.050, time 0.63
+ * Lower 0.5 Val Acc 72.050, time 0.65
+ * Lower 0.6 Val Acc 72.100, time 0.62
+ * Lower 0.7 Val Acc 72.150, time 0.62
+ * Lower 0.8 Val Acc 72.150, time 0.60
+ * Lower 0.9 Val Acc 72.200, time 0.62
+ * Lower 1 Val Acc 72.200, time 0.62
+ * Upper 0.001 Val Acc 71.950, time 0.61
+ * Upper 0.1 Val Acc 72.000, time 0.63
+ * Upper 0.2 Val Acc 72.000, time 0.61
+ * Upper 0.3 Val Acc 72.000, time 0.59
+ * Upper 0.4 Val Acc 72.050, time 0.62
+ * Upper 0.5 Val Acc 72.050, time 0.62
+ * Upper 0.6 Val Acc 72.100, time 0.62
+ * Upper 0.7 Val Acc 72.150, time 0.62
+ * Upper 0.8 Val Acc 72.150, time 0.61
+ * Upper 0.9 Val Acc 72.200, time 0.65
+ * Upper 1 Val Acc 72.200, time 0.61
+validation split name: 5
+ *  Val Acc 72.300, time 0.61
+ * Lower 0.001 Val Acc 72.300, time 0.65
+ * Lower 0.1 Val Acc 72.150, time 0.62
+ * Lower 0.2 Val Acc 72.150, time 0.62
+ * Lower 0.3 Val Acc 72.150, time 0.63
+ * Lower 0.4 Val Acc 72.050, time 0.63
+ * Lower 0.5 Val Acc 72.000, time 0.66
+ * Lower 0.6 Val Acc 72.000, time 0.63
+ * Lower 0.7 Val Acc 72.000, time 0.62
+ * Lower 0.8 Val Acc 71.850, time 0.64
+ * Lower 0.9 Val Acc 71.800, time 0.61
+ * Lower 1 Val Acc 71.800, time 0.65
+ * Upper 0.001 Val Acc 72.300, time 0.60
+ * Upper 0.1 Val Acc 72.150, time 0.63
+ * Upper 0.2 Val Acc 72.150, time 0.64
+ * Upper 0.3 Val Acc 72.150, time 0.61
+ * Upper 0.4 Val Acc 72.050, time 0.63
+ * Upper 0.5 Val Acc 72.000, time 0.60
+ * Upper 0.6 Val Acc 72.000, time 0.60
+ * Upper 0.7 Val Acc 72.000, time 0.61
+ * Upper 0.8 Val Acc 71.850, time 0.60
+ * Upper 0.9 Val Acc 71.800, time 0.61
+ * Upper 1 Val Acc 71.800, time 0.60
+Task 1 average acc: 96.75
+Task 2 average acc: 81.6
+Task 3 average acc: 76.66666666666667
+Task 4 average acc: 75.125
+Task 5 average acc: 74.33
+===Summary of experiment repeats: 1 / 1 ===
+The regularization coefficient: 0.0
+The last avg acc of all repeats: [74.33]
+mean: 74.33 std: 0.0
+reg_coef: 0.0 mean: 74.33 std: 0.0
+* kappa decrease from 1 to 0.5 in [10.0, 10.0, 10.0, 10.0, 10.0] epoch
+* eps increase by [0.1, 0.1, 0.08, 0.05, 0.01] every [20.0, 20.0, 20.0, 20.0, 20.0] epoch
+* maximal eps: [1.0, 1.0, 1.0, 1.0, 1.0]
+* tasks were trained [20, 20, 20, 20, 20] epoch with clipping

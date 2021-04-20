@@ -73,17 +73,17 @@ class LinearInterval(nn.Linear):
 
     def calc_eps(self, r):
         exp = self.importance.exp()
-        self.eps = r * exp / exp.sum()
+        # self.eps = r * exp / exp.sum()
         self.eps = r * exp / exp.sum(dim=1)[:, None]
         # self.eps = r * exp / exp.sum(dim=0)[None, :]
 
     def rest_importance(self):
-        # pass
-        w1 = torch.abs(1 / self.eps)
+        pass
+        # w1 = torch.abs(1 / self.eps)
         # self.importance.data = w1 / w1.sum()
         # self.importance.data = w1 / w1.sum(dim=1)[:, None]
         # self.importance.data = w1 / w1.sum(dim=1)[:, None]
-        self.importance.data = torch.zeros(self.weight.size()).cuda()
+        # self.importance.data = torch.zeros(self.weight.size()).cuda()
         # self.importance.data = torch.randn(self.weight.size()).cuda()
 
     def forward(self, x):
@@ -117,7 +117,6 @@ class LinearInterval(nn.Linear):
 
         return torch.cat((middle, lower, upper), dim=1)
 
-
 class Conv2dInterval(nn.Conv2d):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1,
                  padding=0, dilation=1, groups=1, bias=False, input_layer=False):
@@ -133,11 +132,11 @@ class Conv2dInterval(nn.Conv2d):
         self.eps = r * exp / exp.sum(dim=-1).sum(dim=-1)[:, :, None, None]
 
     def rest_importance(self):
-        # pass
+        pass
         # w1 = torch.abs(1 / self.weight)
         # self.importance.data = w1 / w1.sum()
         # self.importance.data = w1 / w1.sum(dim=-1).sum(dim=-1)[:, :, None, None]
-        self.importance.data = torch.zeros(self.weight.size()).cuda()
+        # self.importance.data = torch.zeros(self.weight.size()).cuda()
         # self.importance.data = torch.randn(self.weight.size()).cuda()
 
     def forward(self, x):

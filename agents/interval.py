@@ -35,7 +35,7 @@ class IntervalNet(nn.Module):
         self.current_head = "All"
         self.current_task = 1
         self.schedule_stack = []
-        self.tb = SummaryWriter(log_dir=f"runs/", comment="run2")
+        self.tb = SummaryWriter(log_dir=f"runs/{self.config['dataset_name']}_experiment/")
         for s in self.config["schedule"][::-1]:
             self.schedule_stack.append(s)
 
@@ -281,48 +281,48 @@ class IntervalNet(nn.Module):
                 self.prev_eps[i] = block.eps.clone()
                 i += 1
 
-        # self.tb.add_histogram("input/weight", self.model.input.weight, self.current_task)
-        # self.tb.add_histogram("input/eps", self.model.input.eps, self.current_task)
-        # self.tb.add_histogram("input/importance", self.model.input.importance, self.current_task)
-        #
-        # self.tb.add_histogram("c1/0/weight", self.model.c1[0].weight, self.current_task)
-        # self.tb.add_histogram("c1/0/eps", self.model.c1[0].eps, self.current_task)
-        # self.tb.add_histogram("c1/0/importance", self.model.c1[0].importance, self.current_task)
-        #
-        # self.tb.add_histogram("c1/2/weight", self.model.c1[2].weight, self.current_task)
-        # self.tb.add_histogram("c1/2/eps", self.model.c1[2].eps, self.current_task)
-        # self.tb.add_histogram("c1/2/importance", self.model.c1[2].importance, self.current_task)
-        #
-        # self.tb.add_histogram("c2/0/weight", self.model.c2[0].weight, self.current_task)
-        # self.tb.add_histogram("c2/0/eps", self.model.c2[0].eps, self.current_task)
-        # self.tb.add_histogram("c2/0/importance", self.model.c2[0].importance, self.current_task)
-        #
-        # self.tb.add_histogram("c2/2/weight", self.model.c2[2].weight, self.current_task)
-        # self.tb.add_histogram("c2/2/eps", self.model.c2[2].eps, self.current_task)
-        # self.tb.add_histogram("c2/2/importance", self.model.c2[2].importance, self.current_task)
-        #
-        # self.tb.add_histogram("c3/0/weight", self.model.c3[0].weight, self.current_task)
-        # self.tb.add_histogram("c3/0/eps", self.model.c3[0].eps, self.current_task)
-        # self.tb.add_histogram("c3/0/importance", self.model.c3[0].importance, self.current_task)
-        #
-        # self.tb.add_histogram("c3/2/weight", self.model.c3[2].weight, self.current_task)
-        # self.tb.add_histogram("c3/2/eps", self.model.c3[2].eps, self.current_task)
-        # self.tb.add_histogram("c3/2/importance", self.model.c3[2].importance, self.current_task)
-        #
-        # self.tb.add_histogram('fc1/weight', self.model.fc1[0].weight, self.current_task)
-        # self.tb.add_histogram("fc1/eps", self.model.fc1[0].eps, self.current_task)
-        # self.tb.add_histogram("fc1/importance", self.model.fc1[0].importance, self.current_task)
+        self.tb.add_histogram("input/weight", self.model.input.weight, self.current_task)
+        self.tb.add_histogram("input/eps", self.model.input.eps, self.current_task)
+        self.tb.add_histogram("input/importance", self.model.input.importance, self.current_task)
+
+        self.tb.add_histogram("c1/0/weight", self.model.c1[0].weight, self.current_task)
+        self.tb.add_histogram("c1/0/eps", self.model.c1[0].eps, self.current_task)
+        self.tb.add_histogram("c1/0/importance", self.model.c1[0].importance, self.current_task)
+
+        self.tb.add_histogram("c1/2/weight", self.model.c1[2].weight, self.current_task)
+        self.tb.add_histogram("c1/2/eps", self.model.c1[2].eps, self.current_task)
+        self.tb.add_histogram("c1/2/importance", self.model.c1[2].importance, self.current_task)
+
+        self.tb.add_histogram("c2/0/weight", self.model.c2[0].weight, self.current_task)
+        self.tb.add_histogram("c2/0/eps", self.model.c2[0].eps, self.current_task)
+        self.tb.add_histogram("c2/0/importance", self.model.c2[0].importance, self.current_task)
+
+        self.tb.add_histogram("c2/2/weight", self.model.c2[2].weight, self.current_task)
+        self.tb.add_histogram("c2/2/eps", self.model.c2[2].eps, self.current_task)
+        self.tb.add_histogram("c2/2/importance", self.model.c2[2].importance, self.current_task)
+
+        self.tb.add_histogram("c3/0/weight", self.model.c3[0].weight, self.current_task)
+        self.tb.add_histogram("c3/0/eps", self.model.c3[0].eps, self.current_task)
+        self.tb.add_histogram("c3/0/importance", self.model.c3[0].importance, self.current_task)
+
+        self.tb.add_histogram("c3/2/weight", self.model.c3[2].weight, self.current_task)
+        self.tb.add_histogram("c3/2/eps", self.model.c3[2].eps, self.current_task)
+        self.tb.add_histogram("c3/2/importance", self.model.c3[2].importance, self.current_task)
+
+        self.tb.add_histogram('fc1/weight', self.model.fc1[0].weight, self.current_task)
+        self.tb.add_histogram("fc1/eps", self.model.fc1[0].eps, self.current_task)
+        self.tb.add_histogram("fc1/importance", self.model.fc1[0].importance, self.current_task)
 
 
-        # self.tb.add_histogram('fc1/bias', self.model.fc1.bias, self.current_task)
-        self.tb.add_histogram('fc1/weight', self.model.fc1.weight, self.current_task)
-        self.tb.add_histogram("fc1/eps", self.model.fc1.eps, self.current_task)
-        self.tb.add_histogram("fc1/importance", self.model.fc1.importance, self.current_task)
-
-        # self.tb.add_histogram('fc2/bias', self.model.fc2.bias, self.current_task)
-        self.tb.add_histogram('fc2/weight', self.model.fc2.weight, self.current_task)
-        self.tb.add_histogram("fc2/eps", self.model.fc2.eps, self.current_task)
-        self.tb.add_histogram("fc2/importance", self.model.fc2.importance, self.current_task)
+        # # self.tb.add_histogram('fc1/bias', self.model.fc1.bias, self.current_task)
+        # self.tb.add_histogram('fc1/weight', self.model.fc1.weight, self.current_task)
+        # self.tb.add_histogram("fc1/eps", self.model.fc1.eps, self.current_task)
+        # self.tb.add_histogram("fc1/importance", self.model.fc1.importance, self.current_task)
+        #
+        # # self.tb.add_histogram('fc2/bias', self.model.fc2.bias, self.current_task)
+        # self.tb.add_histogram('fc2/weight', self.model.fc2.weight, self.current_task)
+        # self.tb.add_histogram("fc2/eps", self.model.fc2.eps, self.current_task)
+        # self.tb.add_histogram("fc2/importance", self.model.fc2.importance, self.current_task)
 
         # self.tb.add_histogram('last/bias', self.model.last[self.current_head].weight, self.current_task)
         self.tb.add_histogram('last/weight', self.model.last[self.current_head].weight, self.current_task)

@@ -49,7 +49,8 @@ def run(args):
                     'force_out_dim': args.force_out_dim,
                     'clipping': args.clipping,
                     'eps_per_model': args.eps_per_model,
-                    'milestones': args.milestones}
+                    'milestones': args.milestones,
+                    'dataset_name': args.dataset }
     agent = agents.__dict__[args.agent_type].__dict__[args.agent_name](agent_config)
     print(agent.model)
     print('#parameter of model:', agent.count_parameter())
