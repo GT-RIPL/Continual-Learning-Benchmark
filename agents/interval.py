@@ -144,7 +144,8 @@ class IntervalNet(nn.Module):
     def validation_with_move_weights(self, dataloader):
         if len(self.prev_weight) == 0:
             self.save_params()
-        moves = (0.001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)
+        # moves = (0.001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)
+        moves = (1, )
         for move in moves:
             self.move_weights(-move)
             self.validation(dataloader, txt=f"Lower {move}")
@@ -252,69 +253,56 @@ class IntervalNet(nn.Module):
             if isinstance(block, nn.Sequential):
                 for layer in block.children():
                     if isinstance(layer, (Conv2dInterval, LinearInterval)):
-                        # eps = self.clip_intervals(i, layer)
-                        # if eps is None:
-                        #     self.prev_eps[i] = layer.eps.clone()
-                        # else:
-                        #     self.prev_eps[i] = eps
                         self.prev_weight[i] = layer.weight.data.detach().clone()
-                        self.prev_eps[i] = layer.eps.clone()
+                        self.prev_eps[i] = layer.eps.detach().clone()
                         i += 1
 
             elif isinstance(block, nn.ModuleDict) and not self.multihead:
-                # eps = self.clip_intervals(i, block["All"])
-                # if eps is None:
-                #     self.prev_eps[i] = block["All"].eps.clone()
-                # else:
-                #     self.prev_eps[i] = eps
                 self.prev_weight[i] = block["All"].weight.data.detach().clone()
-                self.prev_eps[i] = block["All"].eps.clone()
+                self.prev_eps[i] = block["All"].eps.detach().clone()
                 i += 1
 
             elif isinstance(block, (Conv2dInterval, LinearInterval)):
-                # eps = self.clip_intervals(i, block)
-                # if eps is None:
-                #     self.prev_eps[i] = block.eps.clone()
-                # else:
-                #     self.prev_eps[i] = eps
                 self.prev_weight[i] = block.weight.data.detach().clone()
-                self.prev_eps[i] = block.eps.clone()
+                self.prev_eps[i] = block.eps.detach().clone()
                 i += 1
 
-        self.tb.add_histogram("input/weight", self.model.input.weight, self.current_task)
-        self.tb.add_histogram("input/eps", self.model.input.eps, self.current_task)
-        self.tb.add_histogram("input/importance", self.model.input.importance, self.current_task)
+        # self.tb.add_histogram("input/weight", self.model.input.weight, self.current_task)
+        # self.tb.add_histogram("input/eps", self.model.input.eps, self.current_task)
+        # self.tb.add_histogram("input/importance", self.model.input.importance, self.current_task)
+        #
+        # self.tb.add_histogram("c1/0/weight", self.model.c1[0].weight, self.current_task)
+        # self.tb.add_histogram("c1/0/eps", self.model.c1[0].eps, self.current_task)
+        # self.tb.add_histogram("c1/0/importance", self.model.c1[0].importance, self.current_task)
+        #
+        # self.tb.add_histogram("c1/2/weight", self.model.c1[2].weight, self.current_task)
+        # self.tb.add_histogram("c1/2/eps", self.model.c1[2].eps, self.current_task)
+        # self.tb.add_histogram("c1/2/importance", self.model.c1[2].importance, self.current_task)
+        #
+        # self.tb.add_histogram("c2/0/weight", self.model.c2[0].weight, self.current_task)
+        # self.tb.add_histogram("c2/0/eps", self.model.c2[0].eps, self.current_task)
+        # self.tb.add_histogram("c2/0/importance", self.model.c2[0].importance, self.current_task)
+        #
+        # self.tb.add_histogram("c2/2/weight", self.model.c2[2].weight, self.current_task)
+        # self.tb.add_histogram("c2/2/eps", self.model.c2[2].eps, self.current_task)
+        # self.tb.add_histogram("c2/2/importance", self.model.c2[2].importance, self.current_task)
+        #
+        # self.tb.add_histogram("c3/0/weight", self.model.c3[0].weight, self.current_task)
+        # self.tb.add_histogram("c3/0/eps", self.model.c3[0].eps, self.current_task)
+        # self.tb.add_histogram("c3/0/importance", self.model.c3[0].importance, self.current_task)
+        #
+        # self.tb.add_histogram("c3/2/weight", self.model.c3[2].weight, self.current_task)
+        # self.tb.add_histogram("c3/2/eps", self.model.c3[2].eps, self.current_task)
+        # self.tb.add_histogram("c3/2/importance", self.model.c3[2].importance, self.current_task)
+        #
+        # self.tb.add_histogram('fc1/weight', self.model.fc1[0].weight, self.current_task)
+        # self.tb.add_histogram("fc1/eps", self.model.fc1[0].eps, self.current_task)
+        # self.tb.add_histogram("fc1/importance", self.model.fc1[0].importance, self.current_task)
 
-        self.tb.add_histogram("c1/0/weight", self.model.c1[0].weight, self.current_task)
-        self.tb.add_histogram("c1/0/eps", self.model.c1[0].eps, self.current_task)
-        self.tb.add_histogram("c1/0/importance", self.model.c1[0].importance, self.current_task)
-
-        self.tb.add_histogram("c1/2/weight", self.model.c1[2].weight, self.current_task)
-        self.tb.add_histogram("c1/2/eps", self.model.c1[2].eps, self.current_task)
-        self.tb.add_histogram("c1/2/importance", self.model.c1[2].importance, self.current_task)
-
-        self.tb.add_histogram("c2/0/weight", self.model.c2[0].weight, self.current_task)
-        self.tb.add_histogram("c2/0/eps", self.model.c2[0].eps, self.current_task)
-        self.tb.add_histogram("c2/0/importance", self.model.c2[0].importance, self.current_task)
-
-        self.tb.add_histogram("c2/2/weight", self.model.c2[2].weight, self.current_task)
-        self.tb.add_histogram("c2/2/eps", self.model.c2[2].eps, self.current_task)
-        self.tb.add_histogram("c2/2/importance", self.model.c2[2].importance, self.current_task)
-
-        self.tb.add_histogram("c3/0/weight", self.model.c3[0].weight, self.current_task)
-        self.tb.add_histogram("c3/0/eps", self.model.c3[0].eps, self.current_task)
-        self.tb.add_histogram("c3/0/importance", self.model.c3[0].importance, self.current_task)
-
-        self.tb.add_histogram("c3/2/weight", self.model.c3[2].weight, self.current_task)
-        self.tb.add_histogram("c3/2/eps", self.model.c3[2].eps, self.current_task)
-        self.tb.add_histogram("c3/2/importance", self.model.c3[2].importance, self.current_task)
-
-        self.tb.add_histogram('fc1/weight', self.model.fc1[0].weight, self.current_task)
-        self.tb.add_histogram("fc1/eps", self.model.fc1[0].eps, self.current_task)
-        self.tb.add_histogram("fc1/importance", self.model.fc1[0].importance, self.current_task)
 
 
-        # # self.tb.add_histogram('fc1/bias', self.model.fc1.bias, self.current_task)
+        # self.tb.add_histogram('fc1/bias', self.model.fc1.bias, self.current_task)
+
         # self.tb.add_histogram('fc1/weight', self.model.fc1.weight, self.current_task)
         # self.tb.add_histogram("fc1/eps", self.model.fc1.eps, self.current_task)
         # self.tb.add_histogram("fc1/importance", self.model.fc1.importance, self.current_task)
@@ -328,113 +316,43 @@ class IntervalNet(nn.Module):
         self.tb.add_histogram('last/weight', self.model.last[self.current_head].weight, self.current_task)
         self.tb.add_histogram("last/eps", self.model.last[self.current_head].eps, self.current_task)
         self.tb.add_histogram("last/importance", self.model.last[self.current_head].importance, self.current_task)
-
         self.tb.flush()
 
-        # i = 0
-        # for block in self.model.children():
-        #     if isinstance(block, nn.Sequential):
-        #         for layer in block.children():
-        #             if isinstance(layer, (Conv2dInterval, LinearInterval)):
-        #                 self.prev_weight[i] = layer.weight.data.detach().clone()
-        #                 self.prev_eps[i] = layer.eps.clone()
-        #                 # compute upper and lower bound for previous weights
-        #                 prev_lower = self.prev_weight[i] - self.prev_eps[i]
-        #                 prev_upper = self.prev_weight[i] + self.prev_eps[i]
-        #                 # compute upper and lower bound for current weights
-        #                 cur_lower = layer.weight.data - layer.eps
-        #                 cur_upper = layer.weight.data + layer.eps
-        #                 # compute the interval intersection as the new previous weights
-        #                 new_lower = torch.max(prev_lower, cur_lower)
-        #                 new_upper = torch.min(prev_upper, cur_upper)
-        #                 assert (new_lower <= new_upper).all()
-        #                 # transform to weight + eps form
-        #                 new_prev_weight = (new_lower + new_upper) / 2
-        #                 new_prev_eps = torch.abs(new_lower - new_upper) / 2
-        #                 # save
-        #                 self.prev_weight[i] = new_prev_weight.detach().clone()
-        #                 self.prev_eps[i] = new_prev_eps.detach().clone()
-        #                 i += 1
-        #
-        #     elif isinstance(block, nn.ModuleDict) and not self.multihead:
-        #         for _, layer in block.items():
-        #             self.prev_weight[i] = layer.weight.data.detach().clone()
-        #             self.prev_eps[i] = layer.eps.clone()
-        #             prev_lower = self.prev_weight[i] - self.prev_eps[i]
-        #             prev_upper = self.prev_weight[i] + self.prev_eps[i]
-        #             cur_lower = layer.weight.data - layer.eps
-        #             cur_upper = layer.weight.data + layer.eps
-        #             new_lower = torch.max(prev_lower, cur_lower)
-        #             new_upper = torch.min(prev_upper, cur_upper)
-        #             assert (new_lower <= new_upper).all()
-        #             new_prev_weight = (new_lower + new_upper) / 2
-        #             new_prev_eps = torch.abs(new_lower - new_upper) / 2
-        #             self.prev_weight[i] = new_prev_weight.detach().clone()
-        #             self.prev_eps[i] = new_prev_eps.detach().clone()
-        #             i += 1
-        #
-        #     elif isinstance(block, (Conv2dInterval, LinearInterval)):
-        #         self.prev_weight[i] = block.weight.data.detach().clone()
-        #         self.prev_eps[i] = block.eps.clone()
-        #         prev_lower = self.prev_weight[i] - self.prev_eps[i]
-        #         prev_upper = self.prev_weight[i] + self.prev_eps[i]
-        #         cur_lower = block.weight.data - block.eps
-        #         cur_upper = block.weight.data + block.eps
-        #         new_lower = torch.max(prev_lower, cur_lower)
-        #         new_upper = torch.min(prev_upper, cur_upper)
-        #         assert (new_lower <= new_upper).all()
-        #         new_prev_weight = (new_lower + new_upper) / 2
-        #         new_prev_eps = torch.abs(new_lower - new_upper) / 2
-        #         self.prev_weight[i] = new_prev_weight.detach().clone()
-        #         self.prev_eps[i] = new_prev_eps.detach().clone()
-        #         i += 1
-
-    def clip_weights(self, i, weights):
+    def clip_weights(self, i, layer):
+        w = layer.weight.data.detach()
         low_old = self.prev_weight[i] - self.prev_eps[i]
         upp_old = self.prev_weight[i] + self.prev_eps[i]
-        weights = torch.max(low_old, weights)
-        weights = torch.min(upp_old, weights)
-        return weights
+        w = torch.max(low_old, w)
+        w = torch.min(upp_old, w)
+        return w
 
     def clip_intervals(self, i, layer):
-        # if self.current_task < 2:
-        #     return None
         eps_old = self.prev_eps[i]
-
         assert (eps_old >= 0).all()
+
         low_old = self.prev_weight[i] - eps_old
         upp_old = self.prev_weight[i] + eps_old
+        w = layer.weight.data.detach()
+        assert (low_old <= w).all()
+        assert (upp_old >= w).all()
 
-        low_new = layer.weight.data - layer.eps
-        upp_new = layer.weight.data + layer.eps
-
-        assert (low_old <= layer.weight.data).all()
-        assert (upp_old >= layer.weight.data).all()
+        eps = layer.eps.detach()
+        low_new = w - eps
+        upp_new = w + eps
 
         low = torch.max(low_old, low_new)
         upp = torch.min(upp_old, upp_new)
-        assert (low <= upp).all(), print(low[low <= upp], upp[low <= upp])
+        assert (low <= upp).all()
 
-        # low_pos, low_neg = low.clamp(min=0), low.clamp(max=0)
-        # upp_pos, upp_neg = upp.clamp(min=0), upp.clamp(max=0)
-        #
-        # new_prev_weight_low = (low_pos + upp_neg)
-        # new_prev_weight_upp = (low_neg + upp_pos)
-        #
-        # new_prev_weight = (new_prev_weight_low + new_prev_weight_upp) / 2
-        # eps_new = torch.abs(new_prev_weight_upp - new_prev_weight_low) / 2
-
-        new_prev_weight = (low + upp) / 2
+        weight_new = (low + upp) / 2
         eps_new = torch.abs(low - upp) / 2
-        # eps_new = torch.min(layer.eps, eps_old)
-        # eps_new = torch.min(torch.abs(low - new_prev_weight), torch.abs(upp - new_prev_weight))
+        # eps_new = torch.where(eps_old < eps_new, eps_old, eps_new)
+        # calc = (eps_old < eps_new)
+        # if calc.any():
+        #     print(f"ile złych: {calc.sum()}, wszystkich: {(eps_old >= 0).sum()}")
+        # assert (eps_old >= eps_new).all(), print(f"eps assert i: {i}, ile złych: {(eps_old < eps_new).sum()}, wszystkich: {(eps_new >= 0).sum()}")
 
-        # assert (eps_old >= eps_new).all()
-
-        self.prev_weight.update(i=new_prev_weight.detach().clone())
-        self.prev_eps.update(i=eps_new.clone())
-
-        return eps_new
+        return eps_new, weight_new
 
     def clip_params(self):
         i = 0
@@ -442,21 +360,18 @@ class IntervalNet(nn.Module):
             if isinstance(c, nn.Sequential):
                 for layer in c.children():
                     if isinstance(layer, (Conv2dInterval, LinearInterval)):
-                        layer.weight.data = self.clip_weights(i, layer.weight.data)
-                        layer.eps = self.clip_intervals(i, layer)
-                        # layer.eps = torch.min(layer.eps, self.prev_eps[i])
+                        layer.weight.data = self.clip_weights(i, layer)
+                        layer.eps, layer.weight.data = self.clip_intervals(i, layer)
                         i += 1
 
             elif isinstance(c, nn.ModuleDict) and not self.multihead:
-                c["All"].weight.data = self.clip_weights(i, c["All"].weight.data)
-                c["All"].eps = self.clip_intervals(i, c["All"])
-                # c["All"].eps = torch.min(c["All"].eps, self.prev_eps[i])
+                c["All"].weight.data = self.clip_weights(i, c["All"])
+                c["All"].eps, c["All"].weight.data = self.clip_intervals(i, c["All"])
                 i += 1
 
             elif isinstance(c, (Conv2dInterval, LinearInterval)):
-                c.weight.data = self.clip_weights(i, c.weight.data)
-                c.eps = self.clip_intervals(i, c)
-                # c.eps = torch.min(c.eps, self.prev_eps[i])
+                c.weight.data = self.clip_weights(i, c)
+                c.eps, c.weight.data = self.clip_intervals(i, c)
                 i += 1
 
     def update_model(self, inputs, targets, tasks):
@@ -472,7 +387,6 @@ class IntervalNet(nn.Module):
 
         self.kappa_scheduler.step()
         self.eps_scheduler.step()
-
         self.model.set_eps(self.eps_scheduler.current, trainable=self.config['eps_per_model'], head=self.current_head)
         return loss.detach(), robust_err, robust_loss, out
 

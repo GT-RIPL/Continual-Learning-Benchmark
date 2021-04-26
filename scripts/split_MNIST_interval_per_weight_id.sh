@@ -1,9 +1,7 @@
 GPUID=$1
 OUTDIR=outputs/split_MNIST_interval_id_per_weight
-REPEAT=2
+REPEAT=10
 mkdir -p $OUTDIR
-
-rm -rf tb_runs/*
 
 #python -u intervalBatchLearn.py --gpuid "${GPUID}" --repeat "${REPEAT}" --optimizer Adam \
 #       --force_out_dim 2 --first_split_size 2 --other_split_size 2 --schedule 12 \
@@ -27,13 +25,39 @@ rm -rf tb_runs/*
 #       --kappa_epoch 4 --schedule 12 \
 #       | tee ${OUTDIR}/in_pw_random3.log
 
+#python -u intervalBatchLearn.py --gpuid "${GPUID}" --repeat "${REPEAT}" --optimizer Adam \
+#       --force_out_dim 2 --first_split_size 2 --other_split_size 2 \
+#       --model_name interval_mlp400 --agent_type interval --agent_name IntervalNet \
+#       --batch_size 100 --lr 0.001 --clipping --eps_per_model \
+#       --eps_val 16 4 3 1 0.5 --eps_epoch 12 10 10 10 8 --eps_max 0 \
+#       --kappa_epoch 1 --schedule 12 10 10 10 8 \
+#       | tee ${OUTDIR}/in_pw_random4.log
+
+
+#python -u intervalBatchLearn.py --gpuid "${GPUID}" --repeat "${REPEAT}" --optimizer Adam \
+#       --force_out_dim 2 --first_split_size 2 --other_split_size 2 \
+#       --model_name interval_mlp400 --agent_type interval --agent_name IntervalNet \
+#       --batch_size 100 --lr 0.001 --clipping --eps_per_model \
+#       --eps_val 16 8 8 3 2 --eps_epoch 12 --eps_max 0 \
+#       --kappa_epoch 1 --schedule 12 \
+#       | tee ${OUTDIR}/in_pw.log
+
+# --eps_val 20 8 4 2 1
+#python -u intervalBatchLearn.py --gpuid "${GPUID}" --repeat "${REPEAT}" --optimizer Adam \
+#       --force_out_dim 2 --first_split_size 2 --other_split_size 2 \
+#       --model_name interval_mlp400 --agent_type interval --agent_name IntervalNet \
+#       --batch_size 100 --lr 0.001 --clipping --eps_per_model \
+#       --eps_val 18 8 4 1 0.5 --eps_epoch 12 --eps_max 0 \
+#       --kappa_epoch 1 --schedule 12 \
+#       | tee ${OUTDIR}/in_pwd.log
+
 python -u intervalBatchLearn.py --gpuid "${GPUID}" --repeat "${REPEAT}" --optimizer Adam \
        --force_out_dim 2 --first_split_size 2 --other_split_size 2 \
        --model_name interval_mlp400 --agent_type interval --agent_name IntervalNet \
        --batch_size 100 --lr 0.001 --clipping --eps_per_model \
-       --eps_val 16 4 3 1 0.5 --eps_epoch 12 10 10 10 8 --eps_max 0 \
-       --kappa_epoch 1 --schedule 12 10 10 10 8 \
-       | tee ${OUTDIR}/in_pw_random4.log
+       --eps_val 18 8 4 1 0.5 --eps_epoch 12 --eps_max 0 \
+       --kappa_epoch 1 --schedule 12 \
+       | tee ${OUTDIR}/in_pwd1.log
 
 
 
